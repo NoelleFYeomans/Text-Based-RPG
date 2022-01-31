@@ -8,5 +8,6 @@ namespace Text_Based_RPG
 {
     class Map
     {
+
     }
 }

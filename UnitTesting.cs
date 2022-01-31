@@ -8,5 +8,9 @@ namespace Text_Based_RPG
 {
     class UnitTesting
     {
+        public void UnitTest()
+        {
+
+        }
     }
 }

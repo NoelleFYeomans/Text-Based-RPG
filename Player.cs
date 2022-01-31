@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Player
+    class Player : GameCharacter
     {
     }
 }

@@ -10,6 +10,9 @@ namespace Text_Based_RPG
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Text-Based RPG");
+
+            Console.ReadKey(true);
         }
     }
 }
