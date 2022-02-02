@@ -33,8 +33,6 @@ namespace Text_Based_RPG
         }
         public void DrawPosition()
         {
-            //Console.Clear(); works but is slow
-            //Console.Write("\b"); doesn't work
             Console.SetCursorPosition(x, y);
             Console.Write("@");
         }

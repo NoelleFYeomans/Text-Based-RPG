@@ -11,31 +11,26 @@ namespace Text_Based_RPG
         //bool for game loop
         static private bool gameOver = false;
 
-        //initialization
+        //declaration & instantiation
         static Player player = new Player();
         static Enemy enemy = new Enemy();
         static Map map = new Map();
 
         static void Main(string[] args)
         {
-            //initial draw to screen
-            map.Draw();
-            enemy.DrawPosition();
-            player.DrawPosition();
-
+            //game loop
             while (!gameOver)
             {
-                player.UpdatePosition();
-                enemy.UpdatePosition();
-                map.Update();
-
-
                 Console.Clear();
+
                 map.Draw();
                 enemy.DrawPosition();
                 player.DrawPosition();
-            }
 
+                player.UpdatePosition();
+                enemy.UpdatePosition();
+                map.Update();
+            }
             Console.ReadKey(true);
         }
     }
