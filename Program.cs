@@ -18,6 +18,11 @@ namespace Text_Based_RPG
 
         static void Main(string[] args)
         {
+            //initial draw to screen
+            map.Draw();
+            enemy.DrawPosition();
+            player.DrawPosition();
+
             while (!gameOver)
             {
                 player.UpdatePosition();
@@ -30,8 +35,6 @@ namespace Text_Based_RPG
                 enemy.DrawPosition();
                 player.DrawPosition();
             }
-
-            Console.WriteLine("Text-Based RPG");
 
             Console.ReadKey(true);
         }

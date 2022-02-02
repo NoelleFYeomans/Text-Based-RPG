@@ -17,7 +17,7 @@ namespace Text_Based_RPG
         public void DrawPosition()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.SetCursorPosition(x + 30, y + 10); //fix
+            Console.SetCursorPosition(x - 2, y - 2); //fix
             Console.Write("E");
             Console.ForegroundColor = ConsoleColor.White;
         }

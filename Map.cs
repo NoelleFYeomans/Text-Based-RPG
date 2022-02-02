@@ -33,8 +33,9 @@ namespace Text_Based_RPG
             {
                 for (int mapX = 0; mapX <= 11; mapX++)
                 {
-
+                    Console.Write(mapArray[mapY, mapX]);
                 }
+                Console.WriteLine("");
             }
         }
     }

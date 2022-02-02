@@ -9,8 +9,8 @@ namespace Text_Based_RPG
     abstract class GameCharacter
     {
         protected int health;
-        protected int y = 10;
-        protected int x = 10;
+        protected int y = 5;
+        protected int x = 5;
 
     }
 }
