@@ -12,5 +12,14 @@ namespace Text_Based_RPG
         protected int y = 5;
         protected int x = 5;
 
+        protected void TakeDamage()
+        {
+
+        }
+
+        protected void RespawnCharacter()
+        {
+
+        }
     }
 }
