@@ -8,8 +8,29 @@ namespace Text_Based_RPG
 {
     class Program
     {
+        //bool for game loop
+        static private bool gameOver = false;
+
+        //initialization
+        static Player player = new Player();
+        static Enemy enemy = new Enemy();
+        static Map map = new Map();
+
         static void Main(string[] args)
         {
+            while (!gameOver)
+            {
+                player.UpdatePosition();
+                enemy.UpdatePosition();
+                map.Update();
+
+
+                Console.Clear();
+                map.Draw();
+                enemy.DrawPosition();
+                player.DrawPosition();
+            }
+
             Console.WriteLine("Text-Based RPG");
 
             Console.ReadKey(true);
