@@ -21,5 +21,18 @@ namespace Text_Based_RPG
         {
 
         }
+
+        protected void ObeyBorder()
+        {
+            if (Console.CursorLeft <= 2)
+            {
+                x = 2;
+            }
+            else if (Console.CursorTop <= 1)
+            {
+                y = 2;
+            }
+        }
+
     }
 }

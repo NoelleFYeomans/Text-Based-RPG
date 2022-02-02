@@ -30,6 +30,7 @@ namespace Text_Based_RPG
                     x -= 1;
                     break;
             }
+            ObeyBorder(); //WHY
         }
         public void DrawPosition()
         {
