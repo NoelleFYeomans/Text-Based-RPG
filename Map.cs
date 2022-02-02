@@ -29,16 +29,13 @@ namespace Text_Based_RPG
         }
         public void Draw()
         {
-            for (int mapY = 0; mapY <= 30; mapY++)
+            for (int mapY = 0; mapY <= 11; mapY++)
             {
-                Console.WriteLine("#");
-                //for (int mapX = 0; mapX < 40; mapX += 40)
-                //{
-                //    Console.Write("#");
-                //}
+                for (int mapX = 0; mapX <= 11; mapX++)
+                {
+
+                }
             }
-
-
         }
     }
 }
