@@ -12,6 +12,7 @@ namespace Text_Based_RPG
         
         public void UpdatePosition()
         {
+
             key = Console.ReadKey(true);
 
             switch (key.Key)
@@ -30,8 +31,11 @@ namespace Text_Based_RPG
                     x -= 1;
                     break;
             }
+
             ObeyBorder();
+
         }
+
         public void DrawPosition()
         {
             Console.SetCursorPosition(x, y);
