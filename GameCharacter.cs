@@ -12,9 +12,9 @@ namespace Text_Based_RPG
         protected int y = 5;
         protected int x = 5;
 
-        protected void TakeDamage()
+        protected void TakeDamage(int atk)
         {
-
+            health = health - atk; //expand
         }
 
         protected void RespawnCharacter()
@@ -24,13 +24,14 @@ namespace Text_Based_RPG
 
         protected void ObeyBorder()
         {
-            if (Console.CursorLeft <= 2)
+            if (x < 1)
             {
-                x = 2;
+                x = 1;
+                
             }
-            else if (Console.CursorTop <= 1)
+            if (y < 1)
             {
-                y = 2;
+                y = 1;
             }
         }
 

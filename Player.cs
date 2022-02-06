@@ -30,12 +30,14 @@ namespace Text_Based_RPG
                     x -= 1;
                     break;
             }
-            ObeyBorder(); //WHY
+            ObeyBorder();
         }
         public void DrawPosition()
         {
             Console.SetCursorPosition(x, y);
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("@");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
