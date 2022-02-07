@@ -68,8 +68,8 @@ namespace Text_Based_RPG
                 }
             }
 
-           x = Clamp(x, 1, 100);
-           y = Clamp(y, 1, 100);
+           x = Clamp(x, 0, 100);
+           y = Clamp(y, 0, 100);
 
         }
 

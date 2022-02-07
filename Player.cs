@@ -10,13 +10,19 @@ namespace Text_Based_RPG
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
         
-        public void UpdatePosition()
+        public void UpdatePosition(Map map)//you can pass in class
         {
 
             key = Console.ReadKey(true);
 
+            //I want to have the player's position before the move saved
+            int priorPositionX = x; //this needs to be elsewhere
+            int priorPositionY = y; //this needs to be elsewhere
+
             switch (key.Key) //make move separate from the want to move. Playerinput/enemyAI
             {
+
+
                 case ConsoleKey.W: //input
                     y -= 1; //move
                     break;
@@ -31,8 +37,15 @@ namespace Text_Based_RPG
                     break;
             }
 
-            x = Clamp(x, 1, 100);
-            y = Clamp(y, 1, 100);
+            x = Clamp(x, 0, 100);
+            y = Clamp(y, 0, 100);
+
+
+            if (Map.mapArray[y, x] == '#') //this needs to be elsewhere
+            {
+                y = priorPositionY;
+                x = priorPositionX;
+            }
 
         }
 

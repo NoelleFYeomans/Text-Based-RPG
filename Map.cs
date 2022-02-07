@@ -9,7 +9,7 @@ namespace Text_Based_RPG
     class Map
     {
 
-        static char[,] mapArray = new char[,]//temp map also remember to create border
+        public static char[,] mapArray = new char[,]//temp map also remember to create border
         {
             {'#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#'},
             {'#',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',',','#'},
