@@ -15,12 +15,11 @@ namespace Text_Based_RPG
 
             key = Console.ReadKey(true);
 
-            switch (key.Key)
+            switch (key.Key) //make move separate from the want to move. Playerinput/enemyAI
             {
-                case ConsoleKey.W:
-                    y -= 1;
+                case ConsoleKey.W: //input
+                    y -= 1; //move
                     break;
-
                 case ConsoleKey.S:
                     y += 1;
                     break;
@@ -32,7 +31,8 @@ namespace Text_Based_RPG
                     break;
             }
 
-            ObeyBorder();
+            x = Clamp(x, 1, 100);
+            y = Clamp(y, 1, 100);
 
         }
 

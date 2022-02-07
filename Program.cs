@@ -31,7 +31,9 @@ namespace Text_Based_RPG
                 enemy.UpdatePosition();
                 map.Update();
             }
+
             Console.ReadKey(true);
+
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Text_Based_RPG
             Random tar = new Random();
             int target = tar.Next(0, 3);
 
-            if (target <= 1)
+            if (target <= 1) //avoid cursor position
             {
                 if (x < Console.CursorLeft)
                 {
@@ -68,7 +68,8 @@ namespace Text_Based_RPG
                 }
             }
 
-            ObeyBorder();
+           x = Clamp(x, 1, 100);
+           y = Clamp(y, 1, 100);
 
         }
 

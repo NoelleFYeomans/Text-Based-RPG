@@ -22,17 +22,17 @@ namespace Text_Based_RPG
 
         }
 
-        protected void ObeyBorder()
+        protected int Clamp(int value, int minValue, int maxValue)
         {
-            if (x < 1)
+            if (value > maxValue)
             {
-                x = 1;
-                
+                value = maxValue;
             }
-            if (y < 1)
+            if (value < minValue)
             {
-                y = 1;
+                value = minValue;
             }
+            return value;
         }
 
     }
