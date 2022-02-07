@@ -10,7 +10,7 @@ namespace Text_Based_RPG
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
         
-        public void UpdatePosition(Map map)//you can pass in class
+        public void UpdatePosition(Map map, Enemy enemy) //you can pass in a different class to access it
         {
 
             key = Console.ReadKey(true);
@@ -41,7 +41,7 @@ namespace Text_Based_RPG
             y = Clamp(y, 0, 100);
 
 
-            if (Map.mapArray[y, x] == '#') //this needs to be elsewhere
+            if (Map.mapArray[y, x] == '#') //this needs to be elsewhere, also, if I leave boundaries, it crashes because it's checking y and x vs map coordinates
             {
                 y = priorPositionY;
                 x = priorPositionX;
