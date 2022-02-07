@@ -73,6 +73,8 @@ namespace Text_Based_RPG
 
         }
 
+        //getx method, and gety method, make public and feed into player
+
         public void DrawPosition()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;

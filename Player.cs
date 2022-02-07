@@ -47,6 +47,16 @@ namespace Text_Based_RPG
                 x = priorPositionX;
             }
 
+            if (x = enemy.x)
+            {
+                if (y = enemy.y)
+                {
+                    y = priorPositionY;
+                    x = priorPositionX;
+                    //deal damage here
+                }
+            }
+
         }
 
         public void DrawPosition()
