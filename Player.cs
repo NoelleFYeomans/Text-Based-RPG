@@ -10,6 +10,8 @@ namespace Text_Based_RPG
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
         
+        //perhaps consider a series of booleans
+
         public void UpdatePosition(Map map, Enemy enemy, Player player) //you can pass in a different class to access it
         {
 
@@ -48,6 +50,8 @@ namespace Text_Based_RPG
             }
 
             PreventOverlap(player, enemy);
+
+            enemy.TakeDamage(5);
 
         }
 

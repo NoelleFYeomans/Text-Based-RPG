@@ -15,11 +15,11 @@ namespace Text_Based_RPG
         protected int priorPositionX; //consider protected (int, int) priorPosition
         protected int priorPositionY;
 
-        protected void TakeDamage(int atk)
+        protected void TakeDamage(int atk) //has to be public
         {
+            atk = Clamp(atk, 0, 1000);
             health = health - atk; //expand
-            Clamp(atk, 0, 1000);
-            Clamp(health, 0, 100);
+            health = Clamp(health, 0, 100);
         }
 
         protected void PreventOverlap(Player player, Enemy enemy) //too "convoluted"
@@ -31,7 +31,7 @@ namespace Text_Based_RPG
             }
         }
 
-        protected void RespawnCharacter()
+        protected void RespawnCharacter() //future use
         {
 
         }
