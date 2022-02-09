@@ -10,76 +10,92 @@ namespace Text_Based_RPG
     {
         public void UpdatePosition(Map map, Enemy enemy, Player player)
         {
+
+            if (enemy.health <= 0)
+            {
+                isAlive = false;
+            }
+
             priorPositionX = x;
             priorPositionY = y;
 
             Random tar = new Random();
             int target = tar.Next(0, 3);
 
-            if (target <= 1) //avoid cursor position
+            if (isAlive)
             {
-                if (x < Console.CursorLeft)
+                if (target <= 1) //avoid cursor position
                 {
-                    x++;
-                }
-                else if (x > Console.CursorLeft)
-                {
-                    x--;
-                }
-                else
-                {
-                    if (y < Console.CursorTop)
+                    if (x < Console.CursorLeft)
                     {
-                        y++;
+                        x++;
                     }
-                    else if (y > Console.CursorTop)
+                    else if (x > Console.CursorLeft)
                     {
-                        y--;
+                        x--;
                     }
                     else
                     {
-                        //nothing //could be improved
+                        if (y < Console.CursorTop)
+                        {
+                            y++;
+                        }
+                        else if (y > Console.CursorTop)
+                        {
+                            y--;
+                        }
+                        else
+                        {
+                            //nothing //could be improved
+                        }
                     }
                 }
+
+                else if (target >= 2)
+                {
+                    Random rnd = new Random();
+                    int dir = rnd.Next(1, 6);
+
+                    if (dir == 1)
+                    {
+                        y -= 1;
+                    }
+                    else if (dir == 2)
+                    {
+                        y += 1;
+                    }
+                    else if (dir == 3)
+                    {
+                        x += 1;
+                    }
+                    else if (dir == 4)
+                    {
+                        x -= 1;
+                    }
+                    else if (dir == 5)
+                    {
+                        //doesn't move
+                    }
+                }
+
+                x = Clamp(x, 0, 100);
+                y = Clamp(y, 0, 100);
+
+                if (Map.mapArray[y, x] == '#') //this needs to be elsewhere, also, if I leave boundaries, it crashes because it's checking y and x vs map coordinates
+                {
+                    y = priorPositionY;
+                    x = priorPositionX;
+                }
+
+                PreventOverlap(player, enemy);
+
+                if (doAttack)
+                {
+                    player.TakeDamage(10);
+                    doAttack = false;
+                }
+
             }
-
-            else if (target >= 2)
-            {
-                Random rnd = new Random();
-                int dir = rnd.Next(1, 6);
-
-                if (dir == 1)
-                {
-                    y -= 1;
-                }
-                else if (dir == 2)
-                {
-                    y += 1;
-                }
-                else if (dir == 3)
-                {
-                    x += 1;
-                }
-                else if (dir == 4)
-                {
-                    x -= 1;
-                }
-                else if (dir == 5)
-                {
-                    //doesn't move
-                }
-            }
-
-           x = Clamp(x, 0, 100);
-           y = Clamp(y, 0, 100);
-
-            if (Map.mapArray[y, x] == '#') //this needs to be elsewhere, also, if I leave boundaries, it crashes because it's checking y and x vs map coordinates
-            {
-                y = priorPositionY;
-                x = priorPositionX;
-            }
-
-            PreventOverlap(player, enemy);
 
         }
 
@@ -87,10 +103,13 @@ namespace Text_Based_RPG
 
         public void DrawPosition()
         {
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.SetCursorPosition(x, y); //fix
-            Console.Write("E");
-            Console.ForegroundColor = ConsoleColor.White;
+            if (isAlive)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.SetCursorPosition(x, y); //fix
+                Console.Write("E");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
         }
     }
 }
