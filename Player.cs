@@ -10,14 +10,14 @@ namespace Text_Based_RPG
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
         
-        public void UpdatePosition(Map map, Enemy enemy) //you can pass in a different class to access it
+        public void UpdatePosition(Map map, Enemy enemy, Player player) //you can pass in a different class to access it
         {
 
             key = Console.ReadKey(true);
 
             //I want to have the player's position before the move saved
-            int priorPositionX = x; //this needs to be elsewhere
-            int priorPositionY = y; //this needs to be elsewhere
+            priorPositionX = x; //this needs to be elsewhere
+            priorPositionY = y; //this needs to be elsewhere
 
             switch (key.Key) //make move separate from the want to move. Playerinput/enemyAI
             {
@@ -47,15 +47,7 @@ namespace Text_Based_RPG
                 x = priorPositionX;
             }
 
-            if (x = enemy.x)
-            {
-                if (y = enemy.y)
-                {
-                    y = priorPositionY;
-                    x = priorPositionX;
-                    //deal damage here
-                }
-            }
+            PreventOverlap(player, enemy);
 
         }
 

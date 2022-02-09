@@ -27,8 +27,8 @@ namespace Text_Based_RPG
                 enemy.DrawPosition();
                 player.DrawPosition();
 
-                player.UpdatePosition(map, enemy);
-                enemy.UpdatePosition();
+                player.UpdatePosition(map, enemy, player);
+                enemy.UpdatePosition(map, enemy, player);
                 map.Update();
             }
 

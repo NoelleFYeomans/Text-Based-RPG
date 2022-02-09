@@ -8,8 +8,10 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter
     {
-        public void UpdatePosition()
+        public void UpdatePosition(Map map, Enemy enemy, Player player)
         {
+            priorPositionX = x;
+            priorPositionY = y;
 
             Random tar = new Random();
             int target = tar.Next(0, 3);
@@ -70,6 +72,14 @@ namespace Text_Based_RPG
 
            x = Clamp(x, 0, 100);
            y = Clamp(y, 0, 100);
+
+            if (Map.mapArray[y, x] == '#') //this needs to be elsewhere, also, if I leave boundaries, it crashes because it's checking y and x vs map coordinates
+            {
+                y = priorPositionY;
+                x = priorPositionX;
+            }
+
+            PreventOverlap(player, enemy);
 
         }
 
