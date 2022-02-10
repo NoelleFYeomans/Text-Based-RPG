@@ -27,8 +27,15 @@ namespace Text_Based_RPG
                 enemy.DrawPosition();
                 player.DrawPosition();
 
-                //Console.WriteLine(player.health);
-                //Console.WriteLine(enemy.health);
+                //temporary ingame text
+                Console.SetCursorPosition(35, 3);
+                Console.WriteLine("<---------------");
+                Console.SetCursorPosition(35, 4);
+                Console.WriteLine("This hole in the map is intentional, I am aware that");
+                Console.SetCursorPosition(35, 5);
+                Console.WriteLine("the game crashes if you leave the bounds since the collison detection");
+                Console.SetCursorPosition(35, 6);
+                Console.WriteLine("looks for map X/Y coords. this is just for testing & is not permanent :)");
 
                 player.UpdatePosition(map, enemy, player);
                 enemy.UpdatePosition(map, enemy, player);

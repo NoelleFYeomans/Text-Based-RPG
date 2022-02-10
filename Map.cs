@@ -8,6 +8,8 @@ namespace Text_Based_RPG
 {
     class Map
     {
+        private int x;
+        private int y;
 
         public static char[,] mapArray = new char[,]//temp map also remember to create border
         {
@@ -45,13 +47,27 @@ namespace Text_Based_RPG
 
         public void Draw()
         {
-            for (int mapY = 0; mapY <= 15; mapY++)
+            for (y = 0; y <= 15; y++)
             {
-                for (int mapX = 0; mapX <= 30; mapX++)
+                for (x = 0; x <= 30; x++)
                 {
-                    Console.Write(mapArray[mapY, mapX]);
+                    ColourMap();
+                    Console.Write(mapArray[y, x]);
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.WriteLine("");
+            }
+        }
+
+        public void ColourMap()
+        {
+            if (mapArray[y, x] == '#')
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+            }
+            else if (mapArray[y, x] == ',')
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
             }
         }
     }
