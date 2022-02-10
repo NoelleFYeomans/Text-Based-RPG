@@ -9,6 +9,8 @@ namespace Text_Based_RPG
     class Player : GameCharacter
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
+
+        static bool spawning = true;
         
         //perhaps consider a series of booleans
 
@@ -59,7 +61,7 @@ namespace Text_Based_RPG
 
                 if (doAttack) // also move elsewhere eventually? idk maybe this does stay in update();
                 {
-                    enemy.TakeDamage(25);
+                    enemy.TakeDamage(25); //hardcoded temporarily
                     doAttack = false;
                 }
 
@@ -69,8 +71,16 @@ namespace Text_Based_RPG
 
         public void DrawPosition()
         {
+            if (spawning)
+            {
+                x = 5;
+                y = 5;
+                spawning = false;
+            }
             if (isAlive)
             {
+                Console.SetCursorPosition(2, 21);//temp code
+                Console.WriteLine("Player health:" + health); //temp code
                 Console.SetCursorPosition(x, y);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("@");

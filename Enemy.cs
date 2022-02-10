@@ -91,7 +91,7 @@ namespace Text_Based_RPG
 
                 if (doAttack)
                 {
-                    player.TakeDamage(10);
+                    player.TakeDamage(10); //temp hardcode
                     doAttack = false;
                 }
 
@@ -103,8 +103,16 @@ namespace Text_Based_RPG
 
         public void DrawPosition()
         {
+            if (spawning)
+            {
+                x = 7;
+                y = 7;
+                spawning = false;
+            }
             if (isAlive)
             {
+                Console.SetCursorPosition(2, 20);//temp code
+                Console.WriteLine("Enemy health:" + health); //temp code
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.SetCursorPosition(x, y); //fix
                 Console.Write("E");

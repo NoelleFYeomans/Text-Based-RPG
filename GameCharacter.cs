@@ -9,10 +9,11 @@ namespace Text_Based_RPG
     abstract class GameCharacter
     {
         protected int health = 100; //protected, needs to be public to visibly test
-        protected int y = 5; //protected, needs to be public to visibly test
-        protected int x = 5; //protected, needs to be public to visibly test
+        protected int y; //protected, needs to be public to visibly test
+        protected int x; //protected, needs to be public to visibly test
         protected bool doAttack = false;
         protected bool isAlive = true;
+        protected bool spawning = true;
 
         protected int priorPositionX; //consider protected (int, int) priorPosition
         protected int priorPositionY;
