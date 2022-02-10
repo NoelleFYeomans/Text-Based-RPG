@@ -55,9 +55,9 @@ namespace Text_Based_RPG
                     x = priorPositionX;
                 }
 
-                PreventOverlap(player, enemy);
+                PreventOverlap(player, enemy); // move elsewhere eventually
 
-                if (doAttack)
+                if (doAttack) // also move elsewhere eventually? idk maybe this does stay in update();
                 {
                     enemy.TakeDamage(25);
                     doAttack = false;
