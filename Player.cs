@@ -9,8 +9,6 @@ namespace Text_Based_RPG
     class Player : GameCharacter
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
-
-        static bool spawning = true;
         
         //perhaps consider a series of booleans
 
@@ -57,7 +55,7 @@ namespace Text_Based_RPG
                     x = priorPositionX;
                 }
 
-                PreventOverlap(player, enemy); // move elsewhere eventually
+                PreventOverlap(player, enemy); // move elsewhere eventually, also maybe replace fully?
 
                 if (doAttack) // also move elsewhere eventually? idk maybe this does stay in update();
                 {
