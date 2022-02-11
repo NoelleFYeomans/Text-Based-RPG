@@ -26,21 +26,21 @@ namespace Text_Based_RPG
             {
                 if (target <= 1) //avoid cursor position
                 {
-                    if (x < Console.CursorLeft)
+                    if (x < player.x) 
                     {
                         x++;
                     }
-                    else if (x > Console.CursorLeft)
+                    else if (x > player.x)
                     {
                         x--;
                     }
                     else
                     {
-                        if (y < Console.CursorTop)
+                        if (y < player.y) //need to use console.cursorleft without public x/y
                         {
                             y++;
                         }
-                        else if (y > Console.CursorTop)
+                        else if (y > player.y)
                         {
                             y--;
                         }

@@ -23,6 +23,7 @@ namespace Text_Based_RPG
             {
                 Console.Clear();
 
+
                 map.Draw();
                 enemy.DrawPosition();
                 player.DrawPosition();
