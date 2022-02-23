@@ -11,12 +11,16 @@ namespace Text_Based_RPG
         protected int health = 100; //protected, needs to be public to visibly test
         public int y; //protected, needs to be public to visibly test
         public int x; //protected, needs to be public to visibly test
+
         protected bool doAttack = false;
+        protected bool canMove = true;
         protected bool isAlive = true;
         protected bool spawning = true;
 
-        protected int priorPositionX; //consider protected (int, int) priorPosition
-        protected int priorPositionY;
+        public int priorPositionX;
+        public int priorPositionY;
+        public int deltaX;
+        public int deltaY;
 
         public void TakeDamage(int atk) //has to be public
         {
@@ -41,6 +45,17 @@ namespace Text_Based_RPG
                 }
             }
         }
+        protected bool isGameCharacterAt(Player player, Enemy enemy) //working on this // maybe I am being too modular
+        {
+            if (player.x == enemy.x && player.y == enemy.y)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
         protected void RespawnCharacter() //future use
         {
@@ -59,6 +74,5 @@ namespace Text_Based_RPG
             }
             return value;
         }
-
     }
 }

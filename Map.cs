@@ -36,13 +36,16 @@ namespace Text_Based_RPG
             
         }
 
-        public void isWall(GameCharacter character) //future implementation
+        public bool isWall(int y, int x) //future implementation & GameCharacter character & position manip like before can work
         {
-            //if (Map.mapArray[y, x] == '#') //if I leave boundaries, it crashes because it's checking y and x vs map coordinates
-            //{
-            //    character.y = character.priorPositionY;
-            //    character.x = character.priorPositionX;
-            //}
+            if (mapArray[y, x] == '#') //if I leave boundaries, it crashes because it's checking y and x vs map coordinates
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Draw()

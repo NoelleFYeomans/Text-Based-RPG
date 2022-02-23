@@ -9,8 +9,6 @@ namespace Text_Based_RPG
     class Player : GameCharacter
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
-        
-        //perhaps consider a series of booleans
 
         public void UpdatePosition(Map map, Enemy enemy, Player player) //you can pass in a different class to access it
         {
@@ -23,46 +21,59 @@ namespace Text_Based_RPG
             key = Console.ReadKey(true);
 
             //I want to have the player's position before the move saved
-            priorPositionX = x; //these needs to be elsewhere maybe?
-            priorPositionY = y; 
+            priorPositionX = x;
+            priorPositionY = y;
+
+            deltaX = 0;
+            deltaY = 0;
+
             if (isAlive)
             {
-                switch (key.Key) //make move separate from the want to move. Playerinput/enemyAI
+
+                canMove = true;
+
+                //obtain player input/desired movement
+                switch (key.Key) 
                 {
-
-
-                    case ConsoleKey.W: //input
-                        y -= 1; //move
+                    case ConsoleKey.W:
+                        deltaY = -1;
                         break;
                     case ConsoleKey.S:
-                        y += 1;
+                        deltaY = +1;
                         break;
                     case ConsoleKey.D:
-                        x += 1;
+                        deltaX = +1;
                         break;
                     case ConsoleKey.A:
-                        x -= 1;
+                        deltaX = -1;
                         break;
                 }
 
+                //clamps, collisions, & other checks
                 x = Clamp(x, 0, 100);
                 y = Clamp(y, 0, 100);
 
 
-                if (Map.mapArray[y, x] == '#') //this needs to be elsewhere, also, if I leave boundaries, it crashes because it's checking y and x vs map coordinates
+                if (map.isWall(y + deltaY, x + deltaX)) //perform checks before movement
                 {
-                    y = priorPositionY;
-                    x = priorPositionX;
+                    canMove = false;
                 }
 
+                
                 PreventOverlap(player, enemy); // move elsewhere eventually, also maybe replace fully?
 
-                if (doAttack) // also move elsewhere eventually? idk maybe this does stay in update();
+                if (doAttack) // also move elsewhere eventually? idk maybe this does stay in update(); add sound to hitting wall
                 {
                     enemy.TakeDamage(25); //hardcoded temporarily
                     doAttack = false;
                 }
 
+                //apply movements values
+                if (canMove)
+                {
+                    x = x + deltaX;
+                    y = y + deltaY;
+                }
             }
           
         }

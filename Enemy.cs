@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Enemy : GameCharacter
+    class Enemy : GameCharacter //NEEDS TO BE UPDATED BY STANDARD OF PLAYER
     {
         public void UpdatePosition(Map map, Enemy enemy, Player player)
         {
@@ -81,7 +81,7 @@ namespace Text_Based_RPG
                 x = Clamp(x, 0, 100);
                 y = Clamp(y, 0, 100);
 
-                if (Map.mapArray[y, x] == '#') //this needs to be elsewhere, also, if I leave boundaries, it crashes because it's checking y and x vs map coordinates
+                if (map.isWall(y, x)) //this needs to be elsewhere, also, if I leave boundaries, it crashes because it's checking y and x vs map coordinates
                 {
                     y = priorPositionY;
                     x = priorPositionX;
