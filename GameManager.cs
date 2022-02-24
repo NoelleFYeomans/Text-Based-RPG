@@ -15,20 +15,21 @@ namespace Text_Based_RPG
         static Player player = new Player();
         static Enemy enemy = new Enemy();
         static Map map = new Map();
+        static HUD hud = new HUD();
 
         public void gameLoop()
         {
             //game loop
             while (!gameOver)
             {
-                Console.Clear();
 
                 map.Draw();
-                enemy.DrawPosition();
-                player.DrawPosition();
-
-                player.UpdatePosition(map, enemy, player);
-                enemy.UpdatePosition(map, enemy, player);
+                enemy.Draw();
+                player.Draw();
+                hud.DrawHUD(enemy, player);
+                
+                player.Update(map, enemy, player);
+                enemy.Update(map, enemy, player);
                 map.Update();
             }
 

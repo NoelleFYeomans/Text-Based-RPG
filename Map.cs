@@ -50,6 +50,8 @@ namespace Text_Based_RPG
 
         public void Draw()
         {
+            Console.SetCursorPosition(0, 0);
+
             for (y = 0; y <= 15; y++)
             {
                 for (x = 0; x <= 30; x++)

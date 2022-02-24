@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     class Enemy : GameCharacter //NEEDS TO BE UPDATED BY STANDARD OF PLAYER
     {
-        public void UpdatePosition(Map map, Enemy enemy, Player player)
+        public void Update(Map map, Enemy enemy, Player player)
         {
 
             if (enemy.health <= 0)
@@ -16,8 +16,13 @@ namespace Text_Based_RPG
                 isAlive = false;
             }
 
+            //enemy's intended position before moving
             priorPositionX = x;
             priorPositionY = y;
+
+            //resetting the deltas of the movement
+            deltaX = 0;
+            deltaY = 0;
 
             Random tar = new Random();
             int target = tar.Next(0, 3);
@@ -28,21 +33,21 @@ namespace Text_Based_RPG
                 {
                     if (x < player.x) 
                     {
-                        x++;
+                        deltaX = 1;
                     }
                     else if (x > player.x)
                     {
-                        x--;
+                        deltaX = -1;
                     }
                     else
                     {
                         if (y < player.y) //need to use console.cursorleft without public x/y
                         {
-                            y++;
+                            deltaY = +1;
                         }
                         else if (y > player.y)
                         {
-                            y--;
+                            deltaY = -1;
                         }
                         else
                         {
@@ -58,19 +63,19 @@ namespace Text_Based_RPG
 
                     if (dir == 1)
                     {
-                        y -= 1;
+                        deltaY = -1;
                     }
                     else if (dir == 2)
                     {
-                        y += 1;
+                        deltaY = +1;
                     }
                     else if (dir == 3)
                     {
-                        x += 1;
+                        deltaX = +1;
                     }
                     else if (dir == 4)
                     {
-                        x -= 1;
+                        deltaX = -1;
                     }
                     else if (dir == 5)
                     {
@@ -81,13 +86,16 @@ namespace Text_Based_RPG
                 x = Clamp(x, 0, 100);
                 y = Clamp(y, 0, 100);
 
-                if (map.isWall(y, x)) //this needs to be elsewhere, also, if I leave boundaries, it crashes because it's checking y and x vs map coordinates
+                if (map.isWall(y + deltaY, x + deltaX)) //perform checks before movement
                 {
-                    y = priorPositionY;
-                    x = priorPositionX;
+                    canMove = false;
                 }
 
-                PreventOverlap(player, enemy);
+                if (x + deltaX == player.x && y + deltaY == player.y)
+                {
+                    canMove = false;
+                    doAttack = true;
+                }
 
                 if (doAttack)
                 {
@@ -95,13 +103,16 @@ namespace Text_Based_RPG
                     doAttack = false;
                 }
 
+                if (canMove)
+                {
+                    x = x + deltaX;
+                    y = y + deltaY;
+                }
             }
 
         }
 
-        //getx method, and gety method, make public and feed into player
-
-        public void DrawPosition()
+        public void Draw()
         {
             if (spawning)
             {
@@ -111,12 +122,15 @@ namespace Text_Based_RPG
             }
             if (isAlive)
             {
-                Console.SetCursorPosition(2, 20);//temp code
-                Console.WriteLine("Enemy health:" + health); //temp code
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.SetCursorPosition(x, y); //fix
                 Console.Write("E");
                 Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (!isAlive) //hack-ey
+            {
+                x = 0;
+                y = 0;
             }
         }
     }

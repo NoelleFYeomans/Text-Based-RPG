@@ -10,7 +10,7 @@ namespace Text_Based_RPG
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
 
-        public void UpdatePosition(Map map, Enemy enemy, Player player) //you can pass in a different class to access it
+        public void Update(Map map, Enemy enemy, Player player) //you can pass in a different class to access it
         {
 
             if (player.health <= 0)
@@ -24,6 +24,7 @@ namespace Text_Based_RPG
             priorPositionX = x;
             priorPositionY = y;
 
+            //resetting the values of the intended change in position
             deltaX = 0;
             deltaY = 0;
 
@@ -31,6 +32,7 @@ namespace Text_Based_RPG
             {
 
                 canMove = true;
+                doAttack = false;
 
                 //obtain player input/desired movement
                 switch (key.Key) 
@@ -59,8 +61,11 @@ namespace Text_Based_RPG
                     canMove = false;
                 }
 
-                
-                PreventOverlap(player, enemy); // move elsewhere eventually, also maybe replace fully?
+                if (x + deltaX == enemy.x && y + deltaY == enemy.y)
+                {
+                    canMove = false;
+                    doAttack = true;
+                }
 
                 if (doAttack) // also move elsewhere eventually? idk maybe this does stay in update(); add sound to hitting wall
                 {
@@ -78,7 +83,7 @@ namespace Text_Based_RPG
           
         }
 
-        public void DrawPosition()
+        public void Draw()
         {
             if (spawning)
             {
@@ -88,8 +93,6 @@ namespace Text_Based_RPG
             }
             if (isAlive)
             {
-                Console.SetCursorPosition(2, 21);//temp code
-                Console.WriteLine("Player health:" + health); //temp code
                 Console.SetCursorPosition(x, y);
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("@");
