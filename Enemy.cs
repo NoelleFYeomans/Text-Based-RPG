@@ -103,7 +103,7 @@ namespace Text_Based_RPG
                     doAttack = false;
                 }
 
-                if (canMove)
+                if (canMove) //enemy stops moving when attacked or if it attacks
                 {
                     x = x + deltaX;
                     y = y + deltaY;
