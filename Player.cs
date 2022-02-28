@@ -61,7 +61,7 @@ namespace Text_Based_RPG
                     canMove = false;
                 }
 
-                if (x + deltaX == enemy.x && y + deltaY == enemy.y)
+                if (x + deltaX == enemy.x && y + deltaY == enemy.y)//ask
                 {
                     canMove = false;
                     doAttack = true;
@@ -79,8 +79,7 @@ namespace Text_Based_RPG
                     x = x + deltaX;
                     y = y + deltaY;
                 }
-            }
-          
+            }  
         }
 
         public void Draw()

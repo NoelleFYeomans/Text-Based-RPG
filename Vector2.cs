@@ -19,7 +19,7 @@ namespace Text_Based_RPG
         {
             Coordinates position;
 
-            position.x = 10;
+            position.x = 10; //testing
             position.y = 20;
         }
     }

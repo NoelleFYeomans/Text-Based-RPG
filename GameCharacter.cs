@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    abstract class GameCharacter
+    abstract class GameCharacter : GameObject
     {
         public int health = 100; //protected, needs to be public to visibly test
         public int y; //protected, needs to be public to visibly test
