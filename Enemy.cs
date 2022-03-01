@@ -109,12 +109,11 @@ namespace Text_Based_RPG
                     y = y + deltaY;
                 }
             }
-
         }
 
         public void Draw()
         {
-            if (spawning)
+            if (spawning) //needs to be changed
             {
                 x = 7;
                 y = 7;
@@ -127,7 +126,7 @@ namespace Text_Based_RPG
                 Console.Write("E");
                 Console.ForegroundColor = ConsoleColor.White;
             }
-            else if (!isAlive) //hack-ey
+            else if (!isAlive) //needs to be changed
             {
                 x = 0;
                 y = 0;
