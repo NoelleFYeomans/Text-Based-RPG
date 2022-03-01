@@ -8,6 +8,8 @@ namespace Text_Based_RPG
 {
     class NormalEnemy : Enemy
     {
+        private char enemyIcon = 'E';
+
         public void Update(Map map, Player player)
         {
             if (health <= 0)
@@ -86,6 +88,28 @@ namespace Text_Based_RPG
                 deltaY = Clamp(deltaY, -1, 1);
 
                 ApplyInput(map, player);
+            }
+        }
+
+        public void DrawNormal()
+        {
+            if (spawning) //needs to be changed/moved elsewhere
+            {
+                x = 7;
+                y = 7;
+                spawning = false;
+            }
+            if (isAlive)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.SetCursorPosition(x, y);
+                Console.Write(enemyIcon);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            else if (!isAlive) //needs to be changed
+            {
+                x = 0;
+                y = 0;
             }
         }
     }

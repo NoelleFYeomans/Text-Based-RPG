@@ -8,6 +8,9 @@ namespace Text_Based_RPG
 {
     class StrongEnemy : Enemy 
     {
+        public void Update(Map map, Player player)
+        {
 
+        }
     }
 }
