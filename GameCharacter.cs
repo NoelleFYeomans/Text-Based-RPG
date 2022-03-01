@@ -34,6 +34,13 @@ namespace Text_Based_RPG
 
         }
 
+        public int GenerateRandNum(int minValue, int maxValue)
+        {
+            Random rand = new Random();
+            int output = rand.Next(minValue, maxValue);
+            return output;
+        }
+
         protected int Clamp(int value, int minValue, int maxValue)
         {
             if (value > maxValue)
