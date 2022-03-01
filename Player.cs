@@ -10,10 +10,10 @@ namespace Text_Based_RPG
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
 
-        public void Update(Map map, Enemy enemy, Player player) //you can pass in a different class to access it
+        public void Update(Map map, Enemy enemy) //you can pass in a different class to access it
         {
 
-            if (player.health <= 0)
+            if (health <= 0)
             {
                 isAlive = false;
             }

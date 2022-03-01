@@ -13,7 +13,7 @@ namespace Text_Based_RPG
 
         //declaration & instantiation
         static Player player = new Player();
-        static Enemy enemy = new Enemy();
+        static NormalEnemy normalEnemy = new NormalEnemy();
         static Map map = new Map();
         static HUD hud = new HUD();
 
@@ -24,12 +24,12 @@ namespace Text_Based_RPG
             {
 
                 map.Draw();
-                enemy.Draw();
+                normalEnemy.Draw();
                 player.Draw();
-                hud.DrawHUD(enemy, player);
+                hud.DrawHUD(normalEnemy, player);
                 
-                player.Update(map, enemy, player);
-                enemy.Update(map, enemy, player);
+                player.Update(map, normalEnemy);
+                normalEnemy.Update(map, player);
                 map.Update();
             }
 

@@ -50,11 +50,14 @@
     <Compile Include="HUD.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="NormalEnemy.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StrongEnemy.cs" />
     <Compile Include="UnitTesting.cs" />
     <Compile Include="Vector2.cs" />
+    <Compile Include="WeakEnemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

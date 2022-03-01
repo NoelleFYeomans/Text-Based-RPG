@@ -29,34 +29,6 @@ namespace Text_Based_RPG
             health = Clamp(health, 0, 100);
         }
 
-        //protected void PreventOverlap(Player player, Enemy enemy) //too "convoluted"
-        //{
-        //    if (player.x == enemy.x && player.y == enemy.y)
-        //    {
-        //        if (enemy.isAlive)// feels kinda hack-ey?
-        //        {
-        //            x = priorPositionX;
-        //            y = priorPositionY;
-        //            doAttack = true;
-        //        }
-        //        else if (!isAlive)
-        //        {
-        //            //nothing, perhaps put something else here
-        //        }
-        //    }
-        //}
-        //protected bool isGameCharacterAt(Player player, Enemy enemy) //working on this // maybe I am being too modular
-        //{
-        //    if (player.x == enemy.x && player.y == enemy.y)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
-
         protected void RespawnCharacter() //future use
         {
 
