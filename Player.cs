@@ -9,8 +9,9 @@ namespace Text_Based_RPG
     class Player : GameCharacter
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
+        int enemyAttacked = 0;
 
-        public void Update(Map map, Enemy enemy) //you can pass in a different class to access it
+        public void Update(Map map, NormalEnemy normalE, StrongEnemy strongE, WeakEnemy weakE) //you can pass in a different class to access it
         {
 
             if (health <= 0)
@@ -61,16 +62,42 @@ namespace Text_Based_RPG
                     canMove = false;
                 }
 
-                if (x + deltaX == enemy.x && y + deltaY == enemy.y)//ask
+                if (x + deltaX == normalE.x && y + deltaY == normalE.y || x + deltaX == strongE.x && y + deltaY == strongE.y || x + deltaX == weakE.x && y + deltaY == weakE.y)
                 {
-                    canMove = false;
+                    canMove = false; //please fix all of this
                     doAttack = true;
+
+                    if (x + deltaX == normalE.x && y + deltaY == normalE.y)//just to work for now, fix later
+                    {
+                        enemyAttacked = 1;
+                    }
+                    else if (x + deltaX == strongE.x && y + deltaY == strongE.y)
+                    {
+                        enemyAttacked = 2;
+                    }
+                    else if (x + deltaX == weakE.x && y + deltaY == weakE.y)
+                    {
+                        enemyAttacked = 3;
+                    }
                 }
 
                 if (doAttack) // also move elsewhere eventually? idk maybe this does stay in update(); add sound to hitting wall
                 {
-                    enemy.TakeDamage(25); //hardcoded temporarily
+                    if (enemyAttacked == 1) //temp
+                    {
+                        normalE.TakeDamage(25);
+                    }
+                    else if (enemyAttacked == 2)
+                    {
+                        strongE.TakeDamage(25); 
+                    }
+                    else if (enemyAttacked == 3)
+                    {
+                        weakE.TakeDamage(25);
+                    }
+
                     doAttack = false;
+                    enemyAttacked = 0;
                 }
 
                 //apply movements values

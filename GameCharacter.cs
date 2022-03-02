@@ -22,6 +22,8 @@ namespace Text_Based_RPG
         public int deltaX;
         public int deltaY;
 
+        Random rand = new Random();
+
         public void TakeDamage(int atk) //has to be public
         {
             atk = Clamp(atk, 0, 1000);
@@ -36,7 +38,6 @@ namespace Text_Based_RPG
 
         public int GenerateRandNum(int minValue, int maxValue)
         {
-            Random rand = new Random();
             int output = rand.Next(minValue, maxValue);
             return output;
         }
