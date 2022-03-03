@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     class WeakEnemy : Enemy
     {
-        bool canAct = true;
+        bool canAct = true; //unique bool for weakE's purposes
 
         public void Update(Map map, Player player, NormalEnemy normalE, StrongEnemy strongE)
         {

@@ -21,9 +21,10 @@ namespace Text_Based_RPG
 
         public void gameLoop()
         {
-            normalEnemy.InitializeEnemy('E', 7, 7, 100, 10);
-            strongEnemy.InitializeEnemy('S', 30, 10, 150, 20);
-            weakEnemy.InitializeEnemy('W', 45, 6, 50, 1);
+            player.InitializeCharacter('@', 5, 5, 100, 25);
+            normalEnemy.InitializeCharacter('E', 7, 7, 100, 10);
+            strongEnemy.InitializeCharacter('S', 30, 10, 150, 20);
+            weakEnemy.InitializeCharacter('W', 45, 6, 50, 1);
 
             //game loop
             while (!gameOver)

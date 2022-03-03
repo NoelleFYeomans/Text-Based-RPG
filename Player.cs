@@ -108,22 +108,5 @@ namespace Text_Based_RPG
                 }
             }  
         }
-
-        public void Draw()
-        {
-            if (spawning)
-            {
-                x = 5;
-                y = 5;
-                spawning = false;
-            }
-            if (isAlive)
-            {
-                Console.SetCursorPosition(x, y);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("@");
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-        }
     }
 }

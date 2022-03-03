@@ -17,6 +17,11 @@ namespace Text_Based_RPG
         protected bool isAlive = true;
         protected bool spawning = true;
 
+        protected char charIcon;
+        protected int initializeX;
+        protected int initializeY;
+        protected int initalizeStrength;
+
         public int priorPositionX;
         public int priorPositionY;
         public int deltaX;
@@ -53,6 +58,47 @@ namespace Text_Based_RPG
                 value = minValue;
             }
             return value;
+        }
+
+        public void InitializeCharacter(char icon, int initX, int initY, int health, int strength)
+        {
+            charIcon = icon;
+            initializeX = initX;
+            initializeY = initY;
+            this.health = health;
+            initalizeStrength = strength;
+        }
+
+        public void Draw() //could move to GameObject class & apply to player & enemy
+        {
+            if (spawning) //needs to be changed
+            {
+                x = initializeX;
+                y = initializeY;
+                spawning = false;
+            }
+            if (isAlive)
+            {
+                if (charIcon == '@')
+                {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
+                    Console.SetCursorPosition(x, y); //fix
+                    Console.Write(charIcon);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.SetCursorPosition(x, y); //fix
+                    Console.Write(charIcon);
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            }
+            else if (!isAlive) //needs to be changed
+            {
+                x = 0;
+                y = 0;
+            }
         }
     }
 }
