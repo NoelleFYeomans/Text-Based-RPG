@@ -21,9 +21,10 @@ namespace Text_Based_RPG
             priorPositionX = x;
             priorPositionY = y;
 
-            //resetting the deltas of the movement
+            //resetting relevent values before movement
             deltaX = 0;
             deltaY = 0;
+            canMove = true;
 
             int detectionRange = 5;
 

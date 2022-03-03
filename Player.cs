@@ -9,9 +9,11 @@ namespace Text_Based_RPG
     class Player : GameCharacter
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
-        int enemyAttacked = 0;
+        private int enemyAttacked = 0;
+        public int hasKeys = 0;
 
-        public void Update(Map map, NormalEnemy normalE, StrongEnemy strongE, WeakEnemy weakE) //you can pass in a different class to access it
+
+        public void Update(Map map, NormalEnemy normalE, StrongEnemy strongE, WeakEnemy weakE, DoorKey doorKey) //you can pass in a different class to access it
         {
 
             if (health <= 0)
@@ -25,15 +27,13 @@ namespace Text_Based_RPG
             priorPositionX = x;
             priorPositionY = y;
 
-            //resetting the values of the intended change in position
+            //resetting the values relevent variables
             deltaX = 0;
             deltaY = 0;
+            canMove = true;
 
             if (isAlive)
             {
-
-                canMove = true;
-                doAttack = false;
 
                 //obtain player input/desired movement
                 switch (key.Key) 
@@ -57,9 +57,23 @@ namespace Text_Based_RPG
                 y = Clamp(y, 0, 100);
 
 
-                if (map.isWall(y + deltaY, x + deltaX)) //perform checks before movement
+                if (map.isImpassableObstacle(y + deltaY, x + deltaX)) //perform checks before movement
                 {
                     canMove = false;
+                }
+
+                if (map.isDoor((y + deltaY), (x + deltaX)) && hasKeys <= 0 && !map.doorOpen) //DOORDOORDOORDOORDOOR
+                {
+                    canMove = false;
+                }
+                else if (map.isDoor((y + deltaY), (x + deltaX)) && hasKeys >= 1 && !map.doorOpen)
+                {
+                    map.OpenDoor();
+                    hasKeys--;
+                }
+                else
+                {
+
                 }
 
                 if (x + deltaX == normalE.x && y + deltaY == normalE.y || x + deltaX == strongE.x && y + deltaY == strongE.y || x + deltaX == weakE.x && y + deltaY == weakE.y)
@@ -85,15 +99,24 @@ namespace Text_Based_RPG
                 {
                     if (enemyAttacked == 1) //temp
                     {
-                        normalE.TakeDamage(25);
+                        normalE.TakeDamage(initalizeStrength);
+                        normalE.recentTarget = true;
+                        strongE.recentTarget = false;
+                        weakE.recentTarget = false;
                     }
                     else if (enemyAttacked == 2)
                     {
-                        strongE.TakeDamage(25); 
+                        strongE.TakeDamage(initalizeStrength);
+                        strongE.recentTarget = true;
+                        weakE.recentTarget = false;
+                        normalE.recentTarget = false;
                     }
                     else if (enemyAttacked == 3)
                     {
-                        weakE.TakeDamage(25);
+                        weakE.TakeDamage(initalizeStrength);
+                        weakE.recentTarget = true;
+                        strongE.recentTarget = false;
+                        normalE.recentTarget = false;
                     }
 
                     doAttack = false;

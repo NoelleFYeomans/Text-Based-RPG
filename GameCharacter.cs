@@ -9,19 +9,13 @@ namespace Text_Based_RPG
     abstract class GameCharacter : GameObject
     {
         public int health = 100; //protected, needs to be public to visibly test
-        public int y; //protected, needs to be public to visibly test
-        public int x; //protected, needs to be public to visibly test
 
         protected bool doAttack = false;
         protected bool canMove = true;
         protected bool isAlive = true;
         protected bool spawning = true;
-
-        protected char charIcon;
-        protected int initializeX;
-        protected int initializeY;
-        protected int initalizeStrength;
-
+        
+        public int initalizeStrength;
         public int priorPositionX;
         public int priorPositionY;
         public int deltaX;
@@ -62,7 +56,7 @@ namespace Text_Based_RPG
 
         public void InitializeCharacter(char icon, int initX, int initY, int health, int strength)
         {
-            charIcon = icon;
+            objectIcon = icon;
             initializeX = initX;
             initializeY = initY;
             this.health = health;
@@ -79,18 +73,18 @@ namespace Text_Based_RPG
             }
             if (isAlive)
             {
-                if (charIcon == '@')
+                if (objectIcon == '@') //bad
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.SetCursorPosition(x, y); //fix
-                    Console.Write(charIcon);
+                    Console.Write(objectIcon);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.SetCursorPosition(x, y); //fix
-                    Console.Write(charIcon);
+                    Console.Write(objectIcon);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }

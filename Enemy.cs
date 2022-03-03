@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    abstract class Enemy : GameCharacter //NEEDS TO BE UPDATED BY STANDARD OF PLAYER
+    abstract class Enemy : GameCharacter
     {
+        public bool recentTarget;
+
         public void CalculateAction(Map map, Player player, Enemy enemy, Enemy enemy2)
         {
-            if (map.isWall(y + deltaY, x + deltaX)) //perform checks before movement
+            if (map.isImpassableObstacle(y + deltaY, x + deltaX)) //perform checks before movement
+            {
+                canMove = false;
+            }
+            if (map.isDoor(y + deltaY, x + deltaX))
             {
                 canMove = false;
             }

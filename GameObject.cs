@@ -8,6 +8,11 @@ namespace Text_Based_RPG
 {
     abstract class GameObject
     {
-
+        public int y; 
+        public int x;
+        
+        protected char objectIcon;
+        protected int initializeX;
+        protected int initializeY;
     }
 }

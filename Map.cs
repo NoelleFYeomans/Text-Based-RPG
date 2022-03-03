@@ -16,14 +16,16 @@ namespace Text_Based_RPG
         private int width;
         private int height;
 
+        public bool doorOpen = false;
+
         public void Update() //future use
         {
-            
+
         }
 
-        public bool isWall(int y, int x) 
+        public bool isImpassableObstacle(int y, int x) 
         {
-            if (mapRawData[y][x] == '#') 
+            if (mapRawData[y][x] == '#' || mapRawData[y][x] == '~' || mapRawData[y][x] == '^') 
             {
                 return true;
             }
@@ -32,6 +34,24 @@ namespace Text_Based_RPG
                 return false;
             }
         }
+
+        public bool isDoor(int y, int x)
+        {
+            if (mapRawData[y][x] == 'D')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void OpenDoor()
+        {
+            doorOpen = true;
+        }
+
 
         public void Draw()
         {
@@ -61,6 +81,26 @@ namespace Text_Based_RPG
             else if (mapRawData[y][x] == ',')
             {
                 Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else if (mapRawData[y][x] == 'D' && !doorOpen)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
+            else if (mapRawData[y][x] == 'D' && doorOpen)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            else if (mapRawData[y][x] == '~')
+            {
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+            }
+            else if (mapRawData[y][x] == 'm')
+            {
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
+            else if (mapRawData[y][x] == '^')
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
             }
         }
     }
