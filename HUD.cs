@@ -8,35 +8,35 @@ namespace Text_Based_RPG
 {
     class HUD
     {
-        public void DrawHUD(NormalEnemy normalE, Player player, StrongEnemy strongE, WeakEnemy weakE) //temp
+        public void DrawHUD(NormalEnemy normalE, Player player, StrongEnemy strongE, WeakEnemy weakE) //this is ALL temp code
         {
-            Console.SetCursorPosition(2, 27);//temp code
-            Console.WriteLine("                                                            "); //temp code
-            Console.SetCursorPosition(2, 28);//temp code
-            Console.WriteLine("                                                            "); //temp code
+            Console.SetCursorPosition(2, 27);
+            Console.WriteLine("                                                            "); 
+            Console.SetCursorPosition(2, 28);
+            Console.WriteLine("                                                            "); 
 
-            Console.SetCursorPosition(2, 27);//temp code
-            Console.WriteLine("Player health:" + player.health); //temp code
+            Console.SetCursorPosition(2, 27);
+            Console.WriteLine("Player health:" + player.health); 
 
             if (normalE.recentTarget)
             {
-                Console.SetCursorPosition(2, 28);//temp code
-                Console.WriteLine("Normal Enemy health:" + normalE.health); //temp code
+                Console.SetCursorPosition(2, 28);
+                Console.WriteLine("Normal Enemy health:" + normalE.health); 
             }
             else if (strongE.recentTarget)
             {
-                Console.SetCursorPosition(2, 28);//temp code
-                Console.WriteLine("Strong Enemy health:" + strongE.health); //temp code
+                Console.SetCursorPosition(2, 28);
+                Console.WriteLine("Strong Enemy health:" + strongE.health); 
             }
             else if (weakE.recentTarget)
             {
-                Console.SetCursorPosition(2, 28);//temp code
-                Console.WriteLine("Weak Enemy health:" + weakE.health); //temp code
+                Console.SetCursorPosition(2, 28);
+                Console.WriteLine("Weak Enemy health:" + weakE.health); 
             }
             else
             {
-                Console.SetCursorPosition(2, 28);//temp code
-                Console.WriteLine("                                                            "); //temp code
+                Console.SetCursorPosition(2, 28);
+                Console.WriteLine("                                                            "); 
             }
         }
     }
