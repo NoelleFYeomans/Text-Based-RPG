@@ -60,15 +60,18 @@ namespace Text_Based_RPG
                 if (map.isImpassableObstacle(y + deltaY, x + deltaX)) //perform checks before movement
                 {
                     canMove = false;
+                    MakeBeep(500, 100);
                 }
 
                 if (map.isDoor((y + deltaY), (x + deltaX)) && hasKeys <= 0 && !map.doorOpen) //DOORDOORDOORDOORDOOR
                 {
                     canMove = false;
+                    MakeBeep(500, 100);
                 }
                 else if (map.isDoor((y + deltaY), (x + deltaX)) && hasKeys >= 1 && !map.doorOpen)
                 {
                     map.OpenDoor();
+                    MakeBeep(1500, 100);
                     hasKeys--;
                 }
                 else
@@ -97,6 +100,7 @@ namespace Text_Based_RPG
 
                 if (doAttack) // also move elsewhere eventually? idk maybe this does stay in update(); add sound to hitting wall
                 {
+                    MakeBeep(1000, 100);
                     if (enemyAttacked == 1) //temp
                     {
                         normalE.TakeDamage(initalizeStrength);
@@ -123,12 +127,8 @@ namespace Text_Based_RPG
                     enemyAttacked = 0;
                 }
 
-                //apply movements values
-                if (canMove)
-                {
-                    x = x + deltaX;
-                    y = y + deltaY;
-                }
+                ApplyAction();
+
             }  
         }
     }

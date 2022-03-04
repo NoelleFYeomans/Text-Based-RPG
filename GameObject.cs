@@ -14,5 +14,10 @@ namespace Text_Based_RPG
         protected char objectIcon;
         protected int initializeX;
         protected int initializeY;
+
+        public void MakeBeep(int freq, int dur)
+        {
+            Console.Beep(freq, dur);
+        }
     }
 }

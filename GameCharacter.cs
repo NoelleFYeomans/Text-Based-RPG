@@ -63,6 +63,18 @@ namespace Text_Based_RPG
             initalizeStrength = strength;
         }
 
+        public void ApplyAction()
+        {
+            if (canMove) //enemy stops moving when attacked or if it attacks
+            {
+                x = x + deltaX;
+                y = y + deltaY;
+
+                x = Clamp(x, 0, 100);
+                y = Clamp(y, 0, 100);
+            }
+        }
+
         public void Draw() //could move to GameObject class & apply to player & enemy
         {
             if (spawning) //needs to be changed

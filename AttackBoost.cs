@@ -13,6 +13,7 @@ namespace Text_Based_RPG
             if (onGround == true && player.x == x && player.y == y)
             {
                 onGround = false;
+                MakeBeep(300, 100);
                 player.initalizeStrength = player.initalizeStrength + boost;
             }
         }

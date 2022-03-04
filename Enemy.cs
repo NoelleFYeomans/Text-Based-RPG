@@ -24,8 +24,9 @@ namespace Text_Based_RPG
             if (x + deltaX == player.x && y + deltaY == player.y || x + deltaX == enemy.x && y + deltaY == enemy.y || x + deltaX == enemy2.x && y + deltaY == enemy2.y)
             {
                 canMove = false;
+                MakeBeep(500, 100);
 
-                if (x + deltaX == player.x && y + deltaY == player.y) //this is so f-ing messy
+                if (x + deltaX == player.x && y + deltaY == player.y) //this is so  messy
                 {
                     doAttack = true;
                 }
@@ -34,19 +35,8 @@ namespace Text_Based_RPG
             if (doAttack)
             {
                 player.TakeDamage(initalizeStrength); //temp hardcode
+                MakeBeep(1000, 100);
                 doAttack = false;
-            }
-        }
-
-        public void ApplyAction()
-        {
-            if (canMove) //enemy stops moving when attacked or if it attacks
-            {
-                x = x + deltaX;
-                y = y + deltaY;
-
-                x = Clamp(x, 0, 100);
-                y = Clamp(y, 0, 100);
             }
         }
     }
