@@ -24,7 +24,7 @@ namespace Text_Based_RPG
         {
             player.InitializeCharacter('@', 5, 5, 100, 25);
             normalEnemy.InitializeCharacter('E', 7, 7, 100, 10);
-            strongEnemy.InitializeCharacter('S', 70, 20, 150, 20);
+            strongEnemy.InitializeCharacter('S', 65, 20, 150, 20);
             weakEnemy.InitializeCharacter('W', 20, 15, 50, 1);
             itemManager.InitAllItems();
             DoorKey temporary = new DoorKey();

@@ -16,8 +16,8 @@ namespace Text_Based_RPG
         public void InitAllItems()
         {
             key.InitializeItem('K', 2, 2);
-            potion.InitializeItem('P', 20, 3);
-            sword.InitializeItem('A', 23, 3);
+            potion.InitializeItem('P', 22, 15);
+            sword.InitializeItem('A', 72, 22);
         }
 
         public void UpdateItems(Player player)
