@@ -16,7 +16,7 @@ namespace Text_Based_RPG
         public void Update(Map map, NormalEnemy normalE, StrongEnemy strongE, WeakEnemy weakE, DoorKey doorKey) //you can pass in a different class to access it
         {
 
-            if (health <= 0)
+            if (health <= 0) //out of place?
             {
                 isAlive = false;
             }
@@ -32,7 +32,7 @@ namespace Text_Based_RPG
             deltaY = 0;
             canMove = true;
 
-            if (isAlive)
+            if (isAlive) //break this if statement if (!isAlive) return; then everything else
             {
 
                 //obtain player input/desired movement
@@ -53,7 +53,7 @@ namespace Text_Based_RPG
                 }
 
                 //clamps, collisions, & other checks
-                x = Clamp(x, 0, 100);
+                x = Clamp(x, 0, 100); //woops
                 y = Clamp(y, 0, 100);
 
 
@@ -79,7 +79,7 @@ namespace Text_Based_RPG
 
                 }
 
-                if (x + deltaX == normalE.x && y + deltaY == normalE.y || x + deltaX == strongE.x && y + deltaY == strongE.y || x + deltaX == weakE.x && y + deltaY == weakE.y)
+                if (x + deltaX == normalE.x && y + deltaY == normalE.y || x + deltaX == strongE.x && y + deltaY == strongE.y || x + deltaX == weakE.x && y + deltaY == weakE.y) //condense code, perhaps delegate to enemy
                 {
                     canMove = false; //please fix all of this
                     doAttack = true;
