@@ -14,7 +14,10 @@ namespace Text_Based_RPG
         protected bool canMove = true;
         protected bool isAlive = true;
         protected bool spawning = true;
-        
+
+        protected int minHealth = 0;
+        protected int maxHealth; //set on a GameCharacter by GameCharacter basis
+
         public int initalizeStrength;
         public int priorPositionX;
         public int priorPositionY;
@@ -27,7 +30,7 @@ namespace Text_Based_RPG
         {
             atk = Clamp(atk, 0, 1000);
             health = health - atk; //expand
-            health = Clamp(health, 0, 100);
+            //health = Clamp(health, 0, 100); //idk how I want to handle clamping this
         }
 
         protected void RespawnCharacter() //future use

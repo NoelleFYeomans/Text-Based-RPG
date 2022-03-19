@@ -26,6 +26,7 @@ namespace Text_Based_RPG
 
             int detectionRange = 5;
 
+            //use a guard clause instead
             if (isAlive)
             {
                 if (player.x >= x - detectionRange && player.x <= x + detectionRange)

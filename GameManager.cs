@@ -36,7 +36,7 @@ namespace Text_Based_RPG
                 map.Draw();
                 hud.DrawHUD(normalEnemy, player, strongEnemy, weakEnemy);
                 itemManager.DrawItems();
-                player.Draw();
+                player.Draw(); //if player dies, they need to despawn before player.update
                 normalEnemy.Draw();
                 strongEnemy.Draw();
                 weakEnemy.Draw();
@@ -45,7 +45,7 @@ namespace Text_Based_RPG
                 itemManager.UpdateItems(player);
                 player.Update(map, normalEnemy, strongEnemy, weakEnemy, tempKey);
                 normalEnemy.Update(map, player, strongEnemy, weakEnemy);
-                strongEnemy.Update(map, player, normalEnemy, weakEnemy);//please fix all of this
+                strongEnemy.Update(map, player, normalEnemy, weakEnemy);
                 weakEnemy.Update(map, player, normalEnemy, strongEnemy);
             }
 
