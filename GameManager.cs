@@ -27,26 +27,26 @@ namespace Text_Based_RPG
             strongEnemy.InitializeCharacter('S', 65, 20, 150, 20);
             weakEnemy.InitializeCharacter('W', 20, 15, 50, 1);
             itemManager.InitAllItems();
-            DoorKey temporary = new DoorKey();
+            DoorKey tempKey = new DoorKey();
 
             //game loop
             while (!gameOver)
             {
 
                 map.Draw();
+                hud.DrawHUD(normalEnemy, player, strongEnemy, weakEnemy);
                 itemManager.DrawItems();
+                player.Draw();
                 normalEnemy.Draw();
                 strongEnemy.Draw();
                 weakEnemy.Draw();
-                player.Draw();
-                hud.DrawHUD(normalEnemy, player, strongEnemy, weakEnemy);
                 
-                player.Update(map, normalEnemy, strongEnemy, weakEnemy, temporary);
+                map.Update();
+                itemManager.UpdateItems(player);
+                player.Update(map, normalEnemy, strongEnemy, weakEnemy, tempKey);
                 normalEnemy.Update(map, player, strongEnemy, weakEnemy);
                 strongEnemy.Update(map, player, normalEnemy, weakEnemy);//please fix all of this
                 weakEnemy.Update(map, player, normalEnemy, strongEnemy);
-                itemManager.UpdateItems(player);
-                map.Update();
             }
 
             Console.ReadKey(true);

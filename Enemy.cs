@@ -16,6 +16,7 @@ namespace Text_Based_RPG
             {
                 canMove = false;
             }
+
             if (map.isDoor(y + deltaY, x + deltaX))
             {
                 canMove = false;
@@ -24,7 +25,7 @@ namespace Text_Based_RPG
             if (x + deltaX == player.x && y + deltaY == player.y || x + deltaX == enemy.x && y + deltaY == enemy.y || x + deltaX == enemy2.x && y + deltaY == enemy2.y)
             {
                 canMove = false;
-                MakeBeep(500, 100);
+                //MakeBeep(500, 100); //this is the sound error
 
                 if (x + deltaX == player.x && y + deltaY == player.y) //this is so  messy
                 {
@@ -35,7 +36,7 @@ namespace Text_Based_RPG
             if (doAttack)
             {
                 player.TakeDamage(initalizeStrength); //temp hardcode
-                MakeBeep(1000, 100);
+                MakeBeep(1000, 100); //beeps if bumps into player, then beeps again if attacks
                 doAttack = false;
             }
         }

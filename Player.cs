@@ -21,6 +21,7 @@ namespace Text_Based_RPG
                 isAlive = false;
             }
 
+
             key = Console.ReadKey(true);
 
             //I want to have the player's position before the move saved
@@ -32,6 +33,7 @@ namespace Text_Based_RPG
             deltaY = 0;
             canMove = true;
 
+            //if (!isAlive) return; //implement around here rather than long nasty if statement
             if (isAlive) //break this if statement if (!isAlive) return; then everything else
             {
 
@@ -63,23 +65,23 @@ namespace Text_Based_RPG
                     MakeBeep(500, 100);
                 }
 
-                if (map.isDoor((y + deltaY), (x + deltaX)) && hasKeys <= 0 && !map.doorOpen) //DOORDOORDOORDOORDOOR
+                if (map.isDoor((y + deltaY), (x + deltaX)) && !map.doorOpen)
                 {
-                    canMove = false;
-                    MakeBeep(500, 100);
-                }
-                else if (map.isDoor((y + deltaY), (x + deltaX)) && hasKeys >= 1 && !map.doorOpen)
-                {
-                    map.OpenDoor();
-                    MakeBeep(1500, 100);
-                    hasKeys--;
-                }
-                else
-                {
+                    if (hasKeys >= 1)
+                    {
+                        map.OpenDoor();
+                        MakeBeep(1500, 100);
+                        hasKeys--;
+                    }
+                    else
+                    {
+                        canMove = false;
+                        MakeBeep(500, 100);
+                    }
 
                 }
 
-                if (x + deltaX == normalE.x && y + deltaY == normalE.y || x + deltaX == strongE.x && y + deltaY == strongE.y || x + deltaX == weakE.x && y + deltaY == weakE.y) //condense code, perhaps delegate to enemy
+                if (x + deltaX == normalE.x && y + deltaY == normalE.y || x + deltaX == strongE.x && y + deltaY == strongE.y || x + deltaX == weakE.x && y + deltaY == weakE.y) //move to GameCharacter class, do a GameCharacter.isCoordinatesOccupied
                 {
                     canMove = false; //please fix all of this
                     doAttack = true;
