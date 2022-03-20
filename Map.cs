@@ -16,6 +16,8 @@ namespace Text_Based_RPG
         private int width;
         private int height;
 
+        private string impassableChar = "#~^"; //add new impassible/wall charavters here <<<<<<<<<<<<<<<<<<
+
         public bool doorOpen = false;
 
         public void Update() //future use
@@ -25,14 +27,18 @@ namespace Text_Based_RPG
 
         public bool isImpassableObstacle(int y, int x) 
         {
-            if (mapRawData[y][x] == '#' || mapRawData[y][x] == '~' || mapRawData[y][x] == '^') 
+            for (int i = 0; i <= impassableChar.Length - 1; i++)
             {
-                return true;
+                if (mapRawData[y][x] == impassableChar[i])
+                {
+                    return true;
+                }
+                else
+                {
+                    
+                }
             }
-            else
-            {
-                return false;
-            }
+            return false;
         }
 
         public bool isDoor(int y, int x)
