@@ -35,8 +35,8 @@ namespace Text_Based_RPG
                 map.Draw();
                 hud.DrawHUD(normalEnemy, player, strongEnemy, weakEnemy);
                 itemManager.DrawItems();
-                player.Draw(); //player death bug > enemy.iscoordinatesoccupied > enemymanager > enemy array instantiation
-                normalEnemy.Draw(); // also remember to reinstate health clamping
+                player.Draw(); //enemy.iscoordinatesoccupied > enemymanager > enemy array instantiation
+                normalEnemy.Draw(); // instate the guard clauses & also fix HUD display
                 strongEnemy.Draw(); //the fucking camera & making the map bigger to prove it works
                 weakEnemy.Draw();
                 

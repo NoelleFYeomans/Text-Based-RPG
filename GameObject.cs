@@ -19,5 +19,18 @@ namespace Text_Based_RPG
         {
             Console.Beep(freq, dur);
         }
+
+        protected int Clamp(int value, int minValue, int maxValue)
+        {
+            if (value > maxValue)
+            {
+                value = maxValue;
+            }
+            if (value < minValue)
+            {
+                value = minValue;
+            }
+            return value;
+        }
     }
 }

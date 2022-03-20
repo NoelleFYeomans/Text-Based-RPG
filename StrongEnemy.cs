@@ -26,45 +26,43 @@ namespace Text_Based_RPG
 
             int detectionRange = 5;
 
-            //use a guard clause instead
-            if (isAlive)
+            if (!isAlive) return; //guard clause
+
+            if (player.x >= x - detectionRange && player.x <= x + detectionRange)
             {
-                if (player.x >= x - detectionRange && player.x <= x + detectionRange)
+                if (player.y >= y - detectionRange && player.y <= y + detectionRange)
                 {
-                    if (player.y >= y - detectionRange && player.y <= y + detectionRange)
+                    if (x < player.x)
                     {
-                        if (x < player.x)
+                        deltaX = 1;
+                    }
+                    else if (x > player.x)
+                    {
+                        deltaX = -1;
+                    }
+                    else
+                    {
+                        if (y < player.y)
                         {
-                            deltaX = 1;
+                            deltaY = +1;
                         }
-                        else if (x > player.x)
+                        else if (y > player.y)
                         {
-                            deltaX = -1;
+                            deltaY = -1;
                         }
                         else
                         {
-                            if (y < player.y)
-                            {
-                                deltaY = +1;
-                            }
-                            else if (y > player.y)
-                            {
-                                deltaY = -1;
-                            }
-                            else
-                            {
 
-                            }
                         }
                     }
                 }
-
-                deltaX = Clamp(deltaX, -1, 1);
-                deltaY = Clamp(deltaY, -1, 1);
-
-                CalculateAction(map, player, normalE, weakE);
-                ApplyAction();
             }
+
+            deltaX = Clamp(deltaX, -1, 1);
+            deltaY = Clamp(deltaY, -1, 1);
+
+            CalculateAction(map, player, normalE, weakE);
+            ApplyAction();
         }
     }
 }

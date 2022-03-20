@@ -27,67 +27,66 @@ namespace Text_Based_RPG
 
             int target = GenerateRandNum(0, 3);
 
-            if (isAlive)
+            if (!isAlive) return;
+
+            if (target <= 1) 
             {
-                if (target <= 1) 
+                if (x < player.x)
                 {
-                    if (x < player.x)
-                    {
-                        deltaX = 1;
-                    }
-                    else if (x > player.x)
-                    {
-                        deltaX = -1;
-                    }
-                    else
-                    {
-                        if (y < player.y) 
-                        {
-                            deltaY = +1;
-                        }
-                        else if (y > player.y)
-                        {
-                            deltaY = -1;
-                        }
-                        else
-                        {
-                            //nothing //could be improved
-                        }
-                    }
+                    deltaX = 1;
                 }
-
-                else if (target >= 2)
+                else if (x > player.x)
                 {
-                    int dir = GenerateRandNum(1, 6);
-
-                    if (dir == 1)
-                    {
-                        deltaY = -1;
-                    }
-                    else if (dir == 2)
+                    deltaX = -1;
+                }
+                else
+                {
+                    if (y < player.y) 
                     {
                         deltaY = +1;
                     }
-                    else if (dir == 3)
+                    else if (y > player.y)
                     {
-                        deltaX = +1;
+                        deltaY = -1;
                     }
-                    else if (dir == 4)
+                    else
                     {
-                        deltaX = -1;
-                    }
-                    else if (dir == 5)
-                    {
-                        //doesn't move
+                        //nothing //could be improved
                     }
                 }
-
-                deltaX = Clamp(deltaX, -1, 1);
-                deltaY = Clamp(deltaY, -1, 1);
-
-                CalculateAction(map, player, strongE, weakE);
-                ApplyAction();
             }
+
+            else if (target >= 2)
+            {
+                int dir = GenerateRandNum(1, 6);
+
+                if (dir == 1)
+                {
+                    deltaY = -1;
+                }
+                else if (dir == 2)
+                {
+                    deltaY = +1;
+                }
+                else if (dir == 3)
+                {
+                    deltaX = +1;
+                }
+                else if (dir == 4)
+                {
+                    deltaX = -1;
+                }
+                else if (dir == 5)
+                {
+                    //doesn't move
+                }
+            }
+
+            deltaX = Clamp(deltaX, -1, 1);
+            deltaY = Clamp(deltaY, -1, 1);
+
+            CalculateAction(map, player, strongE, weakE);
+            ApplyAction();
         }
     }
 }

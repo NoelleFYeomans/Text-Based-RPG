@@ -30,7 +30,11 @@ namespace Text_Based_RPG
         {
             atk = Clamp(atk, 0, 1000);
             health = health - atk; //expand
-            //health = Clamp(health, 0, 100); //idk how I want to handle clamping this
+            if (health <= 0) //This solves the death bug & health clamping, but I don't like how it does it.
+            {
+                health = Clamp(health, 0, 100);
+                isAlive = false;
+            }
         }
 
         protected void RespawnCharacter() //future use
@@ -42,19 +46,6 @@ namespace Text_Based_RPG
         {
             int output = rand.Next(minValue, maxValue);
             return output;
-        }
-
-        protected int Clamp(int value, int minValue, int maxValue)
-        {
-            if (value > maxValue)
-            {
-                value = maxValue;
-            }
-            if (value < minValue)
-            {
-                value = minValue;
-            }
-            return value;
         }
 
         public void InitializeCharacter(char icon, int initX, int initY, int health, int strength)

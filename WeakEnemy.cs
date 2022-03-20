@@ -28,49 +28,48 @@ namespace Text_Based_RPG
 
             int detectionRange = 5;
 
-            if (isAlive)
+            if (!isAlive) return;
+
+            if (player.x >= x - detectionRange && player.x <= x + detectionRange && canAct)
             {
-                if (player.x >= x - detectionRange && player.x <= x + detectionRange && canAct)
+                if (player.y >= y - detectionRange && player.y <= y + detectionRange)
                 {
-                    if (player.y >= y - detectionRange && player.y <= y + detectionRange)
+                    if (x < player.x)
                     {
-                        if (x < player.x)
+                        deltaX = -1; //runs away
+                    }
+                    else if (x > player.x)
+                    {
+                        deltaX = 1; //runs away
+                    }
+                    else
+                    {
+                        if (y < player.y)
                         {
-                            deltaX = -1; //runs away
+                            deltaY = -1; //runs away
                         }
-                        else if (x > player.x)
+                        else if (y > player.y)
                         {
-                            deltaX = 1; //runs away
+                            deltaY = 1; //runs away
                         }
                         else
                         {
-                            if (y < player.y)
-                            {
-                                deltaY = -1; //runs away
-                            }
-                            else if (y > player.y)
-                            {
-                                deltaY = 1; //runs away
-                            }
-                            else
-                            {
 
-                            }
                         }
-                        canAct = false;
                     }
+                    canAct = false;
                 }
-                else if (!canAct)
-                {
-                    canAct = true; //can't move every other turn
-                }
-
-                deltaX = Clamp(deltaX, -1, 1);
-                deltaY = Clamp(deltaY, -1, 1);
-
-                CalculateAction(map, player, normalE, strongE);
-                ApplyAction();
             }
+            else if (!canAct)
+            {
+                canAct = true; //can't move every other turn
+            }
+
+            deltaX = Clamp(deltaX, -1, 1);
+            deltaY = Clamp(deltaY, -1, 1);
+
+            CalculateAction(map, player, normalE, strongE);
+            ApplyAction();
         }
     }
 }
