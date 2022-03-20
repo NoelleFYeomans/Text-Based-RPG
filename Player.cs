@@ -13,7 +13,7 @@ namespace Text_Based_RPG
         public int hasKeys = 0;
 
 
-        public void Update(Map map, NormalEnemy normalE, StrongEnemy strongE, WeakEnemy weakE, DoorKey doorKey) //you can pass in a different class to access it
+        public void Update(Map map, NormalEnemy normalE, StrongEnemy strongE, WeakEnemy weakE) //you can pass in a different class to access it
         {
 
             if (health <= 0) //out of place?

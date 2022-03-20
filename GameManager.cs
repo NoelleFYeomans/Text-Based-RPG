@@ -27,7 +27,6 @@ namespace Text_Based_RPG
             strongEnemy.InitializeCharacter('S', 65, 20, 150, 20);
             weakEnemy.InitializeCharacter('W', 20, 15, 50, 1);
             itemManager.InitAllItems();
-            DoorKey tempKey = new DoorKey();
 
             //game loop
             while (!gameOver)
@@ -36,14 +35,14 @@ namespace Text_Based_RPG
                 map.Draw();
                 hud.DrawHUD(normalEnemy, player, strongEnemy, weakEnemy);
                 itemManager.DrawItems();
-                player.Draw(); //if player dies, they need to despawn before player.update
-                normalEnemy.Draw();
-                strongEnemy.Draw();
+                player.Draw(); //player death bug > enemy.iscoordinatesoccupied > enemymanager > enemy array instantiation
+                normalEnemy.Draw(); // also remember to reinstate health clamping
+                strongEnemy.Draw(); //the fucking camera & making the map bigger to prove it works
                 weakEnemy.Draw();
                 
                 map.Update();
                 itemManager.UpdateItems(player);
-                player.Update(map, normalEnemy, strongEnemy, weakEnemy, tempKey);
+                player.Update(map, normalEnemy, strongEnemy, weakEnemy);
                 normalEnemy.Update(map, player, strongEnemy, weakEnemy);
                 strongEnemy.Update(map, player, normalEnemy, weakEnemy);
                 weakEnemy.Update(map, player, normalEnemy, strongEnemy);
