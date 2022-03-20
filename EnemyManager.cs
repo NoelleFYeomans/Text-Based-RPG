@@ -8,6 +8,8 @@ namespace Text_Based_RPG
 {
     class EnemyManager
     {
+        //declaration & instantiation
+        Enemy[] enemyArray = new Enemy[50]; //double check, and implement better
 
     }
 }

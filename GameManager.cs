@@ -36,7 +36,7 @@ namespace Text_Based_RPG
                 hud.DrawHUD(normalEnemy, player, strongEnemy, weakEnemy);
                 itemManager.DrawItems();
                 player.Draw(); //enemy.iscoordinatesoccupied > enemymanager > enemy array instantiation
-                normalEnemy.Draw(); // instate the guard clauses & also fix HUD display
+                normalEnemy.Draw(); // fix HUD display(requires enemy manager & instantiation to be in place) & list of wall chars
                 strongEnemy.Draw(); //the fucking camera & making the map bigger to prove it works
                 weakEnemy.Draw();
                 

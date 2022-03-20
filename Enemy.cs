@@ -6,9 +6,22 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    abstract class Enemy : GameCharacter
+    abstract class Enemy : GameCharacter //make an array of this enemy, and populate each enemy as a specific type with a for loop
     {
         public bool recentTarget;
+
+        //public bool IsCoordinatesOccupied()
+        //{
+        //    for (int i = 0; i <= enemyArray.length - 1; i++)
+        //    {
+        //        if (x + deltaX == enemyArray[i].x && y + deltaY == enemyArray[i].y)
+        //        {
+        //            return true;
+        //        }
+        //    }
+
+        //    return false;
+        //}
 
         public void CalculateAction(Map map, Player player, Enemy enemy, Enemy enemy2)
         {
