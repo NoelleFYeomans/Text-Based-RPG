@@ -19,7 +19,7 @@ namespace Text_Based_RPG
             initalizeStrength = 25;
         }
 
-        public void Update(Map map, NormalEnemy normalE, StrongEnemy strongE, WeakEnemy weakE) //you can pass in a different class to access it
+        public void Update(Map map, NormalEnemy normalE, StrongEnemy strongE, WeakEnemy weakE) //implement enemy manager
         {
 
             if (health <= 0) //this is where the player dies

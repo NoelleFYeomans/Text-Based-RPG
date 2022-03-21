@@ -16,7 +16,7 @@ namespace Text_Based_RPG
             initalizeStrength = 10;
         }
 
-        public void Update(Map map, Player player, StrongEnemy strongE, WeakEnemy weakE)
+        public new void Update(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE
         {
             if (health <= 0)
             {
@@ -92,7 +92,7 @@ namespace Text_Based_RPG
             deltaX = Clamp(deltaX, -1, 1);
             deltaY = Clamp(deltaY, -1, 1);
 
-            CalculateAction(map, player, strongE, weakE);
+            CalculateAction(map, player, enemyManager); //StrongEnemy strongE, WeakEnemy weakE
             ApplyAction();
         }
     }

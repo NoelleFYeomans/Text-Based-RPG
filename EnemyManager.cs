@@ -31,7 +31,7 @@ namespace Text_Based_RPG
             }
         }
 
-        public void InitializeEnemies(WeakEnemy weak, NormalEnemy normal, StrongEnemy strong)
+        public void InitializeEnemyPositions()
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
@@ -56,7 +56,7 @@ namespace Text_Based_RPG
             {
                 if (enemyArray[i] is WeakEnemy)
                 {
-                    //access subclass specific code
+                    
                 }
                 else if (enemyArray[i] is NormalEnemy)
                 {

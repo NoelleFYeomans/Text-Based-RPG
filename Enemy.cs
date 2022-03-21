@@ -23,7 +23,12 @@ namespace Text_Based_RPG
         //    return false;
         //}
 
-        public void CalculateAction(Map map, Player player, Enemy enemy, Enemy enemy2)
+        public void Update(Map map, Player player, EnemyManager enemyManager)
+        {
+            
+        }
+
+        public void CalculateAction(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE
         {
             if (map.isImpassableObstacle(y + deltaY, x + deltaX)) //perform checks before movement
             {
