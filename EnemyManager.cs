@@ -6,64 +6,85 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class EnemyManager //same logic here applies to Items. do this, then items
+    class EnemyManager //same logic here applies to Items. do this, then items. also make constructor
     {
         //declaration & instantiation
         Enemy[] enemyArray = new Enemy[50]; //hardcoded?
 
         //Fills Array
-        public void CreateAllEnemies() //may name better?
+        public void CreateEnemies() 
         {
             for(int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                if (i <= 35) //hardcoded?
+                if (i <= (enemyArray.Length - enemyArray.Length / 2)) 
                 {
                     enemyArray[i] = new WeakEnemy();
                 }
-                else if (i <= 49) //hardcoded?
+                else if (i <= enemyArray.Length - 3) 
                 {
                     enemyArray[i] = new NormalEnemy();
                 }
-                else if (i >= enemyArray.Length - 1)
+                else if (i >= enemyArray.Length - 2)
                 {
                     enemyArray[i] = new StrongEnemy();
                 }
             }
         }
 
-        public void InitializeAllEnemies()
+        public void InitializeEnemies(WeakEnemy weak, NormalEnemy normal, StrongEnemy strong)
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                if (i <= 35) //hardcoded?
+                if (i <= (enemyArray.Length - enemyArray.Length/2)) 
                 {
-                    //enemyArray[i].InitializeCharacter()
+                    enemyArray[i].InitializeCharacterPosition(1, 1); //need a way to handle position
                 }
-                else if (i <= 48) //hardcoded?
+                else if (i <= enemyArray.Length - 3) 
                 {
-                    //I need a getter for specific enemy stats
-                    //enemyArray[i].InitializeCharacter('E', 7, 7, 100, 10);
+                    enemyArray[i].InitializeCharacterPosition(10, 10); 
                 }
                 else if (i >= enemyArray.Length - 2)
                 {
-                    //enemyArray[i].InitializeCharacter()
+                    enemyArray[i].InitializeCharacterPosition(25, 25);
                 }
             }
         }
 
-        public void UpdateAllEnemies()
+        public void UpdateEnemies()
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                //enemyArray[i].Update(); //doesn't work, need a way to access enemy subclass methods/functions
+                if (enemyArray[i] is WeakEnemy)
+                {
+                    //access subclass specific code
+                }
+                else if (enemyArray[i] is NormalEnemy)
+                {
+
+                }
+                else if (enemyArray[i] is StrongEnemy)
+                {
+
+                }
             }
         }
 
-        public void DrawAllEnemies()
+        public void DrawEnemies()
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                //same issue as Update();
+                if (enemyArray[i] is WeakEnemy)
+                {
+
+                }
+                else if (enemyArray[i] is NormalEnemy)
+                {
+
+                }
+                else if (enemyArray[i] is StrongEnemy)
+                {
+
+                }
             }
         }
 

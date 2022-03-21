@@ -22,10 +22,10 @@ namespace Text_Based_RPG
 
         public void gameLoop()
         {
-            player.InitializeCharacter('@', 5, 5, 100, 25);
-            normalEnemy.InitializeCharacter('E', 7, 7, 100, 10);
-            strongEnemy.InitializeCharacter('S', 65, 20, 150, 20);
-            weakEnemy.InitializeCharacter('W', 20, 15, 50, 1);
+            player.InitializeCharacterPosition(5, 5); //positions temporarily managed here
+            normalEnemy.InitializeCharacterPosition(7, 7);
+            strongEnemy.InitializeCharacterPosition(65, 20);
+            weakEnemy.InitializeCharacterPosition(20, 15);
             itemManager.InitAllItems();
 
             //game loop
@@ -38,7 +38,7 @@ namespace Text_Based_RPG
                 player.Draw(); //enemy.iscoordinatesoccupied > enemymanager > enemy array instantiation
                 normalEnemy.Draw(); // fix HUD display(requires enemy manager & instantiation to be in place) & list of wall chars
                 strongEnemy.Draw(); //the fucking camera & making the map bigger to prove it works
-                weakEnemy.Draw();
+                weakEnemy.Draw(); // remember game/win state
                 
                 map.Update();
                 itemManager.UpdateItems(player);

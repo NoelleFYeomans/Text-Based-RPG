@@ -48,13 +48,10 @@ namespace Text_Based_RPG
             return output;
         }
 
-        public void InitializeCharacter(char icon, int initX, int initY, int health, int strength) //once getter works, make coordinates only
+        public void InitializeCharacterPosition(int initX, int initY) //once getter works, make coordinates only
         {
-            objectIcon = icon;
             initializeX = initX;
             initializeY = initY;
-            this.health = health;
-            initalizeStrength = strength;
         }
 
         public void ApplyAction()

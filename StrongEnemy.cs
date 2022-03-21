@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     class StrongEnemy : Enemy 
     {
-        public void InitializeCharacterStats() //perhaps the subclass's responsibility to handle?
+        public StrongEnemy()
         {
             objectIcon = 'S';
             health = 150;

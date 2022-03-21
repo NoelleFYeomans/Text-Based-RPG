@@ -12,6 +12,12 @@ namespace Text_Based_RPG
         private int enemyAttacked = 0;
         public int hasKeys = 0;
 
+        public Player()
+        {
+            objectIcon = '@';
+            health = 100;
+            initalizeStrength = 25;
+        }
 
         public void Update(Map map, NormalEnemy normalE, StrongEnemy strongE, WeakEnemy weakE) //you can pass in a different class to access it
         {
@@ -33,7 +39,7 @@ namespace Text_Based_RPG
             deltaY = 0;
             canMove = true;
 
-            if (!isAlive) return; //implement around here rather than long nasty if statement
+            if (!isAlive) return; //implement guard clause around here
 
             //obtain player input/desired movement
             switch (key.Key) 

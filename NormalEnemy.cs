@@ -8,7 +8,8 @@ namespace Text_Based_RPG
 {
     class NormalEnemy : Enemy
     {
-        public void InitializeCharacterStats() //perhaps the subclass's responsibility to handle?
+
+        public NormalEnemy()
         {
             objectIcon = 'E';
             health = 100;

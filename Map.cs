@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Map //make list of wall characters
+    class Map //camera is an offset
     {
 
         private string[] mapRawData = System.IO.File.ReadAllLines("map.txt"); //consider a settings page
