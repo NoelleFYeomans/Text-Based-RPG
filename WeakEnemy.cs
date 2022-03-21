@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     class WeakEnemy : Enemy
     {
-        bool canAct = true; //unique bool for weakE's purposes
+        bool canAct = true; //unique bool for weakE's movement
 
         public void Update(Map map, Player player, NormalEnemy normalE, StrongEnemy strongE)
         {
@@ -16,7 +16,7 @@ namespace Text_Based_RPG
             {
                 isAlive = false;
             }
-
+            
             //enemy's intended position before moving
             priorPositionX = x;
             priorPositionY = y;

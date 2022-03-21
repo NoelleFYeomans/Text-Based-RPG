@@ -11,12 +11,13 @@ namespace Text_Based_RPG
 
         private string[] mapRawData = System.IO.File.ReadAllLines("map.txt"); //consider a settings page
 
+        private string impassableChars = "#~^"; //add new impassible/wall charavters here <<<<<<<<<<<<<<<<<<
+
         private int x;
         private int y;
         private int width;
         private int height;
 
-        private string impassableChar = "#~^"; //add new impassible/wall charavters here <<<<<<<<<<<<<<<<<<
 
         public bool doorOpen = false;
 
@@ -27,9 +28,9 @@ namespace Text_Based_RPG
 
         public bool isImpassableObstacle(int y, int x) 
         {
-            for (int i = 0; i <= impassableChar.Length - 1; i++)
+            for (int i = 0; i <= impassableChars.Length - 1; i++)
             {
-                if (mapRawData[y][x] == impassableChar[i])
+                if (mapRawData[y][x] == impassableChars[i])
                 {
                     return true;
                 }

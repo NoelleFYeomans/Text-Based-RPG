@@ -48,7 +48,7 @@ namespace Text_Based_RPG
             return output;
         }
 
-        public void InitializeCharacter(char icon, int initX, int initY, int health, int strength)
+        public void InitializeCharacter(char icon, int initX, int initY, int health, int strength) //perhaps the subclass's responsibility to handle?
         {
             objectIcon = icon;
             initializeX = initX;
