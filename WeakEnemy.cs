@@ -10,6 +10,15 @@ namespace Text_Based_RPG
     {
         bool canAct = true; //unique bool for weakE's movement
 
+        //char objectIcon = 'w'; //this overwrites gameObject.objectIcon
+
+        public void InitializeCharacterStats() //Enemy class needs a getter for these stats
+        {
+            objectIcon = 'W';
+            health = 50;
+            initalizeStrength = 1;
+        }
+
         public void Update(Map map, Player player, NormalEnemy normalE, StrongEnemy strongE)
         {
             if (health <= 0)

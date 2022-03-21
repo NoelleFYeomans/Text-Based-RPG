@@ -10,7 +10,7 @@ namespace Text_Based_RPG
     {
         public bool recentTarget;
 
-        //public bool IsCoordinatesOccupied()
+        //public bool IsCoordinatesOccupied() //duplicate on player end when finished
         //{
         //    for (int i = 0; i <= enemyArray.length - 1; i++)
         //    {

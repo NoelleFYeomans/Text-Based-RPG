@@ -8,6 +8,13 @@ namespace Text_Based_RPG
 {
     class StrongEnemy : Enemy 
     {
+        public void InitializeCharacterStats() //perhaps the subclass's responsibility to handle?
+        {
+            objectIcon = 'S';
+            health = 150;
+            initalizeStrength = 20;
+        }
+
         public void Update(Map map, Player player, NormalEnemy normalE, WeakEnemy weakE)
         {
             if (health <= 0)

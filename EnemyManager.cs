@@ -20,11 +20,11 @@ namespace Text_Based_RPG
                 {
                     enemyArray[i] = new WeakEnemy();
                 }
-                else if (i <= 48) //hardcoded?
+                else if (i <= 49) //hardcoded?
                 {
                     enemyArray[i] = new NormalEnemy();
                 }
-                else if (i >= enemyArray.Length - 2)
+                else if (i >= enemyArray.Length - 1)
                 {
                     enemyArray[i] = new StrongEnemy();
                 }
@@ -41,7 +41,8 @@ namespace Text_Based_RPG
                 }
                 else if (i <= 48) //hardcoded?
                 {
-                    enemyArray[i].InitializeCharacter('E', 7, 7, 100, 10);
+                    //I need a getter for specific enemy stats
+                    //enemyArray[i].InitializeCharacter('E', 7, 7, 100, 10);
                 }
                 else if (i >= enemyArray.Length - 2)
                 {
@@ -54,7 +55,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                
+                //enemyArray[i].Update(); //doesn't work, need a way to access enemy subclass methods/functions
             }
         }
 
@@ -62,7 +63,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                
+                //same issue as Update();
             }
         }
 
