@@ -80,7 +80,7 @@ namespace Text_Based_RPG
             }
         }
 
-        public void ColourMap()
+        public void ColourMap() //fix this btw, this ugly & bad
         {
             if (mapRawData[y][x] == '#')
             {

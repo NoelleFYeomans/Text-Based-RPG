@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class EnemyManager //same logic here applies to Items. do this, then items. also make constructor
+    class EnemyManager //same logic here applies to Items. do this, then items.
     {
         //declaration & instantiation
         public Enemy[] enemyArray = new Enemy[50]; //hardcoded?
 
-        //needed for update //probably wrong
+        //needed for update
         Player player = new Player();
         Map map = new Map();
         EnemyManager enemyManager = new EnemyManager();

@@ -85,7 +85,7 @@ namespace Text_Based_RPG
 
             }
 
-            if (enemyManager.IsCoordinatesOccupied(x, deltaX, y, deltaY)) //move to GameCharacter class, do a GameCharacter.isCoordinatesOccupied
+            if (enemyManager.IsCoordinatesOccupied(x, deltaX, y, deltaY))
             {
                 canMove = false; //please fix all of this
                 doAttack = true;
@@ -109,7 +109,7 @@ namespace Text_Based_RPG
                 MakeBeep(1000, 100);
                 if (enemyAttacked == 1) //temp
                 {
-                    //normalE.TakeDamage(initalizeStrength);
+                    //enemyManager.enemyArray[i].TakeDamage(initalizeStrength); //how do I get specific enemy from player class
                     //normalE.recentTarget = true;
                     //strongE.recentTarget = false;
                     //weakE.recentTarget = false;
