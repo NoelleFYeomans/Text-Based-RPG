@@ -85,23 +85,23 @@ namespace Text_Based_RPG
 
             }
 
-            if (x + deltaX == normalE.x && y + deltaY == normalE.y || x + deltaX == strongE.x && y + deltaY == strongE.y || x + deltaX == weakE.x && y + deltaY == weakE.y) //move to GameCharacter class, do a GameCharacter.isCoordinatesOccupied
+            if (enemyManager.IsCoordinatesOccupied(x, deltaX, y, deltaY)) //move to GameCharacter class, do a GameCharacter.isCoordinatesOccupied
             {
                 canMove = false; //please fix all of this
                 doAttack = true;
 
-                if (x + deltaX == normalE.x && y + deltaY == normalE.y)//just to work for now, fix later
-                {
-                    enemyAttacked = 1;
-                }
-                else if (x + deltaX == strongE.x && y + deltaY == strongE.y)
-                {
-                    enemyAttacked = 2;
-                }
-                else if (x + deltaX == weakE.x && y + deltaY == weakE.y)
-                {
-                    enemyAttacked = 3;
-                }
+                //if (x + deltaX == normalE.x && y + deltaY == normalE.y)//just to work for now, fix later
+                //{
+                //    enemyAttacked = 1;
+                //}
+                //else if (x + deltaX == strongE.x && y + deltaY == strongE.y)
+                //{
+                //    enemyAttacked = 2;
+                //}
+                //else if (x + deltaX == weakE.x && y + deltaY == weakE.y)
+                //{
+                //    enemyAttacked = 3;
+                //}
             }
 
             if (doAttack)
@@ -109,24 +109,24 @@ namespace Text_Based_RPG
                 MakeBeep(1000, 100);
                 if (enemyAttacked == 1) //temp
                 {
-                    normalE.TakeDamage(initalizeStrength);
-                    normalE.recentTarget = true;
-                    strongE.recentTarget = false;
-                    weakE.recentTarget = false;
+                    //normalE.TakeDamage(initalizeStrength);
+                    //normalE.recentTarget = true;
+                    //strongE.recentTarget = false;
+                    //weakE.recentTarget = false;
                 }
                 else if (enemyAttacked == 2)
                 {
-                    strongE.TakeDamage(initalizeStrength);
-                    strongE.recentTarget = true;
-                    weakE.recentTarget = false;
-                    normalE.recentTarget = false;
+                    //strongE.TakeDamage(initalizeStrength);
+                    //strongE.recentTarget = true;
+                    //weakE.recentTarget = false;
+                    //normalE.recentTarget = false;
                 }
                 else if (enemyAttacked == 3)
                 {
-                    weakE.TakeDamage(initalizeStrength);
-                    weakE.recentTarget = true;
-                    strongE.recentTarget = false;
-                    normalE.recentTarget = false;
+                    //weakE.TakeDamage(initalizeStrength);
+                    //weakE.recentTarget = true;
+                    //strongE.recentTarget = false;
+                    //normalE.recentTarget = false;
                 }
 
                 doAttack = false;

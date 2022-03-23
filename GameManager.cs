@@ -13,6 +13,7 @@ namespace Text_Based_RPG
 
         //declaration & instantiation
         static Player player = new Player();
+        static EnemyManager enemyManager = new EnemyManager();
         static NormalEnemy normalEnemy = new NormalEnemy();
         static StrongEnemy strongEnemy = new StrongEnemy();
         static WeakEnemy weakEnemy = new WeakEnemy();
@@ -35,17 +36,19 @@ namespace Text_Based_RPG
                 map.Draw();
                 hud.DrawHUD(normalEnemy, player, strongEnemy, weakEnemy);
                 itemManager.DrawItems();
-                player.Draw(); //enemy.iscoordinatesoccupied > enemymanager > enemy array instantiation
-                normalEnemy.Draw(); // fix HUD display(requires enemy manager & instantiation to be in place) & list of wall chars
+                player.Draw();
+                enemyManager.DrawEnemies();
+                normalEnemy.Draw(); // fix HUD display & method for displaying last enemy(requires enemy manager & instantiation to be in place)
                 strongEnemy.Draw(); //the fucking camera & making the map bigger to prove it works
                 weakEnemy.Draw(); // remember game/win state
                 
                 map.Update();
                 itemManager.UpdateItems(player);
-                player.Update(map, normalEnemy, strongEnemy, weakEnemy);
-                normalEnemy.Update(map, player, strongEnemy, weakEnemy);
-                strongEnemy.Update(map, player, normalEnemy, weakEnemy);
-                weakEnemy.Update(map, player, normalEnemy, strongEnemy);
+                player.Update(map, enemyManager);
+                enemyManager.UpdateEnemies();
+                normalEnemy.Update(map, player, enemyManager);
+                strongEnemy.Update(map, player, enemyManager);
+                weakEnemy.Update(map, player, enemyManager);
             }
 
             Console.ReadKey(true);

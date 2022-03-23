@@ -10,19 +10,6 @@ namespace Text_Based_RPG
     {
         public bool recentTarget;
 
-        //public bool IsCoordinatesOccupied() //duplicate on player end when finished
-        //{
-        //    for (int i = 0; i <= enemyArray.length - 1; i++)
-        //    {
-        //        if (x + deltaX == enemyArray[i].x && y + deltaY == enemyArray[i].y)
-        //        {
-        //            return true;
-        //        }
-        //    }
-
-        //    return false;
-        //}
-
         public void Update(Map map, Player player, EnemyManager enemyManager)
         {
             
@@ -40,7 +27,7 @@ namespace Text_Based_RPG
                 canMove = false;
             }
 
-            if (x + deltaX == player.x && y + deltaY == player.y || x + deltaX == enemy.x && y + deltaY == enemy.y || x + deltaX == enemy2.x && y + deltaY == enemy2.y)
+            if (x + deltaX == player.x && y + deltaY == player.y || enemyManager.IsCoordinatesOccupied(x, deltaX, y, deltaY))
             {
                 canMove = false;
                 //MakeBeep(500, 100); //this is the sound error

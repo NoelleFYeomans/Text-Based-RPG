@@ -8,8 +8,9 @@ namespace Text_Based_RPG
 {
     class Map //camera is an offset
     {
+        //maybe map constructor?
 
-        private string[] mapRawData = System.IO.File.ReadAllLines("map.txt"); //consider a settings page
+        private string[] mapRawData = System.IO.File.ReadAllLines("map.txt"); //consider a settings page //Process is terminated due to StackOverflowException
 
         private string impassableChars = "#~^"; //add new impassible/wall charavters here <<<<<<<<<<<<<<<<<<
 
