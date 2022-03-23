@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    abstract class Items : GameObject //add sounds jfc
+    abstract class Items : GameObject
     {
         protected bool onGround = true;
         protected bool initPositon = true;
