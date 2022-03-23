@@ -24,7 +24,7 @@ namespace Text_Based_RPG
         public int deltaX;
         public int deltaY;
 
-        Random rand = new Random();
+        Random rand = new Random(); //randomly it's the same
 
         public void TakeDamage(int atk) //has to be public
         {

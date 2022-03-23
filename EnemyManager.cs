@@ -11,16 +11,17 @@ namespace Text_Based_RPG
         //declaration & instantiation
         public Enemy[] enemyArray = new Enemy[50]; //hardcoded?
 
-        //needed for update
-        Player player = new Player();
-        Map map = new Map();
-        EnemyManager enemyManager = new EnemyManager();
-
-
         public EnemyManager() //this is the constructor
         {
             CreateEnemies();
             InitializeEnemyPositions();
+        }
+
+        Random rand = new Random();
+        public int GenerateRandNum(int minValue, int maxValue)
+        {
+            int output = rand.Next(minValue, maxValue);
+            return output;
         }
 
         //Fills Array
@@ -49,26 +50,26 @@ namespace Text_Based_RPG
             {
                 if (i <= (enemyArray.Length - enemyArray.Length/2)) 
                 {
-                    enemyArray[i].InitializeCharacterPosition(1, 1); //need a way to handle position
+                    enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22)); //need a way to handle position now
                 }
                 else if (i <= enemyArray.Length - 3) 
                 {
-                    enemyArray[i].InitializeCharacterPosition(10, 10); 
+                    enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22)); 
                 }
                 else if (i >= enemyArray.Length - 2)
                 {
-                    enemyArray[i].InitializeCharacterPosition(25, 25);
+                    enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
                 }
             }
         }
 
-        public void UpdateEnemies()
+        public void UpdateEnemies(Map map, Player player, EnemyManager enemyManager)
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
                 if (enemyArray[i] is WeakEnemy)
                 {
-                    ((WeakEnemy)enemyArray[i]).Update(map, player, enemyManager);
+                    ((WeakEnemy)enemyArray[i]).Update(map, player, enemyManager); //check into it
                     //(enemyArray[i] as WeakEnemy).Update(map, player, enemyManager); //this also works, and might be easier to read
                 }
                 else if (enemyArray[i] is NormalEnemy)

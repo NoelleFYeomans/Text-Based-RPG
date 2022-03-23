@@ -32,7 +32,7 @@ namespace Text_Based_RPG
             deltaY = 0;
             canMove = true;
 
-            int target = GenerateRandNum(0, 3);
+            int target = GenerateRandNum(0, 3); //all enemies are sharing the same movement
 
             if (!isAlive) return;
 
