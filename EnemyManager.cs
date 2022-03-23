@@ -106,7 +106,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                if (x + deltaX == enemyArray[i].x && y + deltaY == enemyArray[i].y)
+                if (x + deltaX == enemyArray[i].x && y + deltaY == enemyArray[i].y) //maybe I get the enemyArray x/y out of manager somehow?
                 {
                     return true;
                 }

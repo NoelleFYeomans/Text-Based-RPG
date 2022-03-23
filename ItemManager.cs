@@ -13,6 +13,8 @@ namespace Text_Based_RPG
         HealthBoost potion = new HealthBoost();
         AttackBoost sword = new AttackBoost();
 
+        public Items[] enemyArray = new Items[50]; //same polymorphism issue as enemyManager
+
         public void InitAllItems()
         {
             key.InitializeItem('K', 2, 2);
