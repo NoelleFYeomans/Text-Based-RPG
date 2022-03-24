@@ -13,7 +13,9 @@ namespace Text_Based_RPG
             objectIcon = 'A';
         }
 
-        public void Update(Player player, int boost)
+        public int boost = 25; //global settings
+
+        public override void Update(Player player)
         {
             if (onGround == true && player.x == x && player.y == y)
             {

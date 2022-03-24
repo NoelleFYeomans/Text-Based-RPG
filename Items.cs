@@ -17,7 +17,7 @@ namespace Text_Based_RPG
             initializeY = initialY;
         }
 
-        public void Update(Player player)
+        public virtual void Update(Player player)
         {
             if (onGround == true && player.x == x && player.y == y)
             {
@@ -39,10 +39,6 @@ namespace Text_Based_RPG
                 Console.SetCursorPosition(x, y); //fix
                 Console.Write(objectIcon);
                 Console.ForegroundColor = ConsoleColor.White;
-            }
-            else
-            {
-
             }
         }
     }

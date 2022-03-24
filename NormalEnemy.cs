@@ -16,7 +16,7 @@ namespace Text_Based_RPG
             initalizeStrength = 10;
         }
 
-        public new void Update(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE
+        public new void Update(Map map, Player player, EnemyManager enemyManager) //test static update & virtual instead of new
         {
             if (health <= 0)
             {

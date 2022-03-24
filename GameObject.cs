@@ -15,7 +15,7 @@ namespace Text_Based_RPG
         protected int initializeX;
         protected int initializeY;
 
-        Random rand = new Random(); //randomly it's the same
+        public static Random rand = new Random(); //randomly it's the same
 
         public void MakeBeep(int freq, int dur)
         {

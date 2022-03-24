@@ -10,7 +10,7 @@ namespace Text_Based_RPG
     {
         public Items[] itemArray = new Items[50]; //same polymorphism issue as enemyManager
         
-        Random rand = new Random();
+        public static Random rand = new Random();
 
         public ItemManager() 
         {
@@ -28,7 +28,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {
-                if (i <= (itemArray.Length - itemArray.Length / 2))
+                if (i <= (itemArray.Length / 2))
                 {
                     itemArray[i] = new HealthBoost(); //25
                 }
@@ -46,7 +46,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {
-                if (i <= (itemArray.Length - itemArray.Length / 2))
+                if (i <= (itemArray.Length / 2))
                 {
                     itemArray[i].InitializeItemPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22)); //need a better way to handle position
                 }

@@ -111,14 +111,14 @@ namespace Text_Based_RPG
                 if (enemyAttacked == 1) //temp
                 {
                     //in this case, i is the value in the array that stores the enemy I interacted with last
-                    enemyManager.enemyArray[i].TakeDamage(initalizeStrength); //how do I get specific enemy from player class
+                    //enemyManager.enemyArray[i].TakeDamage(initalizeStrength); //if enemy attacks, save their position in the array and feed it into player
 
-                    for (int i = 0; i <= enemyManager.enemyArray[i].Length - 1; i++) //why?
+                    for (int i = 0; i <= enemyManager.enemyArray.Length - 1; i++) //why?
                     {
                         enemyManager.enemyArray[i].recentTarget = false;
                     }
 
-                    enemyManager.enemyArray[i].recentTarget = true;
+                    //enemyManager.enemyArray[i].recentTarget = true;
                 }
                 else if (enemyAttacked == 2)
                 {

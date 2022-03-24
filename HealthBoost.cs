@@ -10,10 +10,12 @@ namespace Text_Based_RPG
     {
         public HealthBoost()
         {
-            objectIcon = 'p';
+            objectIcon = 'P';
         }
 
-        public void Update(Player player, int boost)
+        public int boost = 25;
+
+        public override void Update(Player player)
         {
             if (onGround == true && player.x == x && player.y == y)
             {

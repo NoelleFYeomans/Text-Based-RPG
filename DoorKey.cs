@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Text_Based_RPG
-{
+namespace Text_Based_RPG { 
+
     class DoorKey : Items
     {      
         public DoorKey()
         {
-            objectIcon = 'k';
+            objectIcon = 'K';
         }
 
         public void UseKey(Player player)
@@ -18,7 +18,7 @@ namespace Text_Based_RPG
             player.hasKeys--;
         }
 
-        public void Update(Player player)
+        public override void Update(Player player)
         {
             if (onGround == true && player.x == x && player.y == y)
             {
