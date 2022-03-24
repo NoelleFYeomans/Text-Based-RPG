@@ -9,7 +9,7 @@ namespace Text_Based_RPG
     class Player : GameCharacter
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
-        private int enemyAttacked = 0;
+        private int enemyAttacked = 0; //probably removing this
         public int hasKeys = 0;
 
         public Player()
@@ -110,10 +110,15 @@ namespace Text_Based_RPG
                 MakeBeep(1000, 100);
                 if (enemyAttacked == 1) //temp
                 {
-                    //enemyManager.enemyArray[i].TakeDamage(initalizeStrength); //how do I get specific enemy from player class
-                    //normalE.recentTarget = true;
-                    //strongE.recentTarget = false;
-                    //weakE.recentTarget = false;
+                    //in this case, i is the value in the array that stores the enemy I interacted with last
+                    enemyManager.enemyArray[i].TakeDamage(initalizeStrength); //how do I get specific enemy from player class
+
+                    for (int i = 0; i <= enemyManager.enemyArray[i].Length - 1; i++) //why?
+                    {
+                        enemyManager.enemyArray[i].recentTarget = false;
+                    }
+
+                    enemyManager.enemyArray[i].recentTarget = true;
                 }
                 else if (enemyAttacked == 2)
                 {
