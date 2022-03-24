@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 namespace Text_Based_RPG
 {
     class DoorKey : Items
-    {        
+    {      
+        public DoorKey()
+        {
+            objectIcon = 'k';
+        }
+
         public void UseKey(Player player)
         {
             player.hasKeys--;

@@ -14,23 +14,22 @@ namespace Text_Based_RPG
         //declaration & instantiation
         static Player player = new Player();
         static EnemyManager enemyManager = new EnemyManager();
+        static ItemManager itemManager = new ItemManager();
         static Map map = new Map();
         static HUD hud = new HUD();
-        static ItemManager itemManager = new ItemManager();
 
         public void gameLoop()
         {
             player.InitializeCharacterPosition(5, 5); //positions temporarily managed here
-            itemManager.InitAllItems();
 
             //game loop
             while (!gameOver)
             {
 
                 map.Draw();
-                itemManager.DrawItems();
+                itemManager.DrawItems(); //potions/keys not drawing for some reason
                 player.Draw();
-                enemyManager.DrawEnemies();
+                enemyManager.DrawEnemies(); //Recent enemy attacked, takeDamage, HUD, itemManager, gameover/win state, camera
                 
                 map.Update();
                 itemManager.UpdateItems(player);

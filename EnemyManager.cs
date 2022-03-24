@@ -44,7 +44,7 @@ namespace Text_Based_RPG
             }
         }
 
-        private void InitializeEnemyPositions()
+        private void InitializeEnemyPositions() //nothing stops items from occupying same position
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {

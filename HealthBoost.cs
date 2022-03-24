@@ -8,6 +8,11 @@ namespace Text_Based_RPG
 {
     class HealthBoost : Items
     {
+        public HealthBoost()
+        {
+            objectIcon = 'p';
+        }
+
         public void Update(Player player, int boost)
         {
             if (onGround == true && player.x == x && player.y == y)

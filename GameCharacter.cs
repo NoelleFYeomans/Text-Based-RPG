@@ -24,8 +24,6 @@ namespace Text_Based_RPG
         public int deltaX;
         public int deltaY;
 
-        Random rand = new Random(); //randomly it's the same
-
         public void TakeDamage(int atk) //has to be public
         {
             atk = Clamp(atk, 0, 1000);
@@ -40,12 +38,6 @@ namespace Text_Based_RPG
         protected void RespawnCharacter() //future use
         {
 
-        }
-
-        public int GenerateRandNum(int minValue, int maxValue)
-        {
-            int output = rand.Next(minValue, maxValue);
-            return output;
         }
 
         public void InitializeCharacterPosition(int initX, int initY) //once getter works, make coordinates only

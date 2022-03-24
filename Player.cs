@@ -90,6 +90,7 @@ namespace Text_Based_RPG
                 canMove = false; //please fix all of this
                 doAttack = true;
 
+                //recentTarget
                 //if (x + deltaX == normalE.x && y + deltaY == normalE.y)//just to work for now, fix later
                 //{
                 //    enemyAttacked = 1;

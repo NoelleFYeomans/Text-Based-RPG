@@ -15,6 +15,8 @@ namespace Text_Based_RPG
         protected int initializeX;
         protected int initializeY;
 
+        Random rand = new Random(); //randomly it's the same
+
         public void MakeBeep(int freq, int dur)
         {
             Console.Beep(freq, dur);
@@ -31,6 +33,12 @@ namespace Text_Based_RPG
                 value = minValue;
             }
             return value;
+        }
+
+        public int GenerateRandNum(int minValue, int maxValue)
+        {
+            int output = rand.Next(minValue, maxValue);
+            return output;
         }
     }
 }
