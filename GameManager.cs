@@ -27,8 +27,8 @@ namespace Text_Based_RPG
             {
 
                 map.Draw();
-                itemManager.DrawItems(); //potions/keys not drawing for some reason
-                player.Draw();
+                itemManager.DrawItems(); //potions/keys not drawing for some reason?
+                player.Draw(); //remember to address the Polymorphism issue & the Random generation being the same for all normal enemies
                 enemyManager.DrawEnemies(); //Recent enemy attacked, takeDamage, HUD, itemManager, gameover/win state, camera
                 
                 map.Update();
