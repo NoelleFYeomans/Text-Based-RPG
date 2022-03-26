@@ -20,16 +20,15 @@ namespace Text_Based_RPG
 
         public void gameLoop()
         {
-            player.InitializeCharacterPosition(5, 5); //positions temporarily managed here
 
             //game loop
             while (!gameOver)
             {
 
                 map.Draw();
-                itemManager.DrawItems(); //potions/keys not drawing for some reason?
-                player.Draw(); //remember to address the Polymorphism issue & the Random generation being the same for all normal enemies
-                enemyManager.DrawEnemies(); //Recent enemy attacked, takeDamage, HUD, itemManager, gameover/win state, camera   
+                itemManager.DrawItems(); 
+                player.Draw(); //redo map colour method
+                enemyManager.DrawEnemies(); //HUD!!, gameover/win state!!, camera!!, GlobalSettings setup
                 
                 map.Update();
                 itemManager.UpdateItems(player);

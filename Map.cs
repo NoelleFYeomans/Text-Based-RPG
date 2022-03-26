@@ -10,7 +10,7 @@ namespace Text_Based_RPG
     {
         
 
-        private string[] mapRawData; //consider a settings page //Process is terminated due to StackOverflowException
+        public string[] mapRawData; //consider a settings page
 
         private string impassableChars = "#~^"; //add new impassible/wall charavters here <<<<<<<<<<<<<<<<<<
 

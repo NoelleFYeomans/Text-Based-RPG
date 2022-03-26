@@ -16,6 +16,7 @@ namespace Text_Based_RPG
             objectIcon = '@';
             health = 100;
             initalizeStrength = 25;
+            InitializeCharacterPosition(5, 5);
         }
 
         public void Update(Map map, EnemyManager enemyManager) //properly implement enemy manager
