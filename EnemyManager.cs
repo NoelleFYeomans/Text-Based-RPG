@@ -11,17 +11,30 @@ namespace Text_Based_RPG
         //declaration & instantiation
         public Enemy[] enemyArray = new Enemy[50]; //hardcoded?
 
-        public EnemyManager() //this is the constructor
+        public EnemyManager(Map map) //this is the constructor
         {
             CreateEnemies();
-            InitializeEnemyPositions();
+            InitializeEnemyPositions(map);
         }
 
-        Random rand = new Random();
+        static Random rand = new Random();
+
         public int GenerateRandNum(int minValue, int maxValue)
         {
             int output = rand.Next(minValue, maxValue);
             return output;
+        }
+
+        public void InitPosProtection(Map map)
+        {
+            for (int i = 0; i <= enemyArray.Length - 1; i++)
+            {
+                while (map.isImpassableObstacle(enemyArray[i].y, enemyArray[i].x) || map.isDoor(enemyArray[i].y, enemyArray[i].x))
+                {
+                    enemyArray[i].x = GenerateRandNum(0, map.mapRawData[0].Length);
+                    enemyArray[i].y = GenerateRandNum(0, map.mapRawData.Length);
+                }
+            }
         }
 
         //Fills Array
@@ -44,11 +57,12 @@ namespace Text_Based_RPG
             }
         }
 
-        private void InitializeEnemyPositions() //nothing stops items from occupying same position
+        private void InitializeEnemyPositions(Map map) //nothing stops items from occupying same position
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
                 enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
+                //InitPosProtection(map); //enemies spawn in impassable objects, why?
             }
         }
 
