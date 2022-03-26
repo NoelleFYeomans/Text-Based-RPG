@@ -18,20 +18,20 @@ namespace Text_Based_RPG
 
         public static Random rand = new Random();
 
-        public int GenerateRandNum(int minValue, int maxValue)
+        public int GenerateRandNum(int maxValue)
         {
             int output = rand.Next(maxValue);
             return output;
         }
 
-        public void TempMethod(Map map)
+        public void InitPosProtection(Map map)
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {
-                while (map.isImpassableObstacle(itemArray[i].x, itemArray[i].y) || map.isDoor(itemArray[i].x, itemArray[i].y))
+                if (map.isImpassableObstacle(itemArray[i].y, itemArray[i].x) || map.isDoor(itemArray[i].y, itemArray[i].x))
                 {
-                    itemArray[i].x = GenerateRandNum(80, 110);
-                    itemArray[i].y = GenerateRandNum(4, 22);
+                    itemArray[i].x = GenerateRandNum(110);
+                    itemArray[i].y = GenerateRandNum(22);
                 }
             }
         }
@@ -58,8 +58,12 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {
-                itemArray[i].ItemSpawnPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
-                TempMethod(map);
+                itemArray[i].ItemSpawnPosition(GenerateRandNum(110), GenerateRandNum(22));
+                InitPosProtection(map);
+                if (i == itemArray.Length - 1)
+                {
+                    itemArray[i].ItemSpawnPosition(17, 7);
+                }
             }
         }
 

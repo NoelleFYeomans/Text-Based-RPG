@@ -27,20 +27,20 @@ namespace Text_Based_RPG
                 canMove = false;
             }
 
-            if (x + deltaX == player.x && y + deltaY == player.y || enemyManager.IsCoordinatesOccupied(x, deltaX, y, deltaY))
+            if (enemyManager.IsCoordinatesOccupied(x, deltaX, y, deltaY))
             {
                 canMove = false;
-                //MakeBeep(500, 100); //this is the sound error
+            }
 
-                if (x + deltaX == player.x && y + deltaY == player.y) //this is so  messy
-                {
-                    doAttack = true;
-                }
+            if (x + deltaX == player.x && y + deltaY == player.y) 
+            {
+                canMove = false;
+                doAttack = true;
             }
 
             if (doAttack)
             {
-                player.TakeDamage(initalizeStrength); //temp hardcode
+                player.TakeDamage(initalizeStrength);
                 MakeBeep(1000, 100); //beeps if bumps into player, then beeps again if attacks
                 doAttack = false;
             }
