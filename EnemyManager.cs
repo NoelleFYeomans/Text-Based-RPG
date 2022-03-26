@@ -48,18 +48,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                if (i <= (enemyArray.Length - enemyArray.Length/2)) 
-                {
-                    enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22)); //need a way to handle position now
-                }
-                else if (i <= enemyArray.Length - 3) 
-                {
-                    enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22)); 
-                }
-                else if (i >= enemyArray.Length - 2)
-                {
-                    enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
-                }
+                enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
             }
         }
 

@@ -11,7 +11,7 @@ namespace Text_Based_RPG
         protected bool onGround = true;
         protected bool initPositon = true;
 
-        public void InitializeItemPosition(int initalX, int initialY)
+        public void ItemSpawnPosition(int initalX, int initialY)
         {
             initializeX = initalX;
             initializeY = initialY;

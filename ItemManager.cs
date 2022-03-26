@@ -46,37 +46,15 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {
-                if (i <= (itemArray.Length / 2))
-                {
-                    itemArray[i].InitializeItemPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22)); //need a better way to handle position
-                }
-                else if (i <= itemArray.Length - 3)
-                {
-                    itemArray[i].InitializeItemPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
-                }
-                else if (i >= itemArray.Length - 2)
-                {
-                    itemArray[i].InitializeItemPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
-                }
+                itemArray[i].ItemSpawnPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
             }
         }
 
         public void UpdateItems(Player player)
         {
-            for (int i = 0; i <= itemArray.Length - 1; i++)
+            for (int i = 0; i <= itemArray.Length - 1; i++) //rip Typecasting
             {
-                if (itemArray[i] is HealthBoost)
-                {
-                    ((HealthBoost)itemArray[i]).Update(player); //check into it
-                }
-                else if (itemArray[i] is AttackBoost)
-                {
-                    ((AttackBoost)itemArray[i]).Update(player);
-                }
-                else if (itemArray[i] is DoorKey)
-                {
-                    ((DoorKey)itemArray[i]).Update(player);
-                }
+                itemArray[i].Update(player);
             }
         }
 
@@ -84,18 +62,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {
-                if (itemArray[i] is HealthBoost)
-                {
-                    ((HealthBoost)itemArray[i]).Draw();
-                }
-                else if (itemArray[i] is AttackBoost)
-                {
-                    ((AttackBoost)itemArray[i]).Draw();
-                }
-                else if (itemArray[i] is DoorKey)
-                {
-                    ((DoorKey)itemArray[i]).Draw();
-                }
+                itemArray[i].Draw();
             }
         }
     }
