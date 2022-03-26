@@ -13,8 +13,8 @@ namespace Text_Based_RPG
 
         public void ItemSpawnPosition(int initalX, int initialY)
         {
-            initializeX = initalX;
-            initializeY = initialY;
+            x = initalX;
+            y = initialY;
         }
 
         public virtual void Update(Player player)
@@ -27,14 +27,9 @@ namespace Text_Based_RPG
 
         public void Draw()
         {
-            if (initPositon)
-            {
-                x = initializeX;
-                y = initializeY;
-                initPositon = false;
-            }
             if (onGround)
             {
+                //Console.WriteLine("spawn");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.SetCursorPosition(x, y); //fix
                 Console.Write(objectIcon);

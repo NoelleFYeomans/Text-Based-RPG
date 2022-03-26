@@ -12,10 +12,10 @@ namespace Text_Based_RPG
         static private bool gameOver = false;
 
         //declaration & instantiation
+        static Map map = new Map();
         static Player player = new Player();
         static EnemyManager enemyManager = new EnemyManager();
-        static ItemManager itemManager = new ItemManager();
-        static Map map = new Map();
+        static ItemManager itemManager = new ItemManager(map);
         static HUD hud = new HUD();
 
         public void gameLoop()
