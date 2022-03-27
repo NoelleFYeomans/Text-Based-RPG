@@ -15,7 +15,7 @@ namespace Text_Based_RPG
             
         }
 
-        public void CalculateAction(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE
+        public void CalculateAction(Map map, Player player, EnemyManager enemyManager) 
         {
             if (map.isImpassableObstacle(y + deltaY, x + deltaX)) //perform checks before movement
             {
@@ -36,12 +36,19 @@ namespace Text_Based_RPG
             {
                 canMove = false;
                 doAttack = true;
+
+                for (int i = 0; i <= enemyManager.enemyArray.Length - 1; i++) //might be a better place for this?
+                {
+                    enemyManager.enemyArray[i].recentTarget = false;
+                }
+
+                recentTarget = true;
             }
 
             if (doAttack)
             {
                 player.TakeDamage(initalizeStrength);
-                MakeBeep(1000, 100); //beeps if bumps into player, then beeps again if attacks
+                MakeBeep(1000, 100); 
                 doAttack = false;
             }
         }
