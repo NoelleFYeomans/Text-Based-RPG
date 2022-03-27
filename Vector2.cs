@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     class Vector2
     {
-        //idk what I can use this for
+        //might implement later on, not sure.
         struct Coordinates
         {
             public int x;

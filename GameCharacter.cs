@@ -27,8 +27,10 @@ namespace Text_Based_RPG
         public void TakeDamage(int atk) //has to be public
         {
             atk = Clamp(atk, 0, 1000);
-            health = health - atk; //expand
-            if (health <= 0) //This solves the death bug & health clamping, but I don't like how it does it.
+
+            health = health - atk;
+
+            if (health <= 0) //This solves the death bug & health clamping
             {
                 health = Clamp(health, 0, 100);
                 isAlive = false;
@@ -48,7 +50,7 @@ namespace Text_Based_RPG
 
         public void ApplyAction()
         {
-            if (canMove) //enemy stops moving when attacked or if it attacks
+            if (canMove)
             {
                 x = x + deltaX;
                 y = y + deltaY;
@@ -58,32 +60,34 @@ namespace Text_Based_RPG
             }
         }
 
-        public void Draw() //could move to GameObject class & apply to player & enemy
+        public void Draw() //could move to GameObject class & apply to player & items?
         {
-            if (spawning) //needs to be changed
+            if (spawning)
             {
                 x = initializeX;
                 y = initializeY;
                 spawning = false;
             }
+
             if (isAlive)
             {
-                if (objectIcon == '@') //bad
+                if (objectIcon == '@')
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.SetCursorPosition(x, y); //fix
+                    Console.SetCursorPosition(x, y);
                     Console.Write(objectIcon);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.SetCursorPosition(x, y); //fix
+                    Console.SetCursorPosition(x, y);
                     Console.Write(objectIcon);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
-            else if (!isAlive) //needs to be changed
+
+            else if (!isAlive) //cannot make x/y null
             {
                 x = 0;
                 y = 0;

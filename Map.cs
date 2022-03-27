@@ -85,7 +85,7 @@ namespace Text_Based_RPG
             }
         }
 
-        public void ColourMap() //fix this btw, this ugly & bad
+        public void ColourMap() //is there a way to make this better/more scalable?
         {
             if (mapRawData[y][x] == '#')
             {

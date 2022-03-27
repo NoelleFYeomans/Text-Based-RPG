@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class GlobalSettings
+    class GlobalSettings //put shit in here, I have to make one of these.
     {
-        //could alleviate many issues
+        //public string[] mapRawData = System.IO.File.ReadAllLines("map.txt");
     }
 }
