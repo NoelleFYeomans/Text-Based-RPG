@@ -69,7 +69,7 @@ namespace Text_Based_RPG
             deltaY = Clamp(deltaY, -1, 1);
 
             CalculateAction(map, player, enemyManager);
-            ApplyAction();
+            ApplyAction(map);
         }
     }
 }

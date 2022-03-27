@@ -16,7 +16,9 @@ namespace Text_Based_RPG
             objectIcon = '@';
             health = 100;
             initalizeStrength = 25;
-            InitializeCharacterPosition(5, 5);
+            InitializeCharacterPosition(7, 7);
+            x = 7;
+            y = 7;
         }
 
         public void Update(Map map, EnemyManager enemyManager) //properly implement enemy manager
@@ -57,11 +59,6 @@ namespace Text_Based_RPG
                     deltaX = -1;
                     break;
             }
-
-            //clamps, collisions, & other checks
-            x = Clamp(x, 0, 100); //woops
-            y = Clamp(y, 0, 100);
-
 
             if (map.isImpassableObstacle(y + deltaY, x + deltaX)) //perform checks before movement
             {
@@ -113,7 +110,7 @@ namespace Text_Based_RPG
                 doAttack = false;
             }
 
-            ApplyAction(); 
+            ApplyAction(map); 
 
         }
     }

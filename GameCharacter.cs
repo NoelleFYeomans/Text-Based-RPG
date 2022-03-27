@@ -48,15 +48,15 @@ namespace Text_Based_RPG
             initializeY = initY;
         }
 
-        public void ApplyAction()
+        public void ApplyAction(Map map)
         {
             if (canMove)
             {
                 x = x + deltaX;
                 y = y + deltaY;
 
-                x = Clamp(x, 0, 100);
-                y = Clamp(y, 0, 100);
+                x = Clamp(x, 0, map.mapRawData[0].Length);
+                y = Clamp(y, 0, map.mapRawData.Length);
             }
         }
 

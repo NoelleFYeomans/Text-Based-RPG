@@ -28,7 +28,7 @@ namespace Text_Based_RPG
             {
                 value = maxValue;
             }
-            if (value < minValue)
+            else if (value < minValue)
             {
                 value = minValue;
             }
