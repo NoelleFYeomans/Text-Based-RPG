@@ -52,6 +52,9 @@ namespace Text_Based_RPG
         {
             if (canMove)
             {
+                Clamp(deltaX, -1, 1);
+                Clamp(deltaY, -1, 1);
+
                 x = x + deltaX;
                 y = y + deltaY;
 

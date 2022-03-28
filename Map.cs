@@ -66,6 +66,32 @@ namespace Text_Based_RPG
         }
 
 
+        //public void Draw(Camera camera)
+        //{
+        //    Console.SetCursorPosition(Console.WindowLeft, Console.WindowTop);
+
+        //    width = mapRawData[0].Length;
+        //    height = mapRawData.Length;
+
+        //    for (y = 0; y <= height - 1; y++)
+        //    {
+        //        for (x = 0; x <= width - 1; x++)
+        //        {
+        //            if (camera.isCameraInbounds(x, y))
+        //            {
+        //                ColourMap();
+        //                Console.Write(mapRawData[y][x]);
+        //                Console.ForegroundColor = ConsoleColor.White;
+        //            }
+        //            else
+        //            {
+
+        //            }
+        //        }
+        //        Console.WriteLine("");
+        //    }
+        //}
+
         public void Draw()
         {
             Console.SetCursorPosition(0, 0);
@@ -73,13 +99,12 @@ namespace Text_Based_RPG
             width = mapRawData[0].Length;
             height = mapRawData.Length;
 
-            for (y = 0; y <= height-1; y++)
+            for (y = 0; y <= height - 1; y++)
             {
-                for (x = 0; x <= width-1; x++)
+                for (x = 0; x <= width - 1; x++)
                 {
                     ColourMap();
                     Console.Write(mapRawData[y][x]);
-                    Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.WriteLine("");
             }
@@ -116,5 +141,18 @@ namespace Text_Based_RPG
                 Console.ForegroundColor = ConsoleColor.DarkGray;
             }
         }
+
+        //protected int Clamp(int value, int minValue, int maxValue)
+        //{
+        //    if (value > maxValue)
+        //    {
+        //        value = maxValue;
+        //    }
+        //    if (value < minValue)
+        //    {
+        //        value = minValue;
+        //    }
+        //    return value;
+        //}
     }
 }

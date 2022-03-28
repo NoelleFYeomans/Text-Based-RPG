@@ -12,7 +12,7 @@ namespace Text_Based_RPG
         static GlobalSettings global = new GlobalSettings();
         static Map map = new Map();
         static Player player = new Player();
-        static Camera camera = new Camera(global);
+        //static Camera camera = new Camera(global);
         static EnemyManager enemyManager = new EnemyManager(map);
         static ItemManager itemManager = new ItemManager(map);
         static GameStateManager gameStateManager = new GameStateManager();
@@ -23,13 +23,13 @@ namespace Text_Based_RPG
             //game loop
             while (!gameStateManager.isGameLost(player) && !gameStateManager.isGameWon(enemyManager))
             {
-                //Console.SetWindowSize(map.mapRawData[0].Length, map.mapRawData.Length);
-                //Console.SetBufferSize(map.mapRawData[0].Length + 1, map.mapRawData.Length + 1);
+                //Console.Clear(); //bad
+                //camera.UpdateCamera(player);
                 map.Draw();
                 itemManager.DrawItems(); 
-                player.Draw(); //fix bug with left side of map
+                player.Draw();
                 enemyManager.DrawEnemies(); //camera!!, GlobalSettings settup
-                
+
                 map.Update();
                 itemManager.UpdateItems(player);
                 hud.DrawHUD(player, enemyManager);
