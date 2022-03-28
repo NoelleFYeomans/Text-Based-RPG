@@ -10,6 +10,13 @@ namespace Text_Based_RPG
     {
         private string[] map;
 
+        public int windowHeight; 
+        public int windowWidth;
+        public int deltaX;
+        public int deltaY;
+        public int bufferX;
+        public int bufferY;
+
         public Camera(GlobalSettings global) {
 
             this.map = global.mapRawData;
@@ -37,6 +44,9 @@ namespace Text_Based_RPG
                 Console.WriteLine("");
             }
         }
+
+
+
 
         protected int Clamp(int value, int minValue, int maxValue)
         {
