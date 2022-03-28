@@ -34,10 +34,16 @@ namespace Text_Based_RPG
 
         }
 
-        public void tempMethod(Player player)
+        public void tempMethod(Player player) //renderer
         {
             Console.SetWindowPosition(Clamp(player.x - 10, 0, 120), Clamp(player.y - 10, 0, 30));
         }
+
+        public void PositionCam()
+        {
+
+        }
+        //consolidate all draws into a render.draw class&method/camera.position class&method
 
         public bool isCameraInbounds(int x, int y)
         {
