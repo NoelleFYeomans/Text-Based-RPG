@@ -39,7 +39,7 @@ namespace Text_Based_RPG
             Console.SetWindowPosition(Clamp(player.x - 10, 0, 120), Clamp(player.y - 10, 0, 30));
         }
 
-        public void PositionCam()
+        public void PositionCam(Player player)
         {
 
         }

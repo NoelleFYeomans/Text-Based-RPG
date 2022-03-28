@@ -10,8 +10,8 @@ namespace Text_Based_RPG
     {
         public void Draw(int x, int y, Camera camera)
         {
+            Console.SetCursorPosition(x, y);
 
         }
-
     }
 }
