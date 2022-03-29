@@ -21,7 +21,7 @@ namespace Text_Based_RPG
             y = 7;
         }
 
-        public void Update(Map map, EnemyManager enemyManager) //properly implement enemy manager
+        public void Update(Map map, EnemyManager enemyManager, Camera camera)
         {
 
             if (health <= 0) //this is where the player dies
@@ -31,6 +31,8 @@ namespace Text_Based_RPG
 
 
             key = Console.ReadKey(true);
+
+            camera.PositionCam(x, y);
 
             //I want to have the player's position before the move saved
             priorPositionX = x;
@@ -59,6 +61,8 @@ namespace Text_Based_RPG
                     deltaX = -1;
                     break;
             }
+
+            //camera.PositionCam(x + deltaX, y + deltaY); //remove later
 
             while (Console.KeyAvailable) Console.ReadKey(true); //prevents hold buffering
 

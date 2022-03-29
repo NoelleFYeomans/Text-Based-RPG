@@ -86,21 +86,21 @@ namespace Text_Based_RPG
             }
         }
 
-        public void DrawEnemies()
+        public void DrawEnemies(Camera camera, Renderer renderer)
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
                 if (enemyArray[i] is WeakEnemy)
                 {
-                    ((WeakEnemy)enemyArray[i]).Draw();
+                    ((WeakEnemy)enemyArray[i]).Draw(camera, renderer);
                 }
                 else if (enemyArray[i] is NormalEnemy)
                 {
-                    ((NormalEnemy)enemyArray[i]).Draw();
+                    ((NormalEnemy)enemyArray[i]).Draw(camera, renderer);
                 }
                 else if (enemyArray[i] is StrongEnemy)
                 {
-                    ((StrongEnemy)enemyArray[i]).Draw();
+                    ((StrongEnemy)enemyArray[i]).Draw(camera, renderer);
                 }
             }
         }

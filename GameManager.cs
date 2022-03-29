@@ -12,7 +12,8 @@ namespace Text_Based_RPG
         static GlobalSettings global = new GlobalSettings();
         static Map map = new Map();
         static Player player = new Player();
-        //static Camera camera = new Camera(global);
+        static Camera camera = new Camera(global);
+        static Renderer renderer = new Renderer();
         static EnemyManager enemyManager = new EnemyManager(map);
         static ItemManager itemManager = new ItemManager(map);
         static GameStateManager gameStateManager = new GameStateManager();
@@ -23,17 +24,15 @@ namespace Text_Based_RPG
             //game loop
             while (!gameStateManager.isGameLost(player) && !gameStateManager.isGameWon(enemyManager))
             {
-                //Console.Clear(); //bad
-                //camera.UpdateCamera(player);
-                map.Draw();
-                itemManager.DrawItems(); 
-                player.Draw();
-                enemyManager.DrawEnemies(); //camera!!, GlobalSettings settup
+                map.Draw(camera, renderer);
+                itemManager.DrawItems(camera, renderer); 
+                player.Draw(camera, renderer);
+                enemyManager.DrawEnemies(camera, renderer); //camera!!, GlobalSettings settup
 
                 map.Update();
                 itemManager.UpdateItems(player);
                 hud.DrawHUD(player, enemyManager);
-                player.Update(map, enemyManager);
+                player.Update(map, enemyManager, camera);
                 enemyManager.UpdateEnemies(map, player, enemyManager);
             }
 

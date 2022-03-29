@@ -25,14 +25,12 @@ namespace Text_Based_RPG
             }
         }
 
-        public void Draw()
+        public void Draw(Camera camera, Renderer renderer)
         {
             if (onGround)
             {
-                //Console.WriteLine("spawn");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                Console.SetCursorPosition(x, y); //fix
-                Console.Write(objectIcon);
+                renderer.Draw(x, y, objectIcon, camera);
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }

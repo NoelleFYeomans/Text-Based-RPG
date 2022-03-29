@@ -76,11 +76,11 @@ namespace Text_Based_RPG
             }
         }
 
-        public void DrawItems()
+        public void DrawItems(Camera camera, Renderer renderer)
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {
-                itemArray[i].Draw();
+                itemArray[i].Draw(camera, renderer);
             }
         }
     }

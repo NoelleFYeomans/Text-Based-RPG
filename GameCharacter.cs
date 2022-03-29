@@ -63,7 +63,7 @@ namespace Text_Based_RPG
             }
         }
 
-        public void Draw() //could move to GameObject class & apply to player & items?
+        public void Draw(Camera camera, Renderer renderer) //could move to GameObject class & apply to player & items?
         {
             if (spawning)
             {
@@ -77,15 +77,13 @@ namespace Text_Based_RPG
                 if (objectIcon == '@')
                 {
                     Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.SetCursorPosition(x, y);
-                    Console.Write(objectIcon);
+                    renderer.Draw(x, y, objectIcon, camera);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.SetCursorPosition(x, y);
-                    Console.Write(objectIcon);
+                    renderer.Draw(x, y, objectIcon, camera);
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }

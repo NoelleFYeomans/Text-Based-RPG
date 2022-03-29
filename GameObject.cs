@@ -11,7 +11,7 @@ namespace Text_Based_RPG
         public int y; 
         public int x;
         
-        protected char objectIcon;
+        public char objectIcon;
         protected int initializeX;
         protected int initializeY;
 

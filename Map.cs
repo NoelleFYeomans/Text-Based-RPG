@@ -92,10 +92,8 @@ namespace Text_Based_RPG
         //    }
         //}
 
-        public void Draw()
+        public void Draw(Camera camera, Renderer renderer)
         {
-            Console.SetCursorPosition(0, 0);
-
             width = mapRawData[0].Length;
             height = mapRawData.Length;
 
@@ -104,7 +102,7 @@ namespace Text_Based_RPG
                 for (x = 0; x <= width - 1; x++)
                 {
                     ColourMap();
-                    Console.Write(mapRawData[y][x]);
+                    renderer.Draw(x, y, mapRawData[y][x], camera);
                 }
                 Console.WriteLine("");
             }
