@@ -12,7 +12,7 @@ namespace Text_Based_RPG
         static GlobalSettings global = new GlobalSettings();
         static Map map = new Map();
         static Player player = new Player();
-        static Camera camera = new Camera(global);
+        static Camera camera = new Camera(player);
         static Renderer renderer = new Renderer();
         static EnemyManager enemyManager = new EnemyManager(map);
         static ItemManager itemManager = new ItemManager(map);

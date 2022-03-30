@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Map //camera is an offset
+    class Map
     {
-        
-
         public string[] mapRawData; //consider a settings page
 
         private string impassableChars = "#~^"; //add new impassible/wall charavters here <<<<<<<<<<<<<<<<<<
@@ -25,6 +23,9 @@ namespace Text_Based_RPG
         public Map()
         {
             mapRawData = System.IO.File.ReadAllLines("map.txt");
+
+            Console.SetBufferSize((mapRawData[0].Length * 3), (mapRawData.Length * 3));//sets actual world border size
+            //Console.SetWindowSize(32, 30);
         }
 
         public void Update() //future use
@@ -64,33 +65,6 @@ namespace Text_Based_RPG
         {
             doorOpen = true;
         }
-
-
-        //public void Draw(Camera camera)
-        //{
-        //    Console.SetCursorPosition(Console.WindowLeft, Console.WindowTop);
-
-        //    width = mapRawData[0].Length;
-        //    height = mapRawData.Length;
-
-        //    for (y = 0; y <= height - 1; y++)
-        //    {
-        //        for (x = 0; x <= width - 1; x++)
-        //        {
-        //            if (camera.isCameraInbounds(x, y))
-        //            {
-        //                ColourMap();
-        //                Console.Write(mapRawData[y][x]);
-        //                Console.ForegroundColor = ConsoleColor.White;
-        //            }
-        //            else
-        //            {
-
-        //            }
-        //        }
-        //        Console.WriteLine("");
-        //    }
-        //}
 
         public void Draw(Camera camera, Renderer renderer)
         {
@@ -139,18 +113,5 @@ namespace Text_Based_RPG
                 Console.ForegroundColor = ConsoleColor.DarkGray;
             }
         }
-
-        //protected int Clamp(int value, int minValue, int maxValue)
-        //{
-        //    if (value > maxValue)
-        //    {
-        //        value = maxValue;
-        //    }
-        //    if (value < minValue)
-        //    {
-        //        value = minValue;
-        //    }
-        //    return value;
-        //}
     }
 }

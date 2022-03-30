@@ -8,11 +8,19 @@ namespace Text_Based_RPG
 {
     class Renderer
     {
-        public void Draw(int x, int y, char printChar, Camera camera) //renderer && fix colour
+        public void Draw(int worldX, int worldY, char printChar, Camera camera)
         {
-            Console.SetCursorPosition(x, y);
+            int screenX = worldX - camera.x; //camOffset x = player.x
+            int screenY = worldY - camera.y;//camOffset y = player.y
+
+            screenX += camera.width / 2; //centers camera on X axis
+            screenY += camera.height / 2; //centers camera on Y axis
+
+            if (screenX < 0 || screenX > camera.width || screenY < 0 || screenY > camera.height) return;
+
+            Console.SetCursorPosition(screenX, screenY);
             
-            Console.WriteLine(printChar);
+            Console.Write(printChar);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    abstract class Items : GameObject
+    abstract class Items : GameObject //cap health & attack, nerf enemy damage
     {
         protected bool onGround = true;
         protected bool initPositon = true;

@@ -22,6 +22,7 @@ namespace Text_Based_RPG
                 onGround = false;
                 MakeBeep(300, 100);
                 player.initalizeStrength = player.initalizeStrength + boost;
+                Clamp(player.initalizeStrength, 0, 100);
             }
         }
     }

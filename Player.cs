@@ -17,8 +17,6 @@ namespace Text_Based_RPG
             health = 100;
             initalizeStrength = 25;
             InitializeCharacterPosition(7, 7);
-            x = 7;
-            y = 7;
         }
 
         public void Update(Map map, EnemyManager enemyManager, Camera camera)
@@ -29,10 +27,7 @@ namespace Text_Based_RPG
                 isAlive = false;
             }
 
-
             key = Console.ReadKey(true);
-
-            camera.PositionCam(x, y);
 
             //I want to have the player's position before the move saved
             priorPositionX = x;
@@ -62,7 +57,7 @@ namespace Text_Based_RPG
                     break;
             }
 
-            //camera.PositionCam(x + deltaX, y + deltaY); //remove later
+            camera.PositionCam(x + deltaX, y + deltaY); //remove later
 
             while (Console.KeyAvailable) Console.ReadKey(true); //prevents hold buffering
 
