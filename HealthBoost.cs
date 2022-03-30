@@ -22,7 +22,7 @@ namespace Text_Based_RPG
                 onGround = false;
                 MakeBeep(300, 100);
                 player.health = player.health + boost;
-                Clamp(player.health, 0, 100); //consider not hardcoding in future
+                Clamp(player.health, 0, 100);
             }
         }
     }

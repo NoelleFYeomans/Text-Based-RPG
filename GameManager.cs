@@ -27,11 +27,11 @@ namespace Text_Based_RPG
                 map.Draw(camera, renderer);
                 itemManager.DrawItems(camera, renderer); 
                 player.Draw(camera, renderer);//map colour & renderer colour & health/attack clamps. Nerf enemy damage
-                enemyManager.DrawEnemies(camera, renderer); //camera bugs, GlobalSettings settup
+                enemyManager.DrawEnemies(camera, renderer); //camera print outside walls, GlobalSettings settup
 
                 map.Update();
                 itemManager.UpdateItems(player);
-                hud.DrawHUD(player, enemyManager);
+                hud.UpdateHUD(player, enemyManager); //postive Y camera stutter caused by HUD, negative Y camera stutter cause unk
                 player.Update(map, enemyManager, camera);
                 enemyManager.UpdateEnemies(map, player, enemyManager);
             }

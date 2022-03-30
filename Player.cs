@@ -27,6 +27,9 @@ namespace Text_Based_RPG
                 isAlive = false;
             }
 
+            Clamp(health, 0, 100); //double checking to make sure health is clamped
+            Clamp(initalizeStrength, 0, 100); //double checking to make sure attack is clamped
+
             key = Console.ReadKey(true);
 
             //I want to have the player's position before the move saved
@@ -57,7 +60,7 @@ namespace Text_Based_RPG
                     break;
             }
 
-            camera.PositionCam(x + deltaX, y + deltaY); //remove later
+            camera.PositionCam(x + deltaX, y + deltaY);
 
             while (Console.KeyAvailable) Console.ReadKey(true); //prevents hold buffering
 
@@ -104,11 +107,19 @@ namespace Text_Based_RPG
                     {
                         enemyManager.enemyArray[i].TakeDamage(initalizeStrength);
                         enemyManager.enemyArray[i].recentTarget = true;
-                        //Console.WriteLine("most recent enemy is enemy " + i + " It's health is " + enemyManager.enemyArray[i].health);
                     }
                 }
 
                 doAttack = false;
+            }
+
+            if (canMove)
+            {
+                camera.PositionCam(x + deltaX, y + deltaY);
+            }
+            else
+            {
+                camera.PositionCam(x, y);
             }
 
             ApplyAction(map); 

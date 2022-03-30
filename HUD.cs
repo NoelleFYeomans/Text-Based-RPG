@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     class HUD
     {
-        public void DrawHUD(Player player, EnemyManager enemyManager) //this is ALL temp code
+        public void UpdateHUD(Player player, EnemyManager enemyManager) //this is ALL temp code
         {
             ClearHUD();
             DisplayPlayerStats(player);
@@ -41,9 +41,22 @@ namespace Text_Based_RPG
         public void DisplayPlayerStats(Player player)
         {
             Console.SetCursorPosition(0, 17);
-            Console.WriteLine("Player health: " + player.health);
-            Console.WriteLine("Player strength: " + player.initalizeStrength);
+            Console.WriteLine("Player health: " + Clamp(player.health, 0, 100));
+            Console.WriteLine("Player strength: " + Clamp(player.initalizeStrength, 0, 100));
             Console.WriteLine("# of keys: " + player.hasKeys);
+        }
+
+        protected int Clamp(int value, int minValue, int maxValue)
+        {
+            if (value > maxValue)
+            {
+                value = maxValue;
+            }
+            else if (value < minValue)
+            {
+                value = minValue;
+            }
+            return value;
         }
     }
 }

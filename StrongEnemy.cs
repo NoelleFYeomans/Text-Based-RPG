@@ -12,7 +12,7 @@ namespace Text_Based_RPG
         {
             objectIcon = 'S';
             health = 150;
-            initalizeStrength = 20;
+            initalizeStrength = 10;
         }
 
         public new void Update(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE

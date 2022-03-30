@@ -13,7 +13,7 @@ namespace Text_Based_RPG
         {
             objectIcon = 'E';
             health = 100;
-            initalizeStrength = 10;
+            initalizeStrength = 5;
         }
 
         public new void Update(Map map, Player player, EnemyManager enemyManager) //test static update & virtual instead of new
