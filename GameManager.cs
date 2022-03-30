@@ -26,8 +26,8 @@ namespace Text_Based_RPG
             {
                 map.Draw(camera, renderer);
                 itemManager.DrawItems(camera, renderer); 
-                player.Draw(camera, renderer);
-                enemyManager.DrawEnemies(camera, renderer); //camera!!, GlobalSettings settup
+                player.Draw(camera, renderer);//map colour & renderer colour & health/attack clamps. Nerf enemy damage
+                enemyManager.DrawEnemies(camera, renderer); //camera bugs, GlobalSettings settup
 
                 map.Update();
                 itemManager.UpdateItems(player);

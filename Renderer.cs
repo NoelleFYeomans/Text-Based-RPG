@@ -14,7 +14,7 @@ namespace Text_Based_RPG
             int screenY = worldY - camera.y;//camOffset y = player.y
 
             screenX += camera.width / 2; //centers camera on X axis
-            screenY += camera.height / 2; //centers camera on Y axis
+            screenY += camera.height / 2; //centers camera on Y axissss
 
             if (screenX < 0 || screenX > camera.width || screenY < 0 || screenY > camera.height) return;
 
