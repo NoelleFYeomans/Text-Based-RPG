@@ -28,7 +28,7 @@ namespace Text_Based_RPG
                 map.Draw(camera, renderer);
                 itemManager.DrawItems(camera, renderer); 
                 player.Draw(camera, renderer);
-                enemyManager.DrawEnemies(camera, renderer); //camera print outside walls
+                enemyManager.DrawEnemies(camera, renderer); //Camera print outside walls(LAST BUG)
 
                 map.Update();
                 itemManager.UpdateItems(player);

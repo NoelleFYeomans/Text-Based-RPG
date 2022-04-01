@@ -19,8 +19,8 @@ namespace Text_Based_RPG
         public char playerObjectIcon = '@';
         public int playerHealth = 100;
         public int playerInitStrength = 25;
-        public int playerSpawnX = 15;
-        public int playerSpawnY = 6;
+        public int playerSpawnX = 31;
+        public int playerSpawnY = 7;
 
         //WeakEnemy stats
         public char weakObjectIcon = 'W';

@@ -29,7 +29,7 @@ namespace Text_Based_RPG
 
             health = health - atk;
 
-            if (health <= 0) //This solves the death bug & health clamping
+            if (health <= 0) 
             {
                 health = Clamp(health, 0, 100);
                 isAlive = false;
@@ -41,8 +41,10 @@ namespace Text_Based_RPG
 
         }
 
-        public void InitializeCharacterPosition(int initX, int initY) //once getter works, make coordinates only
+        public void InitializeCharacterPosition(int initX, int initY)
         {
+            x = initX;
+            y = initY;
             initializeX = initX;
             initializeY = initY;
         }
@@ -62,7 +64,7 @@ namespace Text_Based_RPG
             }
         }
 
-        public void Draw(Camera camera, Renderer renderer) //could move to GameObject class & apply to player & items?
+        public void Draw(Camera camera, Renderer renderer)
         {
             if (spawning)
             {

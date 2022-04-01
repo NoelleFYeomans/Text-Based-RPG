@@ -28,7 +28,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {
-                while (map.isImpassableObstacle(itemArray[i].y, itemArray[i].x) || map.isDoor(itemArray[i].y, itemArray[i].x))
+                while (map.isImpassableObstacle(itemArray[i].y, itemArray[i].x) || map.isDoor(itemArray[i].y, itemArray[i].x) || map.isInsideStructure(itemArray[i].y, itemArray[i].x))
                 {
                     itemArray[i].x = GenerateRandNum(map.mapRawData[0].Length);
                     itemArray[i].y = GenerateRandNum(map.mapRawData.Length);

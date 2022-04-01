@@ -62,6 +62,18 @@ namespace Text_Based_RPG
             }
         }
 
+        public bool isInsideStructure(int y, int x)
+        {
+            if (mapRawData[y][x] == 'm' || mapRawData[y][x] == 'B' || mapRawData[y][x] == 'o')
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void OpenDoor()
         {
             doorOpen = true;

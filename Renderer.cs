@@ -19,7 +19,7 @@ namespace Text_Based_RPG
             screenX += camera.width / 2; //centers camera on X axis
             screenY += camera.height / 2; //centers camera on Y axis
 
-            if (screenX < 0 || screenX > camera.width || screenY < 2 || screenY > camera.height) return; //screenY < 2 fixed the north end screen jitter, I do not know exactly why
+            if (screenX < 0 || screenX > camera.width || screenY < 0 || screenY > camera.height) return; //screenY < 2 fixed the north end screen jitter, I do not know exactly why
 
             Console.SetCursorPosition(screenX, screenY);
             Console.ForegroundColor = color;
