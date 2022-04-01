@@ -9,8 +9,8 @@ namespace Text_Based_RPG
     class GlobalSettings //list of things that are hardcoded/settings that can be changed easily here
     {
         //Ingame Camera Dimension
-        public int camHeight = 15;
-        public int camWidth = 30;
+        public int camHeight = 14;
+        public int camWidth = 28;
 
         //Obstacle Characters in Map.cs
         public string impassableChars = "#~^"; //add/remove char to change collision detection
@@ -19,7 +19,7 @@ namespace Text_Based_RPG
         public char playerObjectIcon = '@';
         public int playerHealth = 100;
         public int playerInitStrength = 25;
-        public int playerSpawnX = 31;
+        public int playerSpawnX = 30;
         public int playerSpawnY = 7;
 
         //WeakEnemy stats

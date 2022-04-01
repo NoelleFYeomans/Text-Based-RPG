@@ -78,8 +78,6 @@ namespace Text_Based_RPG
                     break;
             }
 
-            camera.PositionCam(x + deltaX, y + deltaY);
-
             while (Console.KeyAvailable) Console.ReadKey(true); //prevents hold buffering
 
             if (map.isImpassableObstacle(y + deltaY, x + deltaX)) //perform checks before movement
