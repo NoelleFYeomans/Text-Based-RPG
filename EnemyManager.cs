@@ -11,10 +11,10 @@ namespace Text_Based_RPG
         //declaration & instantiation
         public Enemy[] enemyArray = new Enemy[50]; //hardcoded?
 
-        public EnemyManager(Map map) //this is the constructor
+        public EnemyManager(GlobalSettings global) //this is the constructor
         {
-            CreateEnemies();
-            InitializeEnemyPositions(map);
+            CreateEnemies(global);
+            InitializeEnemyPositions();
         }
 
         static Random rand = new Random();
@@ -38,31 +38,37 @@ namespace Text_Based_RPG
         }
 
         //Fills Array
-        private void CreateEnemies() 
+        private void CreateEnemies(GlobalSettings global) 
         {
             for(int i = 0; i <= enemyArray.Length - 1; i++)
             {
                 if (i <= (enemyArray.Length - enemyArray.Length / 2)) 
                 {
-                    enemyArray[i] = new WeakEnemy();
+                    enemyArray[i] = new WeakEnemy(global);
                 }
                 else if (i <= enemyArray.Length - 3) 
                 {
-                    enemyArray[i] = new NormalEnemy();
+                    enemyArray[i] = new NormalEnemy(global);
                 }
                 else if (i >= enemyArray.Length - 2)
                 {
-                    enemyArray[i] = new StrongEnemy();
+                    enemyArray[i] = new StrongEnemy(global);
                 }
             }
         }
 
-        private void InitializeEnemyPositions(Map map) //nothing stops items from occupying same position
+        private void InitializeEnemyPositions() 
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
-                //InitPosProtection(map); //enemies spawn in impassable objects, why?
+                if (i <= enemyArray.Length - 2)
+                {
+                    enemyArray[i].InitializeCharacterPosition(GenerateRandNum(80, 110), GenerateRandNum(4, 22));
+                }
+                else if (i <= enemyArray.Length - 1)
+                {
+                    enemyArray[i].InitializeCharacterPosition(70, 4);
+                }
             }
         }
 

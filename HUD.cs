@@ -18,12 +18,11 @@ namespace Text_Based_RPG
 
         public void ClearHUD()
         {
-            Console.SetCursorPosition(Console.WindowLeft, 17);
-            Console.Write(new string(' ', Console.BufferWidth));
-            Console.SetCursorPosition(Console.WindowLeft, 18);
-            Console.Write(new string(' ', Console.BufferWidth));
-            Console.SetCursorPosition(Console.WindowLeft, 19);
-            Console.Write(new string(' ', Console.BufferWidth));
+            for (int i = 17; i < 20; i++)
+            {
+                Console.SetCursorPosition(Console.WindowLeft, i);
+                Console.Write(new string(' ', Console.BufferWidth));
+            }
         }
 
         public void DisplayEnemyStats(EnemyManager enemyManager)
@@ -41,8 +40,8 @@ namespace Text_Based_RPG
         public void DisplayPlayerStats(Player player)
         {
             Console.SetCursorPosition(0, 17);
-            Console.WriteLine("Player health: " + Clamp(player.health, 0, 100));
-            Console.WriteLine("Player strength: " + Clamp(player.initalizeStrength, 0, 100));
+            Console.WriteLine("Player health: " + player.health);
+            Console.WriteLine("Player strength: " + player.initalizeStrength);
             Console.WriteLine("# of keys: " + player.hasKeys);
         }
 

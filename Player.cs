@@ -11,12 +11,12 @@ namespace Text_Based_RPG
         ConsoleKeyInfo key = new ConsoleKeyInfo();
         public int hasKeys = 0;
 
-        public Player()
+        public Player(GlobalSettings global)
         {
-            objectIcon = '@';
-            health = 100;
-            initalizeStrength = 25;
-            InitializeCharacterPosition(7, 7);
+            objectIcon = global.playerObjectIcon;
+            health = global.playerHealth;
+            initalizeStrength = global.playerInitStrength;
+            InitializeCharacterPosition(global.playerSpawnX, global.playerSpawnY);
         }
 
         public void Update(Map map, EnemyManager enemyManager, Camera camera)
@@ -26,9 +26,6 @@ namespace Text_Based_RPG
             {
                 isAlive = false;
             }
-
-            Clamp(health, 0, 100); //double checking to make sure health is clamped
-            Clamp(initalizeStrength, 0, 100); //double checking to make sure attack is clamped
 
             key = Console.ReadKey(true);
 
@@ -44,7 +41,7 @@ namespace Text_Based_RPG
             if (!isAlive) return; //implement guard clause around here
 
             //obtain player input/desired movement
-            switch (key.Key) 
+            switch (key.Key)
             {
                 case ConsoleKey.W:
                     deltaY = -1;
@@ -70,11 +67,17 @@ namespace Text_Based_RPG
                 MakeBeep(500, 100);
             }
 
-            if (map.isDoor((y + deltaY), (x + deltaX)) && !map.doorOpen)
+            if (map.isDoor((y + deltaY), (x + deltaX)) && (!map.doorOpen || !map.ironDoorOpen))
             {
-                if (hasKeys >= 1)
+                if (hasKeys >= 1 && map.mapRawData[y + deltaY][x + deltaX] == 'D')
                 {
                     map.OpenDoor();
+                    MakeBeep(1500, 100);
+                    hasKeys--;
+                }
+                else if (hasKeys >= 1 && map.mapRawData[y + deltaY][x + deltaX] == 'I')
+                {
+                    map.OpenIronDoor();
                     MakeBeep(1500, 100);
                     hasKeys--;
                 }

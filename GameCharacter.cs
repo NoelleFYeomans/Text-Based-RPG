@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     abstract class GameCharacter : GameObject
     {
-        public int health = 100; //protected, needs to be public to visibly test
+        public int health;
 
         protected bool doAttack = false;
         protected bool canMove = true;
@@ -16,7 +16,6 @@ namespace Text_Based_RPG
         protected bool spawning = true;
 
         protected int minHealth = 0;
-        protected int maxHealth; //set on a GameCharacter by GameCharacter basis
 
         public int initalizeStrength;
         public int priorPositionX;
@@ -76,15 +75,11 @@ namespace Text_Based_RPG
             {
                 if (objectIcon == '@')
                 {
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    renderer.Draw(x, y, objectIcon, camera);
-                    Console.ForegroundColor = ConsoleColor.White;
+                    renderer.Draw(x, y, objectIcon, camera, ConsoleColor.Magenta);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    renderer.Draw(x, y, objectIcon, camera);
-                    Console.ForegroundColor = ConsoleColor.White;
+                    renderer.Draw(x, y, objectIcon, camera, ConsoleColor.DarkRed);
                 }
             }
 

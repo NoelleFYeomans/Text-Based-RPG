@@ -8,11 +8,11 @@ namespace Text_Based_RPG
 {
     class StrongEnemy : Enemy 
     {
-        public StrongEnemy()
+        public StrongEnemy(GlobalSettings global)
         {
-            objectIcon = 'S';
-            health = 150;
-            initalizeStrength = 10;
+            objectIcon = global.strongObjectIcon;
+            health = global.strongHealth;
+            initalizeStrength = global.strongInitStrength;
         }
 
         public new void Update(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE

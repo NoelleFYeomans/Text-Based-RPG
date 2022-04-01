@@ -8,9 +8,9 @@ namespace Text_Based_RPG
 {
     class Map
     {
-        public string[] mapRawData; //consider a settings page
+        public string[] mapRawData;
 
-        private string impassableChars = "#~^"; //add new impassible/wall charavters here <<<<<<<<<<<<<<<<<<
+        private string impassableChars;
 
         private int x;
         private int y;
@@ -19,13 +19,14 @@ namespace Text_Based_RPG
 
 
         public bool doorOpen = false;
+        public bool ironDoorOpen = false;
 
-        public Map()
+        public Map(GlobalSettings global)
         {
             mapRawData = System.IO.File.ReadAllLines("map.txt");
+            impassableChars = global.impassableChars;
 
             Console.SetBufferSize((mapRawData[0].Length * 3), (mapRawData.Length * 3));//sets actual world border size
-            //Console.SetWindowSize(32, 30);
         }
 
         public void Update() //future use
@@ -51,7 +52,7 @@ namespace Text_Based_RPG
 
         public bool isDoor(int y, int x)
         {
-            if (mapRawData[y][x] == 'D')
+            if (mapRawData[y][x] == 'D' || mapRawData[y][x] == 'I')
             {
                 return true;
             }
@@ -66,6 +67,11 @@ namespace Text_Based_RPG
             doorOpen = true;
         }
 
+        public void OpenIronDoor()
+        {
+            ironDoorOpen = true;
+        }
+
         public void Draw(Camera camera, Renderer renderer)
         {
             width = mapRawData[0].Length;
@@ -75,43 +81,43 @@ namespace Text_Based_RPG
             {
                 for (x = 0; x <= width - 1; x++)
                 {
-                    ColourMap();
-                    renderer.Draw(x, y, mapRawData[y][x], camera);
+                    renderer.Draw(x, y, mapRawData[y][x], camera, ColourMap());
                 }
                 Console.WriteLine("");
             }
         }
 
-        public void ColourMap() //is there a way to make this better/more scalable?
+        public ConsoleColor ColourMap() //is there a way to make this better/more scalable?
         {
             if (mapRawData[y][x] == '#')
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
+                return ConsoleColor.Cyan;
             }
             else if (mapRawData[y][x] == ',')
             {
-                Console.ForegroundColor = ConsoleColor.Green;
+                return ConsoleColor.Green;
             }
-            else if (mapRawData[y][x] == 'D' && !doorOpen)
+            else if ((mapRawData[y][x] == 'D' && !doorOpen) || (mapRawData[y][x] == 'I' && !ironDoorOpen))
             {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                return ConsoleColor.DarkYellow;
             }
-            else if (mapRawData[y][x] == 'D' && doorOpen)
+            else if ((mapRawData[y][x] == 'D' && doorOpen) || (mapRawData[y][x] == 'I' && ironDoorOpen))
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                return ConsoleColor.Yellow;
             }
             else if (mapRawData[y][x] == '~')
             {
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                return ConsoleColor.DarkBlue;
             }
-            else if (mapRawData[y][x] == 'm')
+            else if (mapRawData[y][x] == 'm' || mapRawData[y][x] == 'o')
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
+                return ConsoleColor.Gray;
             }
             else if (mapRawData[y][x] == '^')
             {
-                Console.ForegroundColor = ConsoleColor.DarkGray;
+                return ConsoleColor.DarkGray;
             }
+            return ConsoleColor.White;
         }
     }
 }

@@ -10,11 +10,11 @@ namespace Text_Based_RPG
     {
         bool canAct = true; //unique bool for weakE's movement
 
-        public WeakEnemy()
+        public WeakEnemy(GlobalSettings global)
         {
-            objectIcon = 'W';
-            health = 50;
-            initalizeStrength = 1;
+            objectIcon = global.weakObjectIcon;
+            health = global.weakHealth;
+            initalizeStrength = global.weakInitStrength;
         }
 
         public new void Update(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE

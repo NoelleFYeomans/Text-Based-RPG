@@ -9,11 +9,11 @@ namespace Text_Based_RPG
     class NormalEnemy : Enemy
     {
 
-        public NormalEnemy()
+        public NormalEnemy(GlobalSettings global)
         {
-            objectIcon = 'E';
-            health = 100;
-            initalizeStrength = 5;
+            objectIcon = global.normalObjectIcon;
+            health = global.normalHealth;
+            initalizeStrength = global.normalInitStrength;
         }
 
         public new void Update(Map map, Player player, EnemyManager enemyManager) //test static update & virtual instead of new

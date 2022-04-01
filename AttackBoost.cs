@@ -8,12 +8,13 @@ namespace Text_Based_RPG
 {
     class AttackBoost : Items
     {
-        public AttackBoost()
-        {
-            objectIcon = 'A';
-        }
+        public int boost;
 
-        public int boost = 25; //global settings
+        public AttackBoost(GlobalSettings global)
+        {
+            objectIcon = global.aBoostIcon;
+            boost = global.attackBoost;
+        }
 
         public override void Update(Player player)
         {
@@ -22,7 +23,7 @@ namespace Text_Based_RPG
                 onGround = false;
                 MakeBeep(300, 100);
                 player.initalizeStrength = player.initalizeStrength + boost;
-                Clamp(player.initalizeStrength, 0, 100);
+                player.initalizeStrength = Clamp(player.initalizeStrength, 0, 50); //double checking to make sure health is clamped
             }
         }
     }

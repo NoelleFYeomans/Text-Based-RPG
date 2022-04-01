@@ -11,12 +11,15 @@ namespace Text_Based_RPG
         public int x;
         public int y;
 
-        public int height = 15;
-        public int width = 30;
+        public int height;
+        public int width;
 
-        public Camera(Player player) //fix initial camera draw & Y axis stutter & outside border printing
+        public Camera(Player player, GlobalSettings global) //fix initial camera draw & Y axis stutter & outside border printing
         {
             PositionCam(player.x, player.y);
+
+            height = global.camHeight;
+            width = global.camWidth;
         }
 
         public void PositionCam(int x, int y) //camera position

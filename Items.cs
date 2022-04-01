@@ -29,9 +29,7 @@ namespace Text_Based_RPG
         {
             if (onGround)
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                renderer.Draw(x, y, objectIcon, camera);
-                Console.ForegroundColor = ConsoleColor.White;
+                renderer.Draw(x, y, objectIcon, camera, ConsoleColor.Blue);
             }
         }
     }

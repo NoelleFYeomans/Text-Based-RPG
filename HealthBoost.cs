@@ -8,12 +8,13 @@ namespace Text_Based_RPG
 {
     class HealthBoost : Items
     {
-        public HealthBoost()
-        {
-            objectIcon = 'P';
-        }
+        public int boost;
 
-        public int boost = 25;
+        public HealthBoost(GlobalSettings global)
+        {
+            objectIcon = global.hBoostIcon;
+            boost = global.healthBoost;
+        }
 
         public override void Update(Player player)
         {
@@ -22,7 +23,7 @@ namespace Text_Based_RPG
                 onGround = false;
                 MakeBeep(300, 100);
                 player.health = player.health + boost;
-                Clamp(player.health, 0, 100);
+                player.health = Clamp(player.health, 0, 100); //double checking to make sure health is clamped
             }
         }
     }

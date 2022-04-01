@@ -10,23 +10,24 @@ namespace Text_Based_RPG
     {
         //declaration & instantiation
         static GlobalSettings global = new GlobalSettings();
-        static Map map = new Map();
-        static Player player = new Player();
-        static Camera camera = new Camera(player);
+        static Map map = new Map(global);
+        static Player player = new Player(global);
+        static Camera camera = new Camera(player, global);
         static Renderer renderer = new Renderer();
-        static EnemyManager enemyManager = new EnemyManager(map);
-        static ItemManager itemManager = new ItemManager(map);
+        static EnemyManager enemyManager = new EnemyManager(global);
+        static ItemManager itemManager = new ItemManager(map, global);
         static GameStateManager gameStateManager = new GameStateManager();
         static HUD hud = new HUD();
 
         public void gameLoop()
         {
+
             //game loop
             while (!gameStateManager.isGameLost(player) && !gameStateManager.isGameWon(enemyManager))
             {
                 map.Draw(camera, renderer);
                 itemManager.DrawItems(camera, renderer); 
-                player.Draw(camera, renderer);//map colour & renderer colour & health/attack clamps. Nerf enemy damage
+                player.Draw(camera, renderer);
                 enemyManager.DrawEnemies(camera, renderer); //camera print outside walls, GlobalSettings settup
 
                 map.Update();

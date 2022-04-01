@@ -10,9 +10,9 @@ namespace Text_Based_RPG
     {
         public Items[] itemArray = new Items[50]; //same polymorphism issue as enemyManager
 
-        public ItemManager(Map map) 
+        public ItemManager(Map map, GlobalSettings global) 
         {
-            CreateItems();
+            CreateItems(global);
             InitItemPositions(map);
         }
 
@@ -36,17 +36,17 @@ namespace Text_Based_RPG
             }
         }
 
-        private void CreateItems()
+        private void CreateItems(GlobalSettings global)
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {
                 if (i <= (itemArray.Length / 2))
                 {
-                    itemArray[i] = new HealthBoost(); //25
+                    itemArray[i] = new HealthBoost(global); //25
                 }
                 else if (i <= itemArray.Length - 3) //23
                 {
-                    itemArray[i] = new AttackBoost();
+                    itemArray[i] = new AttackBoost(global);
                 }
                 else if (i >= itemArray.Length - 2) //2
                 {

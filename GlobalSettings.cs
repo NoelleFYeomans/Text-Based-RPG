@@ -8,6 +8,43 @@ namespace Text_Based_RPG
 {
     class GlobalSettings //list of things that are hardcoded/settings that can be changed easily here
     {
-        public string[] mapRawData = System.IO.File.ReadAllLines("map.txt");
+        //Ingame Camera Dimension
+        public int camHeight = 15;
+        public int camWidth = 30;
+
+        //Obstacle Characters in Map.cs
+        public string impassableChars = "#~^"; //add/remove char to change collision detection
+
+        //Player stats
+        public char playerObjectIcon = '@';
+        public int playerHealth = 100;
+        public int playerInitStrength = 25;
+        public int playerSpawnX = 15;
+        public int playerSpawnY = 6;
+
+        //WeakEnemy stats
+        public char weakObjectIcon = 'W';
+        public int weakHealth = 50;
+        public int weakInitStrength = 1;
+
+        //NormalEnemy stats
+        public char normalObjectIcon = 'E';
+        public int normalHealth = 100;
+        public int normalInitStrength = 5;
+
+        //StrongEnemy stats
+        public char strongObjectIcon = 'S';
+        public int strongHealth = 150;
+        public int strongInitStrength = 10;
+
+        //Item Stats/Data
+        public int healthBoost = 25;
+        public char hBoostIcon = 'P';
+        public int attackBoost = 25;
+        public char aBoostIcon = 'A';
+        public char keyIcon = 'K';
+
+
+
     }
 }
