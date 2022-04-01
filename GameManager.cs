@@ -28,11 +28,11 @@ namespace Text_Based_RPG
                 map.Draw(camera, renderer);
                 itemManager.DrawItems(camera, renderer); 
                 player.Draw(camera, renderer);
-                enemyManager.DrawEnemies(camera, renderer); //camera print outside walls, GlobalSettings settup
+                enemyManager.DrawEnemies(camera, renderer); //camera print outside walls
 
                 map.Update();
                 itemManager.UpdateItems(player);
-                hud.UpdateHUD(player, enemyManager); //postive Y camera stutter caused by HUD, negative Y camera stutter cause unk
+                hud.UpdateHUD(player, enemyManager); //negative Y camera stutter cause unk
                 player.Update(map, enemyManager, camera);
                 enemyManager.UpdateEnemies(map, player, enemyManager);
             }
@@ -47,7 +47,7 @@ namespace Text_Based_RPG
             }
             else
             {
-                Console.WriteLine("GameState Error.");
+                Console.WriteLine("GameState Error. Please Contact Developer.");
             }
 
             Console.ReadKey(true);

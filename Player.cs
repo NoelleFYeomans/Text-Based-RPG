@@ -10,6 +10,9 @@ namespace Text_Based_RPG
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
         public int hasKeys = 0;
+        public int potionsHeld = 0;
+
+        private int potionValue;
 
         public Player(GlobalSettings global)
         {
@@ -17,6 +20,21 @@ namespace Text_Based_RPG
             health = global.playerHealth;
             initalizeStrength = global.playerInitStrength;
             InitializeCharacterPosition(global.playerSpawnX, global.playerSpawnY);
+            potionValue = global.healthBoost;
+        }
+
+        private void UsePotion()
+        {
+            if (potionsHeld > 0)
+            {
+                health = health + potionValue;
+                health = Clamp(health, 0, 100);
+                potionsHeld--;
+            }
+            else
+            {
+                //nothing
+            }
         }
 
         public void Update(Map map, EnemyManager enemyManager, Camera camera)
@@ -55,6 +73,9 @@ namespace Text_Based_RPG
                 case ConsoleKey.A:
                     deltaX = -1;
                     break;
+                case ConsoleKey.P:
+                    UsePotion();
+                    break;
             }
 
             camera.PositionCam(x + deltaX, y + deltaY);
@@ -67,21 +88,21 @@ namespace Text_Based_RPG
                 MakeBeep(500, 100);
             }
 
-            if (map.isDoor((y + deltaY), (x + deltaX)) && (!map.doorOpen || !map.ironDoorOpen))
+            if (map.isDoor((y + deltaY), (x + deltaX)))
             {
-                if (hasKeys >= 1 && map.mapRawData[y + deltaY][x + deltaX] == 'D')
+                if (hasKeys >= 1 && map.mapRawData[y + deltaY][x + deltaX] == 'D' && !map.doorOpen)
                 {
                     map.OpenDoor();
                     MakeBeep(1500, 100);
                     hasKeys--;
                 }
-                else if (hasKeys >= 1 && map.mapRawData[y + deltaY][x + deltaX] == 'I')
+                else if (hasKeys >= 1 && map.mapRawData[y + deltaY][x + deltaX] == 'I' && !map.ironDoorOpen)
                 {
                     map.OpenIronDoor();
                     MakeBeep(1500, 100);
                     hasKeys--;
                 }
-                else
+                else if ((map.mapRawData[y + deltaY][x + deltaX] == 'D' && !map.doorOpen) || (map.mapRawData[y + deltaY][x + deltaX] == 'I' && !map.ironDoorOpen))
                 {
                     canMove = false;
                     MakeBeep(500, 100);

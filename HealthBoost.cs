@@ -22,8 +22,15 @@ namespace Text_Based_RPG
             {
                 onGround = false;
                 MakeBeep(300, 100);
-                player.health = player.health + boost;
-                player.health = Clamp(player.health, 0, 100); //double checking to make sure health is clamped
+                if (player.health < 100)
+                {
+                    player.health = player.health + boost;
+                    player.health = Clamp(player.health, 0, 100); //double checking to make sure health is clamped
+                }
+                else
+                {
+                    player.potionsHeld++;
+                }
             }
         }
     }
