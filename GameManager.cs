@@ -32,7 +32,7 @@ namespace Text_Based_RPG
 
                 map.Update();
                 itemManager.UpdateItems(player);
-                hud.UpdateHUD(player, enemyManager); //negative Y camera stutter cause unk
+                hud.UpdateHUD(player, enemyManager);
                 player.Update(map, enemyManager, camera);
                 enemyManager.UpdateEnemies(map, player, enemyManager);
             }

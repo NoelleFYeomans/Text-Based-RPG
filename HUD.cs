@@ -18,7 +18,7 @@ namespace Text_Based_RPG
 
         public void ClearHUD()
         {
-            for (int i = 17; i < 20; i++)
+            for (int i = 17; i < 22; i++)
             {
                 Console.SetCursorPosition(Console.WindowLeft, i);
                 Console.Write(new string(' ', Console.BufferWidth));
@@ -45,19 +45,6 @@ namespace Text_Based_RPG
             Console.WriteLine("# of keys: " + player.hasKeys);
             Console.WriteLine("# of potions held: " + player.potionsHeld);
             Console.WriteLine("Press 'P to use held potions");
-        }
-
-        protected int Clamp(int value, int minValue, int maxValue)
-        {
-            if (value > maxValue)
-            {
-                value = maxValue;
-            }
-            else if (value < minValue)
-            {
-                value = minValue;
-            }
-            return value;
         }
     }
 }

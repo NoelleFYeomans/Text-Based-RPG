@@ -26,7 +26,7 @@ namespace Text_Based_RPG
             mapRawData = System.IO.File.ReadAllLines("map.txt");
             impassableChars = global.impassableChars;
 
-            Console.SetBufferSize((mapRawData[0].Length * 3), (mapRawData.Length * 3));//sets actual world border size
+            Console.SetBufferSize((mapRawData[0].Length * 3), (mapRawData.Length * 4));//sets actual world border size
         }
 
         public void Update() //future use
