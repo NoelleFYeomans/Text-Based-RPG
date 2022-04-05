@@ -54,7 +54,7 @@ namespace Text_Based_RPG
                 }
             }
         }
-        public void InitItemPositions(Map map) //nothing stops items from occupying same position
+        public void InitItemPositions(Map map) 
         {
             for (int i = 0; i <= itemArray.Length - 1; i++)
             {

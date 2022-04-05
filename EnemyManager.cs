@@ -76,19 +76,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                if (enemyArray[i] is WeakEnemy)
-                {
-                    ((WeakEnemy)enemyArray[i]).Update(map, player, enemyManager); //check into it
-                    //(enemyArray[i] as WeakEnemy).Update(map, player, enemyManager); //this also works, and might be easier to read
-                }
-                else if (enemyArray[i] is NormalEnemy)
-                {
-                    ((NormalEnemy)enemyArray[i]).Update(map, player, enemyManager);
-                }
-                else if (enemyArray[i] is StrongEnemy)
-                {
-                    ((StrongEnemy)enemyArray[i]).Update(map, player, enemyManager);
-                }
+                enemyArray[i].Update(map, player, enemyManager);
             }
         }
 
@@ -96,18 +84,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= enemyArray.Length - 1; i++)
             {
-                if (enemyArray[i] is WeakEnemy)
-                {
-                    ((WeakEnemy)enemyArray[i]).Draw(camera, renderer);
-                }
-                else if (enemyArray[i] is NormalEnemy)
-                {
-                    ((NormalEnemy)enemyArray[i]).Draw(camera, renderer);
-                }
-                else if (enemyArray[i] is StrongEnemy)
-                {
-                    ((StrongEnemy)enemyArray[i]).Draw(camera, renderer);
-                }
+                enemyArray[i].Draw(camera, renderer);
             }
         }
 

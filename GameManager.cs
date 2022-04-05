@@ -23,7 +23,7 @@ namespace Text_Based_RPG
         {
 
             //game loop
-            while (!gameStateManager.isGameLost(player) && !gameStateManager.isGameWon(enemyManager))
+            while (!gameStateManager.isGameLost(player) && !gameStateManager.isGameWon(enemyManager)) //gameOver state instead
             {
                 map.Draw(camera, renderer);
                 itemManager.DrawItems(camera, renderer); 

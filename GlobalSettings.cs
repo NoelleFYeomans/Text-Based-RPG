@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     class GlobalSettings //list of things that are hardcoded/settings that can be changed easily here
     {
-        //Ingame Camera Dimension
+        //Ingame Camera Dimension //deal with constants
         public int camHeight = 14;
         public int camWidth = 28;
 
