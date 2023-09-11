@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Vector2
+    class Vector2 //went unused
     {
         //might implement later on, not sure.
         struct Coordinates

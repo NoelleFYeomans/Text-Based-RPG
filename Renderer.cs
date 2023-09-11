@@ -8,8 +8,6 @@ namespace Text_Based_RPG
 {
     class Renderer
     {
-
-
         public void Draw(int worldX, int worldY, char printChar, Camera camera, ConsoleColor color) //initial print is an issue
         {
 
