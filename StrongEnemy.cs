@@ -15,7 +15,7 @@ namespace Text_Based_RPG
             initalizeStrength = global.strongInitStrength;
         }
 
-        public new void Update(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE
+        public override void Update(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE
         {
             if (health <= 0)
             {

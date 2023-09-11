@@ -10,10 +10,7 @@ namespace Text_Based_RPG
     {
         public bool recentTarget;
 
-        public void Update(Map map, Player player, EnemyManager enemyManager)
-        {
-            
-        }
+        public abstract void Update(Map map, Player player, EnemyManager enemyManager);
 
         public void CalculateAction(Map map, Player player, EnemyManager enemyManager) 
         {
