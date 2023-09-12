@@ -41,9 +41,10 @@ namespace Text_Based_RPG
         public int strongGold = 10;
 
         //ShopKeeper
-        public char shopObjectIcon = 'N';
+        public char shopObjectIcon = '$';
         public int potionCost = 10;
-        public int attackBoostCost = 10;
+        public int shopPosX = 5;
+        public int shopPosY = 21;
 
         //Item Stats/Data
         public int healthBoost = 25;

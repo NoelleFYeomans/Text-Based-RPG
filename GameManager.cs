@@ -16,6 +16,7 @@ namespace Text_Based_RPG
         static Renderer renderer = new Renderer();
         static EnemyManager enemyManager = new EnemyManager(global);
         static ItemManager itemManager = new ItemManager(map, global);
+        static Shop shop = new Shop(global);
         static GameStateManager gameStateManager = new GameStateManager();
         static HUD hud = new HUD();
 
@@ -28,6 +29,7 @@ namespace Text_Based_RPG
                 map.Draw(camera, renderer);
                 itemManager.DrawItems(camera, renderer); 
                 player.Draw(camera, renderer);
+                shop.DrawShop(camera, renderer);
                 enemyManager.DrawEnemies(camera, renderer); //Camera print outside walls(LAST BUG)
 
                 map.Update();
