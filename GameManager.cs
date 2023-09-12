@@ -14,14 +14,15 @@ namespace Text_Based_RPG
         static Player player = new Player(global);
         static Camera camera = new Camera(player, global);
         static Renderer renderer = new Renderer();
-        static EnemyManager enemyManager = new EnemyManager(global);
+        static Shop shop = new Shop(global, player);
+        static EnemyManager enemyManager = new EnemyManager(global, shop);
         static ItemManager itemManager = new ItemManager(map, global);
-        static Shop shop = new Shop(global);
         static GameStateManager gameStateManager = new GameStateManager();
         static HUD hud = new HUD();
 
         public void gameLoop()
         {
+            player.setShop(shop);
 
             //game loop
             while (!gameStateManager.isGameLost(player) && !gameStateManager.isGameWon(enemyManager)) //gameOver state instead
@@ -34,7 +35,8 @@ namespace Text_Based_RPG
 
                 map.Update();
                 itemManager.UpdateItems(player);
-                hud.UpdateHUD(player, enemyManager);
+                shop.Update();
+                hud.UpdateHUD(player, enemyManager, shop);
                 player.Update(map, enemyManager, camera);
                 enemyManager.UpdateEnemies(map, player, enemyManager);
             }

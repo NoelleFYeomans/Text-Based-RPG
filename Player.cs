@@ -14,6 +14,7 @@ namespace Text_Based_RPG
         public int goldHeld = 0;
 
         private int potionValue;
+        private Shop shop;
 
         public Player(GlobalSettings global)
         {
@@ -41,6 +42,11 @@ namespace Text_Based_RPG
         public void gainGold(int amount)
         {
             goldHeld += amount;
+        }
+
+        public void setShop(Shop shop)
+        {
+            this.shop = shop;
         }
 
         public void Update(Map map, EnemyManager enemyManager, Camera camera)
@@ -82,9 +88,24 @@ namespace Text_Based_RPG
                 case ConsoleKey.P:
                     UsePotion();
                     break;
+                case ConsoleKey.D1:
+                    if (shop.inShop)
+                    {
+                        buyPotion(shop);
+                        shop.exitShop();
+                    }
+                    break;
+                case ConsoleKey.D2:
+                    shop.exitShop();
+                    break;
             }
 
             while (Console.KeyAvailable) Console.ReadKey(true); //prevents hold buffering
+
+            if (shop.inShop)
+            {
+                canMove = false;
+            }
 
             if (map.isImpassableObstacle(y + deltaY, x + deltaX)) //perform checks before movement
             {
@@ -153,5 +174,12 @@ namespace Text_Based_RPG
             ApplyAction(map); 
 
         }
+
+        public void buyPotion(Shop shop)
+        {
+            goldHeld -= shop.potionCost;
+            potionsHeld++;
+        }
+
     }
 }
