@@ -13,12 +13,18 @@ namespace Text_Based_RPG
             objectIcon = global.strongObjectIcon;
             health = global.strongHealth;
             initalizeStrength = global.strongInitStrength;
+            goldValue = global.strongGold;
         }
 
         public override void Update(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE
         {
             if (health <= 0)
             {
+                if (hasGold)
+                {
+                    player.gainGold(goldValue);
+                    hasGold = false;
+                }
                 isAlive = false;
             }
 

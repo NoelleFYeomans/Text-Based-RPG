@@ -26,16 +26,24 @@ namespace Text_Based_RPG
         public char weakObjectIcon = 'W';
         public int weakHealth = 50;
         public int weakInitStrength = 1;
+        public int weakGold = 1;
 
         //NormalEnemy stats
         public char normalObjectIcon = 'E';
         public int normalHealth = 100;
         public int normalInitStrength = 5;
+        public int normalGold = 5;
 
         //StrongEnemy stats
         public char strongObjectIcon = 'S';
         public int strongHealth = 150;
         public int strongInitStrength = 10;
+        public int strongGold = 10;
+
+        //ShopKeeper
+        public char shopObjectIcon = 'N';
+        public int potionCost = 10;
+        public int attackBoostCost = 10;
 
         //Item Stats/Data
         public int healthBoost = 25;

@@ -14,12 +14,18 @@ namespace Text_Based_RPG
             objectIcon = global.normalObjectIcon;
             health = global.normalHealth;
             initalizeStrength = global.normalInitStrength;
+            goldValue = global.normalGold;
         }
 
         public override void Update(Map map, Player player, EnemyManager enemyManager) //test static update & virtual instead of new
         {
             if (health <= 0)
             {
+                if (hasGold)
+                {
+                    player.gainGold(goldValue);
+                    hasGold = false;
+                }
                 isAlive = false;
             }
 

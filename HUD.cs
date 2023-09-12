@@ -42,6 +42,7 @@ namespace Text_Based_RPG
             Console.SetCursorPosition(0, 17);
             Console.WriteLine("Player health: " + player.health);
             Console.WriteLine("Player strength: " + player.initalizeStrength);
+            Console.WriteLine("# of Gold Coins: " + player.goldHeld);
             Console.WriteLine("# of keys: " + player.hasKeys);
             Console.WriteLine("# of potions held: " + player.potionsHeld);
             Console.WriteLine("Press 'P to use held potions");

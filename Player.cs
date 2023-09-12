@@ -11,6 +11,7 @@ namespace Text_Based_RPG
         ConsoleKeyInfo key = new ConsoleKeyInfo();
         public int hasKeys = 0;
         public int potionsHeld = 0;
+        public int goldHeld = 0;
 
         private int potionValue;
 
@@ -35,6 +36,11 @@ namespace Text_Based_RPG
             {
                 //nothing
             }
+        }
+
+        public void gainGold(int amount)
+        {
+            goldHeld += amount;
         }
 
         public void Update(Map map, EnemyManager enemyManager, Camera camera)

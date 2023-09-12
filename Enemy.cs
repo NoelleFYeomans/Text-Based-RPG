@@ -10,6 +10,10 @@ namespace Text_Based_RPG
     {
         public bool recentTarget;
 
+        public int goldValue;
+
+        public bool hasGold = true;
+
         public abstract void Update(Map map, Player player, EnemyManager enemyManager);
 
         public void CalculateAction(Map map, Player player, EnemyManager enemyManager) 
