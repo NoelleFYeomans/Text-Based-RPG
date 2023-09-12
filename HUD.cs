@@ -8,7 +8,7 @@ namespace Text_Based_RPG
 {
     class HUD
     {
-        public void UpdateHUD(Player player, EnemyManager enemyManager, Shop shop) //this is ALL temp code
+        public void UpdateHUD(Player player, EnemyManager enemyManager, Shop shop, QuestManager qManager) //this is ALL temp code
         {
             ClearHUD();
             DisplayPlayerStats(player);
@@ -17,6 +17,7 @@ namespace Text_Based_RPG
             {
                 DisplayShop(shop, shop.canAfford());
             }
+            DisplayQuests(qManager);
         }
 
         public void ClearHUD()
@@ -26,6 +27,26 @@ namespace Text_Based_RPG
                 Console.SetCursorPosition(Console.WindowLeft, i);
                 Console.Write(new string(' ', Console.BufferWidth));
             }
+        }
+
+        public void DisplayQuests(QuestManager qManager)
+        {
+            for (int i = 0; i < qManager.quests.Count; i++)
+            {
+                Console.SetCursorPosition(30, 5 + i);
+                Quest quest = qManager.quests[i];
+                if (quest.complete)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+                Console.Write(quest.message + " (" + quest.achieved + "/" + quest.amount + ")");
+                if(quest.complete)
+                {
+                    Console.Write(" ☺");
+                    Console.ResetColor();
+                }
+            }
+
         }
 
         public void DisplayEnemyStats(EnemyManager enemyManager)

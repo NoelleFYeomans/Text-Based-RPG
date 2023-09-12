@@ -15,6 +15,7 @@ namespace Text_Based_RPG
 
         private int potionValue;
         private Shop shop;
+        //private QuestManager questManager;
 
         public Player(GlobalSettings global)
         {

@@ -18,7 +18,7 @@ namespace Text_Based_RPG {
             player.hasKeys--;
         }
 
-        public override void Update(Player player)
+        public override void Update(Player player, QuestManager qManager)
         {
             if (onGround == true && player.x == x && player.y == y)
             {

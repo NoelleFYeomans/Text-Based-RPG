@@ -18,7 +18,7 @@ namespace Text_Based_RPG
             goldValue = global.weakGold;
         }
 
-        public override void Update(Map map, Player player, EnemyManager enemyManager) //StrongEnemy strongE, WeakEnemy weakE
+        public override void Update(Map map, Player player, EnemyManager enemyManager, QuestManager qManager) //StrongEnemy strongE, WeakEnemy weakE
         {
             if (health <= 0)
             {
@@ -26,6 +26,8 @@ namespace Text_Based_RPG
                 {
                     player.gainGold(goldValue);
                     hasGold = false;
+                    qManager.CheckQuests(Quest.Category.Elimination, Quest.Target.WeakEnemies);
+                    qManager.CheckQuests(Quest.Category.Elimination, Quest.Target.AnyEnemies);
                 }
                 isAlive = false;
             }

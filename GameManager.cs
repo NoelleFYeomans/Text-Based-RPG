@@ -15,8 +15,9 @@ namespace Text_Based_RPG
         static Camera camera = new Camera(player, global);
         static Renderer renderer = new Renderer();
         static Shop shop = new Shop(global, player);
-        static EnemyManager enemyManager = new EnemyManager(global, shop);
-        static ItemManager itemManager = new ItemManager(map, global);
+        static QuestManager questManager = new QuestManager(player);
+        static EnemyManager enemyManager = new EnemyManager(global, shop, questManager);
+        static ItemManager itemManager = new ItemManager(map, global, questManager);
         static GameStateManager gameStateManager = new GameStateManager();
         static HUD hud = new HUD();
 
@@ -36,7 +37,7 @@ namespace Text_Based_RPG
                 map.Update();
                 itemManager.UpdateItems(player);
                 shop.Update();
-                hud.UpdateHUD(player, enemyManager, shop);
+                hud.UpdateHUD(player, enemyManager, shop, questManager);
                 player.Update(map, enemyManager, camera);
                 enemyManager.UpdateEnemies(map, player, enemyManager);
             }

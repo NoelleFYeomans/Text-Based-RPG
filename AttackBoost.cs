@@ -16,7 +16,7 @@ namespace Text_Based_RPG
             boost = global.attackBoost;
         }
 
-        public override void Update(Player player)
+        public override void Update(Player player, QuestManager qManager)
         {
             if (onGround == true && player.x == x && player.y == y)
             {
@@ -24,6 +24,7 @@ namespace Text_Based_RPG
                 MakeBeep(300, 100);
                 player.initalizeStrength = player.initalizeStrength + boost;
                 player.initalizeStrength = Clamp(player.initalizeStrength, 0, 50); //double checking to make sure health is clamped
+                qManager.CheckQuests(Quest.Category.Collection, Quest.Target.AttackBoosts);
             }
         }
     }

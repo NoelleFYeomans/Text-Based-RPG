@@ -11,12 +11,14 @@ namespace Text_Based_RPG
         //declaration & instantiation
         public Enemy[] enemyArray = new Enemy[50]; //hardcoded?
         Shop shop;
+        QuestManager qManager;
 
-        public EnemyManager(GlobalSettings global, Shop shop) //this is the constructor
+        public EnemyManager(GlobalSettings global, Shop shop, QuestManager qManager) //this is the constructor
         {
             CreateEnemies(global);
             InitializeEnemyPositions();
             this.shop = shop;
+            this.qManager = qManager;
         }
 
         static Random rand = new Random();
@@ -80,7 +82,7 @@ namespace Text_Based_RPG
             {
                 for (int i = 0; i <= enemyArray.Length - 1; i++)
                 {
-                    enemyArray[i].Update(map, player, enemyManager);
+                    enemyArray[i].Update(map, player, enemyManager, qManager);
                 }
             }
         }
