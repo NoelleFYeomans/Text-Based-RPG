@@ -50,7 +50,7 @@ namespace Text_Based_RPG
             this.shop = shop;
         }
 
-        public void Update(Map map, EnemyManager enemyManager, Camera camera)
+        public void Update(Map map, EnemyManager enemyManager, QuestManager qManager, Camera camera)
         {
 
             if (health <= 0) //this is where the player dies
@@ -140,6 +140,11 @@ namespace Text_Based_RPG
             {
                 canMove = false;
                 doAttack = true;
+            }
+
+            if(qManager.IsCoordinatesOccupied(x, deltaX, y, deltaY))
+            {
+                canMove = false;
             }
 
             if (doAttack)

@@ -46,6 +46,9 @@ namespace Text_Based_RPG
         public int shopPosX = 5;
         public int shopPosY = 21;
 
+        //ShopKeeper
+        public char questGiverObjectIcon = '!';
+
         //Item Stats/Data
         public int healthBoost = 25;
         public char hBoostIcon = 'P';

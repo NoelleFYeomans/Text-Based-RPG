@@ -15,7 +15,7 @@ namespace Text_Based_RPG
         static Camera camera = new Camera(player, global);
         static Renderer renderer = new Renderer();
         static Shop shop = new Shop(global, player);
-        static QuestManager questManager = new QuestManager(player);
+        static QuestManager questManager = new QuestManager(player, global);
         static EnemyManager enemyManager = new EnemyManager(global, shop, questManager);
         static ItemManager itemManager = new ItemManager(map, global, questManager);
         static GameStateManager gameStateManager = new GameStateManager();
@@ -32,13 +32,14 @@ namespace Text_Based_RPG
                 itemManager.DrawItems(camera, renderer); 
                 player.Draw(camera, renderer);
                 shop.DrawShop(camera, renderer);
+                questManager.DrawGivers(camera, renderer);
                 enemyManager.DrawEnemies(camera, renderer); //Camera print outside walls(LAST BUG)
 
                 map.Update();
                 itemManager.UpdateItems(player);
                 shop.Update();
                 hud.UpdateHUD(player, enemyManager, shop, questManager);
-                player.Update(map, enemyManager, camera);
+                player.Update(map, enemyManager, questManager, camera);
                 enemyManager.UpdateEnemies(map, player, enemyManager);
             }
 
