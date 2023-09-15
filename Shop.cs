@@ -8,23 +8,23 @@ namespace Text_Based_RPG
 {
     internal class Shop : GameObject
     {
-        Player player;
-        GlobalSettings global;
+        //Player player;
+        //GlobalSettings global;
         public int potionCost;
         public bool inShop = false;
         public bool exitingShop = false;
 
         public Shop(GlobalSettings global, Player player, int x, int y)
         {
-            this.global = global;
+            //this.global = global;
             objectIcon = global.shopObjectIcon;
             this.x = x;
             this.y = y;
             potionCost = global.potionCost;
-            this.player = player;
+            //this.player = player;
         }
 
-        public bool canAfford()
+        /*public bool canAfford()
         {
             if (player.goldHeld >= global.potionCost)
             {
@@ -65,6 +65,7 @@ namespace Text_Based_RPG
             inShop = false;
             exitingShop = true;
         }
+        */
 
         public void DrawShop(Camera camera, Renderer renderer)
         {

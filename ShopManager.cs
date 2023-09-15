@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,10 +12,14 @@ namespace Text_Based_RPG
         public Shop[] shops;
         private GlobalSettings global;
         private Player player;
+        public bool inShop = false;
+        public bool exitingShop = false;
+        public int potionCost;
 
         public ShopManager(GlobalSettings global, Player player)
         {
             this.global = global;
+            potionCost = global.potionCost;
             this.player = player;
             CreateShops();
         }
@@ -48,5 +53,46 @@ namespace Text_Based_RPG
             return false;
         }
 
+        public bool canAfford()
+        {
+            if (player.goldHeld >= global.potionCost)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void exitShop()
+        {
+            inShop = false;
+            exitingShop = true;
+        }
+
+        public void enterShop()
+        {
+            inShop = true;
+        }
+
+        public void Update()
+        {
+
+
+            if (exitingShop)
+            {
+                exitingShop = false;
+            }
+
+            if (inShop)
+            {
+                if (canAfford() == false)
+                {
+                    exitShop();
+                }
+            }           
+
+        }
     }
 }

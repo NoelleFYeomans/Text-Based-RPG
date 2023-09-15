@@ -14,7 +14,7 @@ namespace Text_Based_RPG
         public int goldHeld = 0;
 
         private int potionValue;
-        private Shop shop;
+        //private Shop shop;
         //private QuestManager questManager;
 
         public Player(GlobalSettings global)
@@ -45,12 +45,12 @@ namespace Text_Based_RPG
             goldHeld += amount;
         }
 
-        public void setShop(Shop shop)
+        /*public void setShop(Shop shop)
         {
             this.shop = shop;
-        }
+        }*/
 
-        public void Update(Map map, EnemyManager enemyManager, QuestManager qManager, Camera camera)
+        public void Update(Map map, EnemyManager enemyManager, QuestManager qManager, ShopManager shopManager, Camera camera)
         {
 
             if (health <= 0) //this is where the player dies
@@ -90,20 +90,21 @@ namespace Text_Based_RPG
                     UsePotion();
                     break;
                 case ConsoleKey.D1:
-                    if (shop.inShop)
+                    if (shopManager.inShop)
                     {
-                        buyPotion(shop);
-                        shop.exitShop();
+                        buyPotion(shopManager);
+                        shopManager.exitShop();
                     }
                     break;
                 case ConsoleKey.D2:
-                    shop.exitShop();
+                    if(shopManager.inShop)
+                        shopManager.exitShop();
                     break;
             }
 
             while (Console.KeyAvailable) Console.ReadKey(true); //prevents hold buffering
 
-            if (shop.inShop)
+            if (shopManager.inShop)
             {
                 canMove = false;
             }
@@ -147,6 +148,12 @@ namespace Text_Based_RPG
                 canMove = false;
             }
 
+            if(shopManager.IsCoordinatesOccupied(x, deltaX, y, deltaY))
+            {
+                canMove = false;
+                shopManager.enterShop();
+            }
+
             if (doAttack)
             {
                 MakeBeep(1000, 100);
@@ -181,9 +188,9 @@ namespace Text_Based_RPG
 
         }
 
-        public void buyPotion(Shop shop)
+        public void buyPotion(ShopManager shopManager)
         {
-            goldHeld -= shop.potionCost;
+            goldHeld -= shopManager.potionCost;
             potionsHeld++;
         }
 

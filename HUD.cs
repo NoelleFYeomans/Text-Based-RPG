@@ -8,15 +8,12 @@ namespace Text_Based_RPG
 {
     class HUD
     {
-        public void UpdateHUD(Player player, EnemyManager enemyManager, Shop shop, QuestManager qManager) //this is ALL temp code
+        public void UpdateHUD(Player player, EnemyManager enemyManager, ShopManager shopManager, QuestManager qManager) //this is ALL temp code
         {
             ClearHUD();
             DisplayPlayerStats(player);
             DisplayEnemyStats(enemyManager);
-            if (shop.inShop)
-            {
-                DisplayShop(shop, shop.canAfford());
-            }
+            DisplayShop(shopManager);
             DisplayQuests(qManager);
         }
 
@@ -72,22 +69,21 @@ namespace Text_Based_RPG
             Console.WriteLine("Press 'P to use held potions");
         }
 
-        public void DisplayShop(Shop shop, bool canAfford)
+        public void DisplayShop(ShopManager shopManager)
         {
 
             Console.SetCursorPosition(0, 23);
-
-            if (canAfford)
+            if (shopManager.inShop)
             {
                 Console.WriteLine();
-                Console.WriteLine("Would you like to buy a Potion for " + shop.potionCost + " Gold Coins?");
+                Console.WriteLine("Would you like to buy a Potion for " + shopManager.potionCost + " Gold Coins?");
                 Console.WriteLine("1: Yes");
                 Console.WriteLine("2: No");
             }
-            else
+            else if(shopManager.exitingShop)
             {
                 Console.WriteLine();
-                Console.WriteLine("You can't afford a Potion. They cost " + shop.potionCost + " Gold Coins.");
+                Console.WriteLine("You can't afford a Potion. They cost " + shopManager.potionCost + " Gold Coins.");
             }
         }
     }

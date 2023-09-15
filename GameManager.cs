@@ -14,16 +14,16 @@ namespace Text_Based_RPG
         static Player player = new Player(global);
         static Camera camera = new Camera(player, global);
         static Renderer renderer = new Renderer();
-        static Shop shop = new Shop(global, player);
+        static ShopManager shopManager = new ShopManager(global, player);
+        //static Shop shop = new Shop(global, player);
         static QuestManager questManager = new QuestManager(player, global);
-        static EnemyManager enemyManager = new EnemyManager(global, shop, questManager);
+        static EnemyManager enemyManager = new EnemyManager(global, shopManager, questManager);
         static ItemManager itemManager = new ItemManager(map, global, questManager);
         static GameStateManager gameStateManager = new GameStateManager();
         static HUD hud = new HUD();
 
         public void gameLoop()
         {
-            player.setShop(shop);
 
             //game loop
             while (!gameStateManager.isGameLost(player) && !gameStateManager.isGameWon(enemyManager)) //gameOver state instead
@@ -31,15 +31,15 @@ namespace Text_Based_RPG
                 map.Draw(camera, renderer);
                 itemManager.DrawItems(camera, renderer); 
                 player.Draw(camera, renderer);
-                shop.DrawShop(camera, renderer);
+                shopManager.DrawShops(camera, renderer);
                 questManager.DrawGivers(camera, renderer);
                 enemyManager.DrawEnemies(camera, renderer); //Camera print outside walls(LAST BUG)
 
                 map.Update();
                 itemManager.UpdateItems(player);
-                shop.Update();
-                hud.UpdateHUD(player, enemyManager, shop, questManager);
-                player.Update(map, enemyManager, questManager, camera);
+                hud.UpdateHUD(player, enemyManager, shopManager, questManager);
+                player.Update(map, enemyManager, questManager, shopManager, camera);
+                shopManager.Update();
                 enemyManager.UpdateEnemies(map, player, enemyManager);
             }
 

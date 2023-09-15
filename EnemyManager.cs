@@ -10,14 +10,14 @@ namespace Text_Based_RPG
     {
         //declaration & instantiation
         public Enemy[] enemyArray = new Enemy[50]; //hardcoded?
-        Shop shop;
+        ShopManager shopManager;
         QuestManager qManager;
 
-        public EnemyManager(GlobalSettings global, Shop shop, QuestManager qManager) //this is the constructor
+        public EnemyManager(GlobalSettings global, ShopManager shopManager, QuestManager qManager) //this is the constructor
         {
             CreateEnemies(global);
             InitializeEnemyPositions();
-            this.shop = shop;
+            this.shopManager = shopManager;
             this.qManager = qManager;
         }
 
@@ -78,7 +78,7 @@ namespace Text_Based_RPG
 
         public void UpdateEnemies(Map map, Player player, EnemyManager enemyManager)
         {
-            if(shop.inShop == false)
+            if(shopManager.inShop == false)
             {
                 for (int i = 0; i <= enemyArray.Length - 1; i++)
                 {
