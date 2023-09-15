@@ -67,6 +67,7 @@
     <Compile Include="QuestManager.cs" />
     <Compile Include="Renderer.cs" />
     <Compile Include="Shop.cs" />
+    <Compile Include="ShopManager.cs" />
     <Compile Include="StrongEnemy.cs" />
     <Compile Include="UnitTesting.cs" />
     <Compile Include="Vector2.cs" />

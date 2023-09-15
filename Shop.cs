@@ -14,12 +14,12 @@ namespace Text_Based_RPG
         public bool inShop = false;
         public bool exitingShop = false;
 
-        public Shop(GlobalSettings global, Player player)
+        public Shop(GlobalSettings global, Player player, int x, int y)
         {
             this.global = global;
             objectIcon = global.shopObjectIcon;
-            x = global.shopPosX;
-            y = global.shopPosY;
+            this.x = x;
+            this.y = y;
             potionCost = global.potionCost;
             this.player = player;
         }
