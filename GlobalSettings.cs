@@ -44,11 +44,18 @@ namespace Text_Based_RPG
         public char shopObjectIcon = '$';
         public int potionCost = 10;
         public int shopCount = 1;
-        public int[] shopPosX = new int[1] { 5 };
+        public int[] shopPosX = new int[1] { 3 }; //sample second coords 5, 5
         public int[] shopPosY = new int[1] { 21 };
 
         //ShopKeeper
         public char questGiverObjectIcon = '!';
+        public int questGiverCount = 1;
+        public int[] giverPosX = new int[1] { 8 }; //sample second coords 7, 5
+        public int[] giverPosY = new int[1] { 21 };
+        public Quest[] quests = new Quest[1] { 
+            new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25) /*, 
+            new Quest(Quest.Category.Elimination, Quest.Target.NormalEnemies, 5, "Side Quest: Kill 5 Normal Enemies", 50)*/ };
+
 
         //Item Stats/Data
         public int healthBoost = 25;

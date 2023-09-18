@@ -10,7 +10,7 @@ namespace Text_Based_RPG
     {
 
         public List<Quest> quests = new List<Quest>();
-        public QuestGiver[] givers = new QuestGiver[1];
+        public QuestGiver[] givers;
         Player player;
         GlobalSettings global;
 
@@ -26,7 +26,12 @@ namespace Text_Based_RPG
         {
             //quests.Add(new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25));
             quests.Add(new Quest(Quest.Category.Elimination, Quest.Target.AnyEnemies, 50, "Main Quest: Defeat All Enemies", 50));
-            givers[0] = new QuestGiver(new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25), 8, 21, global);
+            //givers[0] = new QuestGiver(new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25), 8, 21, global);
+            givers = new QuestGiver[global.questGiverCount];
+            for (int i = 0; i < global.questGiverCount; i++)
+            {
+                givers[i] = new QuestGiver(global.quests[i], global.giverPosX[i], global.giverPosY[i], global);
+            }
         }
 
         public void CheckQuests(Quest.Category category, Quest.Target target)
