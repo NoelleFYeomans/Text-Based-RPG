@@ -42,21 +42,20 @@ namespace Text_Based_RPG
 
         //ShopKeeper
         public char shopObjectIcon = '$';
-        //public int potionCost = 10;
         public int shopCount = 3;
-        public int[] shopPosX = new int[3] { 3, 5, 50 }; //sample second coords 5, 5
+        public int[] shopPosX = new int[3] { 3, 5, 50 };
         public int[] shopPosY = new int[3] { 21, 5, 3 };
         public Shop.Merch[] shopMerchs = new Shop.Merch[3] { Shop.Merch.Potion, Shop.Merch.Attack, Shop.Merch.Key };
         public int[] shopCosts = new int[3] { 10, 25, 50 };
 
         //ShopKeeper
         public char questGiverObjectIcon = '!';
-        public int questGiverCount = 1;
-        public int[] giverPosX = new int[1] { 8 }; //sample second coords 7, 5
-        public int[] giverPosY = new int[1] { 21 };
-        public Quest[] quests = new Quest[1] { 
+        public int questGiverCount = 2;
+        public int[] giverPosX = new int[2] { 8, 7 };
+        public int[] giverPosY = new int[2] { 21, 5 };
+        public Quest[] quests = new Quest[2] { 
             new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25)
-            //,new Quest(Quest.Category.Elimination, Quest.Target.NormalEnemies, 5, "Side Quest: Kill 5 Normal Enemies", 50)
+            ,new Quest(Quest.Category.Elimination, Quest.Target.NormalEnemies, 5, "Side Quest: Kill 5 Normal Enemies", 50)
         };
 
 
