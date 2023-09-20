@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Text_Based_RPG.ShopManager;
 
 namespace Text_Based_RPG
 {
@@ -10,17 +11,43 @@ namespace Text_Based_RPG
     {
         //Player player;
         //GlobalSettings global;
-        public int potionCost;
+        public enum Merch
+        {
+            Potion,
+            Attack,
+            Key
+        }
+
+        public Merch merch;
+
+        public int cost;
         public bool inShop = false;
         public bool exitingShop = false;
+        public string merchName;
 
-        public Shop(GlobalSettings global, Player player, int x, int y)
+        public Shop(GlobalSettings global, Player player, int x, int y, Merch merch, int cost)
         {
             //this.global = global;
             objectIcon = global.shopObjectIcon;
             this.x = x;
             this.y = y;
-            potionCost = global.potionCost;
+            this.merch = merch;
+            this.cost = cost;
+
+            switch (merch)
+            {
+                case Merch.Potion:
+                    merchName = "Potion";
+                    break;
+                case Merch.Attack:
+                    merchName = "Attack Boost";
+                    break;
+                case Merch.Key:
+                    merchName = "Key";
+                    break;
+            }
+
+            //potionCost = global.potionCost;
             //this.player = player;
         }
 

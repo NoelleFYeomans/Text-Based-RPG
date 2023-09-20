@@ -14,6 +14,7 @@ namespace Text_Based_RPG
         public int goldHeld = 0;
 
         private int potionValue;
+        private GlobalSettings global;
         //private Shop shop;
         //private QuestManager questManager;
 
@@ -24,6 +25,7 @@ namespace Text_Based_RPG
             initalizeStrength = global.playerInitStrength;
             InitializeCharacterPosition(global.playerSpawnX, global.playerSpawnY);
             potionValue = global.healthBoost;
+            this.global = global;
         }
 
         private void UsePotion()
@@ -92,7 +94,7 @@ namespace Text_Based_RPG
                 case ConsoleKey.D1:
                     if (shopManager.inShop)
                     {
-                        buyPotion(shopManager);
+                        buyMerch(shopManager);
                         shopManager.exitShop();
                     }
                     break;
@@ -188,10 +190,23 @@ namespace Text_Based_RPG
 
         }
 
-        public void buyPotion(ShopManager shopManager)
+        public void buyMerch(ShopManager shopManager)
         {
-            goldHeld -= shopManager.potionCost;
-            potionsHeld++;
+            goldHeld -= shopManager.latestShop.cost;
+            //potionsHeld++;
+            switch(shopManager.latestShop.merch)
+            {
+                case Shop.Merch.Potion:
+                    potionsHeld++;
+                    break;
+                case Shop.Merch.Attack:
+                    initalizeStrength = initalizeStrength + global.attackBoost;
+                    initalizeStrength = Clamp(initalizeStrength, 0, 50); //double checking to make sure health is clamped
+                    break;
+                case Shop.Merch.Key:
+                    hasKeys++;
+                    break;
+            }
         }
 
     }

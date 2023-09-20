@@ -9,17 +9,23 @@ namespace Text_Based_RPG
 {
     internal class ShopManager
     {
+
+        
+
         public Shop[] shops;
         private GlobalSettings global;
         private Player player;
         public bool inShop = false;
         public bool exitingShop = false;
-        public int potionCost;
+        public int cost;
+
+        public Shop latestShop;
+
 
         public ShopManager(GlobalSettings global, Player player)
         {
             this.global = global;
-            potionCost = global.potionCost;
+            //potionCost = global.potionCost;
             this.player = player;
             CreateShops();
         }
@@ -29,7 +35,7 @@ namespace Text_Based_RPG
             shops = new Shop[global.shopCount];
             for (int i = 0; i <= shops.Length - 1; i++)
             {
-                shops[i] = new Shop(global, player, global.shopPosX[i], global.shopPosY[i]);
+                shops[i] = new Shop(global, player, global.shopPosX[i], global.shopPosY[i], global.shopMerchs[i], global.shopCosts[i]);
             }
         }
 
@@ -47,6 +53,7 @@ namespace Text_Based_RPG
             {
                 if (x + deltaX == shops[i].x && y + deltaY == shops[i].y) //maybe I get the enemyArray x/y out of manager somehow?
                 {
+                    latestShop = shops[i];
                     return true;
                 }
             }
@@ -55,7 +62,7 @@ namespace Text_Based_RPG
 
         public bool canAfford()
         {
-            if (player.goldHeld >= global.potionCost)
+            if (player.goldHeld >= latestShop.cost)
             {
                 return true;
             }

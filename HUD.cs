@@ -76,14 +76,14 @@ namespace Text_Based_RPG
             if (shopManager.inShop)
             {
                 Console.WriteLine();
-                Console.WriteLine("Would you like to buy a Potion for " + shopManager.potionCost + " Gold Coins?");
+                Console.WriteLine("Would you like to buy a " + shopManager.latestShop.merchName + " for " + shopManager.latestShop.cost + " Gold Coins?");
                 Console.WriteLine("1: Yes");
                 Console.WriteLine("2: No");
             }
             else if(shopManager.exitingShop)
             {
                 Console.WriteLine();
-                Console.WriteLine("You can't afford a Potion. They cost " + shopManager.potionCost + " Gold Coins.");
+                Console.WriteLine("You can't afford a " + shopManager.latestShop.merchName + " They cost " + shopManager.latestShop.cost + " Gold Coins.");
             }
         }
     }
