@@ -42,9 +42,6 @@ namespace Text_Based_RPG
 
         //ShopKeeper
         public char shopObjectIcon = '$';
-        public int potionCost = 10;
-        public int attackCost = 25;
-        public int keyCost = 50;
         public int shopCount = 3;
         public int[] shopPosX = new int[3] { 3, 5, 50 };
         public int[] shopPosY = new int[3] { 21, 5, 3 };

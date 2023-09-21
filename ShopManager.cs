@@ -14,25 +14,15 @@ namespace Text_Based_RPG
         private GlobalSettings global;
         private Player player;
         public bool inShop = false;
-        public bool exitingShop = false;
-        //public int cost;
-        //public int potionCost;
-        //public int attackCost;
-        //public int keyCost;
         public int currentSelection;
 
         public Shop latestShop;
-        //public Shop.Merch[] merchs;
 
 
         public ShopManager(GlobalSettings global, Player player)
         {
             this.global = global;
             this.player = player;
-            //potionCost = global.potionCost;
-            //attackCost = global.attackCost;
-            //keyCost = global.keyCost;
-            //merchs = global.shopMerchs;
             CreateShops();
         }
 
@@ -81,7 +71,6 @@ namespace Text_Based_RPG
         public void exitShop()
         {
             inShop = false;
-            exitingShop = true;
         }
 
         public void enterShop()
@@ -117,19 +106,6 @@ namespace Text_Based_RPG
                 if(canAfford())
                     player.buyMerch(latestShop.merchs[currentSelection], latestShop.costs[currentSelection]);
             }
-        }
-
-        public void Update()
-        {
-            if (exitingShop)
-            {
-                exitingShop = false;
-            }
-
-            //if (inShop)
-            //{
-            //}           
-
         }
     }
 }

@@ -200,7 +200,6 @@ namespace Text_Based_RPG
         public void buyMerch(Shop.Merch merch, int cost)
         {
             goldHeld -= cost;
-            //potionsHeld++;
             switch(merch)
             {
                 case Shop.Merch.Potion:
@@ -208,7 +207,7 @@ namespace Text_Based_RPG
                     break;
                 case Shop.Merch.Attack:
                     initalizeStrength = initalizeStrength + global.attackBoost;
-                    initalizeStrength = Clamp(initalizeStrength, 0, 50); //double checking to make sure health is clamped
+                    initalizeStrength = Clamp(initalizeStrength, 0, 50);
                     break;
                 case Shop.Merch.Key:
                     hasKeys++;

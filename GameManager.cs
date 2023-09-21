@@ -39,7 +39,6 @@ namespace Text_Based_RPG
                 itemManager.UpdateItems(player);
                 hud.UpdateHUD(player, enemyManager, shopManager, questManager);
                 player.Update(map, enemyManager, questManager, shopManager, camera);
-                shopManager.Update();
                 enemyManager.UpdateEnemies(map, player, enemyManager);
             }
 
