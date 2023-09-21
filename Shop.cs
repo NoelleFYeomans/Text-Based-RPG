@@ -18,33 +18,36 @@ namespace Text_Based_RPG
             Key
         }
 
-        public Merch merch;
+        public List<Merch> merchs;
 
-        public int cost;
+        public List<int> costs;
         public bool inShop = false;
         public bool exitingShop = false;
-        public string merchName;
+        public List<string> merchName = new List<string>();
 
-        public Shop(GlobalSettings global, Player player, int x, int y, Merch merch, int cost)
+        public Shop(GlobalSettings global, Player player, int x, int y, List<Merch> merchs, List<int> cost)
         {
             //this.global = global;
             objectIcon = global.shopObjectIcon;
             this.x = x;
             this.y = y;
-            this.merch = merch;
-            this.cost = cost;
+            this.merchs = merchs;
+            this.costs = cost;
 
-            switch (merch)
+            foreach (Shop.Merch merch in merchs)
             {
-                case Merch.Potion:
-                    merchName = "Potion";
-                    break;
-                case Merch.Attack:
-                    merchName = "Attack Boost";
-                    break;
-                case Merch.Key:
-                    merchName = "Key";
-                    break;
+                switch (merch)
+                {
+                    case Merch.Potion:
+                        merchName.Add("Potion");
+                        break;
+                    case Merch.Attack:
+                        merchName.Add("Attack Boost");
+                        break;
+                    case Merch.Key:
+                        merchName.Add("Key");
+                        break;
+                }
             }
 
             //potionCost = global.potionCost;

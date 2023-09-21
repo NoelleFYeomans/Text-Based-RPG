@@ -42,11 +42,20 @@ namespace Text_Based_RPG
 
         //ShopKeeper
         public char shopObjectIcon = '$';
+        public int potionCost = 10;
+        public int attackCost = 25;
+        public int keyCost = 50;
         public int shopCount = 3;
         public int[] shopPosX = new int[3] { 3, 5, 50 };
         public int[] shopPosY = new int[3] { 21, 5, 3 };
-        public Shop.Merch[] shopMerchs = new Shop.Merch[3] { Shop.Merch.Potion, Shop.Merch.Attack, Shop.Merch.Key };
-        public int[] shopCosts = new int[3] { 10, 25, 50 };
+        public List<Shop.Merch>[] shopMerchs = new List<Shop.Merch>[3] { 
+            new List<Shop.Merch> { Shop.Merch.Potion, Shop.Merch.Attack },
+            new List<Shop.Merch> { Shop.Merch.Potion, Shop.Merch.Attack },
+            new List<Shop.Merch> { Shop.Merch.Key } };
+        public List<int>[] shopCosts = new List<int>[3] {
+            new List<int>{ 10, 25 },
+            new List<int>{ 10, 25 },
+            new List<int>{ 50 } };
 
         //ShopKeeper
         public char questGiverObjectIcon = '!';
@@ -54,10 +63,9 @@ namespace Text_Based_RPG
         public int[] giverPosX = new int[2] { 8, 7 };
         public int[] giverPosY = new int[2] { 21, 5 };
         public Quest[] quests = new Quest[2] { 
-            new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25)
-            ,new Quest(Quest.Category.Elimination, Quest.Target.NormalEnemies, 5, "Side Quest: Kill 5 Normal Enemies", 50)
+            new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25),
+            new Quest(Quest.Category.Elimination, Quest.Target.NormalEnemies, 5, "Side Quest: Kill 5 Normal Enemies", 50)
         };
-
 
         //Item Stats/Data
         public int healthBoost = 25;
@@ -65,8 +73,6 @@ namespace Text_Based_RPG
         public int attackBoost = 25;
         public char aBoostIcon = 'A';
         public char keyIcon = 'K';
-
-
 
     }
 }

@@ -76,15 +76,42 @@ namespace Text_Based_RPG
             if (shopManager.inShop)
             {
                 Console.WriteLine();
-                Console.WriteLine("Would you like to buy a " + shopManager.latestShop.merchName + " for " + shopManager.latestShop.cost + " Gold Coins?");
+                /*Console.WriteLine("Would you like to buy a " + shopManager.latestShop.merchName + " for " + shopManager.latestShop.cost + " Gold Coins?");
                 Console.WriteLine("1: Yes");
-                Console.WriteLine("2: No");
+                Console.WriteLine("2: No");*/
+                for (int i = 0; i < shopManager.latestShop.merchs.Count; i++)
+                {
+                    if(shopManager.currentSelection == i)
+                    {
+                        if (shopManager.canAfford())
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    Console.WriteLine(shopManager.latestShop.merchName[i] + " for " + shopManager.latestShop.costs[i] + " Gold");
+                }
+
+                if(shopManager.currentSelection == shopManager.latestShop.merchs.Count) Console.ForegroundColor = ConsoleColor.Green;
+                else Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine("Exit Shop");
+
+                Console.ResetColor();
+
             }
-            else if(shopManager.exitingShop)
+            /*else if(shopManager.exitingShop)
             {
                 Console.WriteLine();
-                Console.WriteLine("You can't afford a " + shopManager.latestShop.merchName + " They cost " + shopManager.latestShop.cost + " Gold Coins.");
-            }
+                //Console.WriteLine("You can't afford a " + shopManager.latestShop.merchName + " They cost " + shopManager.latestShop.cost + " Gold Coins.");
+            }*/
         }
     }
 }

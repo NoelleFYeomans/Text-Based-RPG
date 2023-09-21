@@ -10,23 +10,29 @@ namespace Text_Based_RPG
     internal class ShopManager
     {
 
-        
-
         public Shop[] shops;
         private GlobalSettings global;
         private Player player;
         public bool inShop = false;
         public bool exitingShop = false;
-        public int cost;
+        //public int cost;
+        //public int potionCost;
+        //public int attackCost;
+        //public int keyCost;
+        public int currentSelection;
 
         public Shop latestShop;
+        //public Shop.Merch[] merchs;
 
 
         public ShopManager(GlobalSettings global, Player player)
         {
             this.global = global;
-            //potionCost = global.potionCost;
             this.player = player;
+            //potionCost = global.potionCost;
+            //attackCost = global.attackCost;
+            //keyCost = global.keyCost;
+            //merchs = global.shopMerchs;
             CreateShops();
         }
 
@@ -51,7 +57,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= shops.Length - 1; i++)
             {
-                if (x + deltaX == shops[i].x && y + deltaY == shops[i].y) //maybe I get the enemyArray x/y out of manager somehow?
+                if (x + deltaX == shops[i].x && y + deltaY == shops[i].y)
                 {
                     latestShop = shops[i];
                     return true;
@@ -62,7 +68,7 @@ namespace Text_Based_RPG
 
         public bool canAfford()
         {
-            if (player.goldHeld >= latestShop.cost)
+            if (player.goldHeld >= latestShop.costs[currentSelection])
             {
                 return true;
             }
@@ -81,24 +87,48 @@ namespace Text_Based_RPG
         public void enterShop()
         {
             inShop = true;
+            currentSelection = 0;
+        }
+
+        public void goUp()
+        {
+            if(currentSelection > 0)
+            {
+                currentSelection--;
+            }
+        }
+        
+        public void goDown()
+        {
+            if(currentSelection < latestShop.merchs.Count)
+            {
+                currentSelection++;
+            }
+        }
+
+        public void select()
+        {
+            if(currentSelection == latestShop.merchs.Count)
+            {
+                exitShop();
+            }
+            else
+            {
+                if(canAfford())
+                    player.buyMerch(latestShop.merchs[currentSelection], latestShop.costs[currentSelection]);
+            }
         }
 
         public void Update()
         {
-
-
             if (exitingShop)
             {
                 exitingShop = false;
             }
 
-            if (inShop)
-            {
-                if (canAfford() == false)
-                {
-                    exitShop();
-                }
-            }           
+            //if (inShop)
+            //{
+            //}           
 
         }
     }

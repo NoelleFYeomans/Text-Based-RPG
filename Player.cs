@@ -72,36 +72,43 @@ namespace Text_Based_RPG
             canMove = true;
 
             if (!isAlive) return; //implement guard clause around here
-
-            //obtain player input/desired movement
-            switch (key.Key)
+            if (shopManager.inShop == false)
             {
-                case ConsoleKey.W:
-                    deltaY = -1;
-                    break;
-                case ConsoleKey.S:
-                    deltaY = +1;
-                    break;
-                case ConsoleKey.D:
-                    deltaX = +1;
-                    break;
-                case ConsoleKey.A:
-                    deltaX = -1;
-                    break;
-                case ConsoleKey.P:
-                    UsePotion();
-                    break;
-                case ConsoleKey.D1:
-                    if (shopManager.inShop)
-                    {
-                        buyMerch(shopManager);
-                        shopManager.exitShop();
-                    }
-                    break;
-                case ConsoleKey.D2:
-                    if(shopManager.inShop)
-                        shopManager.exitShop();
-                    break;
+                //obtain player input/desired movement
+                switch (key.Key)
+                {
+                    case ConsoleKey.W:
+                        deltaY = -1;
+                        break;
+                    case ConsoleKey.S:
+                        deltaY = +1;
+                        break;
+                    case ConsoleKey.D:
+                        deltaX = +1;
+                        break;
+                    case ConsoleKey.A:
+                        deltaX = -1;
+                        break;
+                    case ConsoleKey.P:
+                        UsePotion();
+                        break;
+                }
+            }
+            else
+            {
+                switch(key.Key)
+                {
+                    case ConsoleKey.W:
+                        shopManager.goUp();
+                        break;
+                    case ConsoleKey.S:
+                        shopManager.goDown();
+                        break;
+                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.Enter:
+                        shopManager.select();
+                        break;
+                }
             }
 
             while (Console.KeyAvailable) Console.ReadKey(true); //prevents hold buffering
@@ -190,11 +197,11 @@ namespace Text_Based_RPG
 
         }
 
-        public void buyMerch(ShopManager shopManager)
+        public void buyMerch(Shop.Merch merch, int cost)
         {
-            goldHeld -= shopManager.latestShop.cost;
+            goldHeld -= cost;
             //potionsHeld++;
-            switch(shopManager.latestShop.merch)
+            switch(merch)
             {
                 case Shop.Merch.Potion:
                     potionsHeld++;
