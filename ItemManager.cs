@@ -46,11 +46,11 @@ namespace Text_Based_RPG
                 {
                     itemArray[i] = new HealthBoost(global); //25
                 }
-                else if (i <= itemArray.Length - 3) //23
+                else if (i <= itemArray.Length - 2) //24
                 {
                     itemArray[i] = new AttackBoost(global);
                 }
-                else if (i >= itemArray.Length - 2) //2
+                else if (i >= itemArray.Length - 1) //1
                 {
                     itemArray[i] = new DoorKey();
                 }

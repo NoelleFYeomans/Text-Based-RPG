@@ -25,6 +25,8 @@ namespace Text_Based_RPG {
                 onGround = false;
                 MakeBeep(300, 100);
                 player.hasKeys++;
+                qManager.CheckQuests(Quest.Category.Collection, Quest.Target.Keys);
+                qManager.CheckQuests(Quest.Category.Collection, Quest.Target.AnyItems);
             }
         }
     }

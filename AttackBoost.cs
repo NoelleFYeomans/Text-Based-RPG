@@ -25,6 +25,7 @@ namespace Text_Based_RPG
                 player.initalizeStrength = player.initalizeStrength + boost;
                 player.initalizeStrength = Clamp(player.initalizeStrength, 0, 50); //double checking to make sure health is clamped
                 qManager.CheckQuests(Quest.Category.Collection, Quest.Target.AttackBoosts);
+                qManager.CheckQuests(Quest.Category.Collection, Quest.Target.AnyItems);
             }
         }
     }

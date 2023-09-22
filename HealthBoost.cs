@@ -33,6 +33,7 @@ namespace Text_Based_RPG
                 }
 
                 qManager.CheckQuests(Quest.Category.Collection, Quest.Target.Potions);
+                qManager.CheckQuests(Quest.Category.Collection, Quest.Target.AnyItems);
             }
         }
     }

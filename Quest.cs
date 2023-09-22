@@ -21,7 +21,9 @@ namespace Text_Based_RPG
             StrongEnemies,
             AnyEnemies,
             Potions,
-            AttackBoosts
+            AttackBoosts,
+            Keys,
+            AnyItems
         }
 
         public Category questType;

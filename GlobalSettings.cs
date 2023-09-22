@@ -67,7 +67,7 @@ namespace Text_Based_RPG
         //Item Stats/Data
         public int healthBoost = 25;
         public char hBoostIcon = 'P';
-        public int attackBoost = 25;
+        public int attackBoost = 5;
         public char aBoostIcon = 'A';
         public char keyIcon = 'K';
 
