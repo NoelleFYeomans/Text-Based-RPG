@@ -17,7 +17,7 @@ namespace Text_Based_RPG
             y = initialY;
         }
 
-        public virtual void Update(Player player)
+        public virtual void Update(Player player, QuestManager qManager)
         {
             if (onGround == true && player.x == x && player.y == y)
             {

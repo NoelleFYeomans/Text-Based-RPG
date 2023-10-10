@@ -16,7 +16,7 @@ namespace Text_Based_RPG
             boost = global.healthBoost;
         }
 
-        public override void Update(Player player)
+        public override void Update(Player player, QuestManager qManager)
         {
             if (onGround == true && player.x == x && player.y == y)
             {
@@ -31,6 +31,9 @@ namespace Text_Based_RPG
                 {
                     player.potionsHeld++;
                 }
+
+                qManager.CheckQuests(Quest.Category.Collection, Quest.Target.Potions);
+                qManager.CheckQuests(Quest.Category.Collection, Quest.Target.AnyItems);
             }
         }
     }

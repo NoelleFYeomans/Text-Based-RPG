@@ -9,11 +9,13 @@ namespace Text_Based_RPG
     class ItemManager
     {
         public Items[] itemArray = new Items[50]; //same polymorphism issue as enemyManager
+        QuestManager qManager;
 
-        public ItemManager(Map map, GlobalSettings global) 
+        public ItemManager(Map map, GlobalSettings global, QuestManager qManager) 
         {
             CreateItems(global);
             InitItemPositions(map);
+            this.qManager = qManager;
         }
 
         public static Random rand = new Random();
@@ -44,11 +46,11 @@ namespace Text_Based_RPG
                 {
                     itemArray[i] = new HealthBoost(global); //25
                 }
-                else if (i <= itemArray.Length - 3) //23
+                else if (i <= itemArray.Length - 2) //24
                 {
                     itemArray[i] = new AttackBoost(global);
                 }
-                else if (i >= itemArray.Length - 2) //2
+                else if (i >= itemArray.Length - 1) //1
                 {
                     itemArray[i] = new DoorKey();
                 }
@@ -72,7 +74,7 @@ namespace Text_Based_RPG
         {
             for (int i = 0; i <= itemArray.Length - 1; i++) //rip Typecasting
             {
-                itemArray[i].Update(player);
+                itemArray[i].Update(player, qManager);
             }
         }
 

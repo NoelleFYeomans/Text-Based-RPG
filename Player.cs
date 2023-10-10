@@ -11,8 +11,12 @@ namespace Text_Based_RPG
         ConsoleKeyInfo key = new ConsoleKeyInfo();
         public int hasKeys = 0;
         public int potionsHeld = 0;
+        public int goldHeld = 0;
 
         private int potionValue;
+        private GlobalSettings global;
+        //private Shop shop;
+        //private QuestManager questManager;
 
         public Player(GlobalSettings global)
         {
@@ -21,6 +25,7 @@ namespace Text_Based_RPG
             initalizeStrength = global.playerInitStrength;
             InitializeCharacterPosition(global.playerSpawnX, global.playerSpawnY);
             potionValue = global.healthBoost;
+            this.global = global;
         }
 
         private void UsePotion()
@@ -37,7 +42,17 @@ namespace Text_Based_RPG
             }
         }
 
-        public void Update(Map map, EnemyManager enemyManager, Camera camera)
+        public void gainGold(int amount)
+        {
+            goldHeld += amount;
+        }
+
+        /*public void setShop(Shop shop)
+        {
+            this.shop = shop;
+        }*/
+
+        public void Update(Map map, EnemyManager enemyManager, QuestManager qManager, ShopManager shopManager, Camera camera)
         {
 
             if (health <= 0) //this is where the player dies
@@ -57,28 +72,51 @@ namespace Text_Based_RPG
             canMove = true;
 
             if (!isAlive) return; //implement guard clause around here
-
-            //obtain player input/desired movement
-            switch (key.Key)
+            if (shopManager.inShop == false)
             {
-                case ConsoleKey.W:
-                    deltaY = -1;
-                    break;
-                case ConsoleKey.S:
-                    deltaY = +1;
-                    break;
-                case ConsoleKey.D:
-                    deltaX = +1;
-                    break;
-                case ConsoleKey.A:
-                    deltaX = -1;
-                    break;
-                case ConsoleKey.P:
-                    UsePotion();
-                    break;
+                //obtain player input/desired movement
+                switch (key.Key)
+                {
+                    case ConsoleKey.W:
+                        deltaY = -1;
+                        break;
+                    case ConsoleKey.S:
+                        deltaY = +1;
+                        break;
+                    case ConsoleKey.D:
+                        deltaX = +1;
+                        break;
+                    case ConsoleKey.A:
+                        deltaX = -1;
+                        break;
+                    case ConsoleKey.P:
+                        UsePotion();
+                        break;
+                }
+            }
+            else
+            {
+                switch(key.Key)
+                {
+                    case ConsoleKey.W:
+                        shopManager.goUp();
+                        break;
+                    case ConsoleKey.S:
+                        shopManager.goDown();
+                        break;
+                    case ConsoleKey.Spacebar:
+                    case ConsoleKey.Enter:
+                        shopManager.select();
+                        break;
+                }
             }
 
             while (Console.KeyAvailable) Console.ReadKey(true); //prevents hold buffering
+
+            if (shopManager.inShop)
+            {
+                canMove = false;
+            }
 
             if (map.isImpassableObstacle(y + deltaY, x + deltaX)) //perform checks before movement
             {
@@ -114,6 +152,17 @@ namespace Text_Based_RPG
                 doAttack = true;
             }
 
+            if(qManager.IsCoordinatesOccupied(x, deltaX, y, deltaY))
+            {
+                canMove = false;
+            }
+
+            if(shopManager.IsCoordinatesOccupied(x, deltaX, y, deltaY))
+            {
+                canMove = false;
+                shopManager.enterShop();
+            }
+
             if (doAttack)
             {
                 MakeBeep(1000, 100);
@@ -147,5 +196,24 @@ namespace Text_Based_RPG
             ApplyAction(map); 
 
         }
+
+        public void buyMerch(Shop.Merch merch, int cost)
+        {
+            goldHeld -= cost;
+            switch(merch)
+            {
+                case Shop.Merch.Potion:
+                    potionsHeld++;
+                    break;
+                case Shop.Merch.Attack:
+                    initalizeStrength = initalizeStrength + global.attackBoost;
+                    initalizeStrength = Clamp(initalizeStrength, 0, 50);
+                    break;
+                case Shop.Merch.Key:
+                    hasKeys++;
+                    break;
+            }
+        }
+
     }
 }

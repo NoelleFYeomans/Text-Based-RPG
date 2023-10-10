@@ -14,12 +14,20 @@ namespace Text_Based_RPG
             objectIcon = global.normalObjectIcon;
             health = global.normalHealth;
             initalizeStrength = global.normalInitStrength;
+            goldValue = global.normalGold;
         }
 
-        public override void Update(Map map, Player player, EnemyManager enemyManager) //test static update & virtual instead of new
+        public override void Update(Map map, Player player, EnemyManager enemyManager, QuestManager qManager) //test static update & virtual instead of new
         {
             if (health <= 0)
             {
+                if (hasGold)
+                {
+                    player.gainGold(goldValue);
+                    hasGold = false;
+                    qManager.CheckQuests(Quest.Category.Elimination, Quest.Target.NormalEnemies);
+                    qManager.CheckQuests(Quest.Category.Elimination, Quest.Target.AnyEnemies);
+                }
                 isAlive = false;
             }
 

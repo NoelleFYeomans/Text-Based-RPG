@@ -18,13 +18,15 @@ namespace Text_Based_RPG {
             player.hasKeys--;
         }
 
-        public override void Update(Player player)
+        public override void Update(Player player, QuestManager qManager)
         {
             if (onGround == true && player.x == x && player.y == y)
             {
                 onGround = false;
                 MakeBeep(300, 100);
                 player.hasKeys++;
+                qManager.CheckQuests(Quest.Category.Collection, Quest.Target.Keys);
+                qManager.CheckQuests(Quest.Category.Collection, Quest.Target.AnyItems);
             }
         }
     }

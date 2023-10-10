@@ -26,25 +26,50 @@ namespace Text_Based_RPG
         public char weakObjectIcon = 'W';
         public int weakHealth = 50;
         public int weakInitStrength = 1;
+        public int weakGold = 1;
 
         //NormalEnemy stats
         public char normalObjectIcon = 'E';
         public int normalHealth = 100;
         public int normalInitStrength = 5;
+        public int normalGold = 5;
 
         //StrongEnemy stats
         public char strongObjectIcon = 'S';
         public int strongHealth = 150;
         public int strongInitStrength = 10;
+        public int strongGold = 10;
+
+        //ShopKeeper
+        public char shopObjectIcon = '$';
+        public int shopCount = 3;
+        public int[] shopPosX = new int[3] { 3, 5, 50 };
+        public int[] shopPosY = new int[3] { 21, 5, 3 };
+        public List<Shop.Merch>[] shopMerchs = new List<Shop.Merch>[3] { 
+            new List<Shop.Merch> { Shop.Merch.Potion, Shop.Merch.Attack },
+            new List<Shop.Merch> { Shop.Merch.Potion, Shop.Merch.Attack },
+            new List<Shop.Merch> { Shop.Merch.Key } };
+        public List<int>[] shopCosts = new List<int>[3] {
+            new List<int>{ 10, 25 },
+            new List<int>{ 10, 25 },
+            new List<int>{ 50 } };
+
+        //ShopKeeper
+        public char questGiverObjectIcon = '!';
+        public int questGiverCount = 2;
+        public int[] giverPosX = new int[2] { 8, 7 };
+        public int[] giverPosY = new int[2] { 21, 5 };
+        public Quest[] quests = new Quest[2] { 
+            new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25),
+            new Quest(Quest.Category.Elimination, Quest.Target.NormalEnemies, 5, "Side Quest: Kill 5 Normal Enemies", 50)
+        };
 
         //Item Stats/Data
         public int healthBoost = 25;
         public char hBoostIcon = 'P';
-        public int attackBoost = 25;
+        public int attackBoost = 5;
         public char aBoostIcon = 'A';
         public char keyIcon = 'K';
-
-
 
     }
 }
