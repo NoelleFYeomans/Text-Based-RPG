@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,13 @@ namespace Text_Based_RPG
 {
     class GlobalSettings //list of things that are hardcoded/settings that can be changed easily here
     {
+        private string[] readInFromFile;
+        public GlobalSettings() //this is the constructor, this is where data will be read in!
+        {
+            readInFromFile = File.ReadAllLines(@"C:\Users\w0423300\Documents\GitHub\Text-Based-RPG\data.json"); //un-hardcode this
+            //at this point, readInFromFile
+        }
+
         //Ingame Camera Dimension //deal with constants
         public int camHeight = 14;
         public int camWidth = 28;
@@ -54,7 +62,7 @@ namespace Text_Based_RPG
             new List<int>{ 10, 25 },
             new List<int>{ 50 } };
 
-        //ShopKeeper
+        //QuestGiver
         public char questGiverObjectIcon = '!';
         public int questGiverCount = 2;
         public int[] giverPosX = new int[2] { 8, 7 };
