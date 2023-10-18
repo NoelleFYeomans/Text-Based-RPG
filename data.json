@@ -1,36 +1,30 @@
 {
-  "IngameCameraDimension": {
-    "camHeight": 14,
-    "camWidth": 28
-  },
-  "ObstacleCharacters": {
-    "impassableChars": "#~^"
-  },
-  "PlayerStats": {
-    "playerObjectIcon": "@",
-    "playerHealth": 100,
-    "playerInitStrength": 25,
-    "playerSpawnX": 30,
-    "playerSpawnY": 7
-  },
-  "WeakEnemyStats": {
-    "weakObjectIcon": "W",
-    "weakHealth": 50,
-    "weakInitStrength": 1,
-    "weakGold": 1
-  },
-  "NormalEnemyStats": {
-    "normalObjectIcon": "E",
-    "normalHealth": 100,
-    "normalInitStrength": 5,
-    "normalGold": 5
-  },
-  "StrongEnemyStats": {
-    "strongObjectIcon": "S",
-    "strongHealth": 150,
-    "strongInitStrength": 10,
-    "strongGold": 10
-  },
+  "camHeight": 14,
+  "camWidth": 28,
+
+  "impassableChars": "#~^",
+
+  "playerObjectIcon": "@",
+  "playerHealth": 100,
+  "playerInitStrength": 25,
+  "playerSpawnX": 30,
+  "playerSpawnY": 7,
+
+  "weakObjectIcon": "W",
+  "weakHealth": 50,
+  "weakInitStrength": 1,
+  "weakGold": 1,
+
+  "normalObjectIcon": "E",
+  "normalHealth": 100,
+  "normalInitStrength": 5,
+  "normalGold": 5,
+
+  "strongObjectIcon": "S",
+  "strongHealth": 150,
+  "strongInitStrength": 10,
+  "strongGold": 10,
+  //fuck you dickhead, reformat these, there are enums, fuck you, eat a dick, logma bugs
   "ShopKeeper": {
     "shopObjectIcon": "$",
     "shopCount": 3,
@@ -77,11 +71,10 @@
       }
     ]
   },
-  "ItemStats": {
-    "healthBoost": 25,
-    "hBoostIcon": "P",
-    "attackBoost": 5,
-    "aBoostIcon": "A",
-    "keyIcon": "K"
-  }
+
+  "healthBoost": 25,
+  "hBoostIcon": "P",
+  "attackBoost": 5,
+  "aBoostIcon": "A",
+  "keyIcon": "K"
 }

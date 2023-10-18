@@ -9,27 +9,29 @@ public class GlobalSettings
     public static GlobalSettings LoadFromJson(string jsonFilePath)
     {
         string jsonData = File.ReadAllText(jsonFilePath);
+        //Console.WriteLine(jsonData);
+        //Console.ReadKey(true);
         return JsonSerializer.Deserialize<GlobalSettings>(jsonData);
 
     }
 
     //camera
-    public int camHeight { get; set; } = 14;
-    public int camWidth { get; set; } = 28;
+    public int camHeight { get; set; }// = 14;
+    public int camWidth { get; set; }// = 28;
 
     //wall characters
-    public string impassableChars { get; set; } = "#~^";
+    public string impassableChars { get; set; }// = "#~^";
 
     //player
     public char playerObjectIcon { get; set; }
-    public int playerHealth { get; set; } = 100;
+    public int playerHealth { get; set; }// = 100;
     public int playerInitStrength { get; set; }
-    public int playerSpawnX { get; set; } = 30;
-    public int playerSpawnY { get; set; } = 7;
+    public int playerSpawnX { get; set; }// = 30;
+    public int playerSpawnY { get; set; }// = 7;
 
     //weak enemy
     public char weakObjectIcon { get; set; }
-    public int weakHealth { get; set; } = 1;
+    public int weakHealth { get; set; }// = 1;
     public int weakInitStrength { get; set; }
     public int weakGold { get; set; }
 
