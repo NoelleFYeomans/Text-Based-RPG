@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class EnemyManager //same logic here applies to Items. do this, then items.
+    public class EnemyManager //same logic here applies to Items. do this, then items.
     {
         //declaration & instantiation
         public Enemy[] enemyArray = new Enemy[50]; //hardcoded?

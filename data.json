@@ -1,49 +1,87 @@
-//Camera_stats Height, Width
-14, 28,
-
-//Obstacle_chars Impassable/Wall Characters
-#, ~, ^, 
-
-//Player_stats Icon, Health, Strength, spawnX, spawnY
-@, 100, 25, 30, 7,
-
-//WeakEnemy_stats Icon, Health, Strength, Gold
-W, 50, 1, 1,
-
-//NormalEnemy_stats Icon, Health, Strength, Gold
-E, 100, 5, 5,
-
-//StrongEnemy_stats Icon, Health, Strength, Gold
-S, 150, 10, 10,
-
-//Shopkeeper_stats Icon, Count(needed multiple times), posX(1,2,3), posY(1,2,3), potCost, AtkCost, KeyCost
-$, 3, 3, 5, 50, 21, 5, 3, 10, 25, 50,  
-
-// // public char shopobjecticon = '$';
-// // public int shopcount = 3;
-// // public int[] shopposx = new int[3] { 3, 5, 50 };
-// // public int[] shopposy = new int[3] { 21, 5, 3 };
-// // public list<shop.merch>[] shopmerchs = new list<shop.merch>[3] { 
-    // // new list<shop.merch> { shop.merch.potion, shop.merch.attack },
-    // // new list<shop.merch> { shop.merch.potion, shop.merch.attack },
-    // // new list<shop.merch> { shop.merch.key } };
-// // public list<int>[] shopcosts = new list<int>[3] {
-    // // new list<int>{ 10, 25 },
-    // // new list<int>{ 10, 25 },
-    // // new list<int>{ 50 } };
-
-//Questgiver_stats Icon, Count, posX(1,2), posY(1,2), #ofQuests, q1Target, q1Text, q1Reward, q2Target, q2Text, q2Reward
-!, 2, 8, 7, 21, 5, 2, 5, "Side Quest: Collect 5 Potions", 25, 5, "Side Quest: Kill 5 Normal Enemies", 50
-
-// // public char questGiverObjectIcon = '!';
-// // public int questGiverCount = 2;
-// // public int[] giverPosX = new int[2] { 8, 7 };
-// // public int[] giverPosY = new int[2] { 21, 5 };
-// // public Quest[] quests = new Quest[2] { 
-    // // new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25),
-    // // new Quest(Quest.Category.Elimination, Quest.Target.NormalEnemies, 5, "Side Quest: Kill 5 Normal Enemies", 50)
-// // };
-
-//Item_Stats healthBoost, attackBoost, healthIcon, attackIcon, keyIcon
-25, 5, P, A, K, 
-lol
+{
+  "IngameCameraDimension": {
+    "camHeight": 14,
+    "camWidth": 28
+  },
+  "ObstacleCharacters": {
+    "impassableChars": "#~^"
+  },
+  "PlayerStats": {
+    "playerObjectIcon": "@",
+    "playerHealth": 100,
+    "playerInitStrength": 25,
+    "playerSpawnX": 30,
+    "playerSpawnY": 7
+  },
+  "WeakEnemyStats": {
+    "weakObjectIcon": "W",
+    "weakHealth": 50,
+    "weakInitStrength": 1,
+    "weakGold": 1
+  },
+  "NormalEnemyStats": {
+    "normalObjectIcon": "E",
+    "normalHealth": 100,
+    "normalInitStrength": 5,
+    "normalGold": 5
+  },
+  "StrongEnemyStats": {
+    "strongObjectIcon": "S",
+    "strongHealth": 150,
+    "strongInitStrength": 10,
+    "strongGold": 10
+  },
+  "ShopKeeper": {
+    "shopObjectIcon": "$",
+    "shopCount": 3,
+    "shopLocations": [
+      {
+        "shopPosX": [ 3, 5, 50 ],
+        "shopPosY": [ 21, 5, 3 ],
+        "shopMerchs": [
+          [ "Potion", "Attack" ],
+          [ "Potion", "Attack" ],
+          [ "Key" ]
+        ],
+        "shopCosts": [
+          [ 10, 25 ],
+          [ 10, 25 ],
+          [ 50 ]
+        ]
+      }
+    ]
+  },
+  "QuestGiver": {
+    "questGiverObjectIcon": "!",
+    "questGiverCount": 2,
+    "questGiverLocations": [
+      {
+        "giverPosX": [ 8, 7 ],
+        "giverPosY": [ 21, 5 ],
+        "quests": [
+          {
+            "category": "Collection",
+            "target": "Potions",
+            "requiredAmount": 5,
+            "description": "Side Quest: Collect 5 Potions",
+            "reward": 25
+          },
+          {
+            "category": "Elimination",
+            "target": "NormalEnemies",
+            "requiredAmount": 5,
+            "description": "Side Quest: Kill 5 Normal Enemies",
+            "reward": 50
+          }
+        ]
+      }
+    ]
+  },
+  "ItemStats": {
+    "healthBoost": 25,
+    "hBoostIcon": "P",
+    "attackBoost": 5,
+    "aBoostIcon": "A",
+    "keyIcon": "K"
+  }
+}

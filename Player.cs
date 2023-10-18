@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Player : GameCharacter
+    public class Player : GameCharacter
     {
         ConsoleKeyInfo key = new ConsoleKeyInfo();
         public int hasKeys = 0;

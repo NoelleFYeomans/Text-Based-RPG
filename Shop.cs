@@ -7,7 +7,8 @@ using static Text_Based_RPG.ShopManager;
 
 namespace Text_Based_RPG
 {
-    internal class Shop : GameObject
+    //internal class Shop : GameObject
+    public class Shop : GameObject
     {
         //Player player;
         //GlobalSettings global;

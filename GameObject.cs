@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    abstract class GameObject
+    public abstract class GameObject
     {
         public int y; 
         public int x;

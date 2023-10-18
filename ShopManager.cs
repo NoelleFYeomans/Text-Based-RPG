@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    internal class ShopManager
+    public class ShopManager
     {
 
         public Shop[] shops;

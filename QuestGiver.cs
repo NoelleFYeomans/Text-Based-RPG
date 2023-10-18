@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    internal class QuestGiver : GameObject
+    public class QuestGiver : GameObject
     {
         private Quest quest;
         public bool given = false;

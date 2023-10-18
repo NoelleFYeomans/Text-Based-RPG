@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Camera
+    public class Camera
     {
         public int x;
         public int y;

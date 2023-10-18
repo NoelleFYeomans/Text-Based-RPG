@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    internal class QuestManager
+    public class QuestManager
     {
 
         public List<Quest> quests = new List<Quest>();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    abstract class Enemy : GameCharacter //To make a new enemy, add a new subclass
+    public abstract class Enemy : GameCharacter //To make a new enemy, add a new subclass
     {
         public bool recentTarget;
 

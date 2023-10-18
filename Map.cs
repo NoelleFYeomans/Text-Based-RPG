@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    class Map
+    public class Map
     {
         public string[] mapRawData;
 

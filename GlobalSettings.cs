@@ -1,83 +1,69 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json;
+using Text_Based_RPG;
 
-namespace Text_Based_RPG
+public class GlobalSettings
 {
-    class GlobalSettings //list of things that are hardcoded/settings that can be changed easily here
+    public static GlobalSettings LoadFromJson(string jsonFilePath)
     {
-        private string[] readInFromFile;
-        public GlobalSettings() //this is the constructor, this is where data will be read in!
-        {
-            readInFromFile = File.ReadAllLines(@"C:\Users\w0423300\Documents\GitHub\Text-Based-RPG\data.json"); //un-hardcode this
-            //at this point, readInFromFile
-        }
-
-        //Ingame Camera Dimension //deal with constants
-        public int camHeight = 14;
-        public int camWidth = 28;
-
-        //Obstacle Characters in Map.cs
-        public string impassableChars = "#~^"; //add/remove char to change collision detection
-
-        //Player stats
-        public char playerObjectIcon = '@';
-        public int playerHealth = 100;
-        public int playerInitStrength = 25;
-        public int playerSpawnX = 30;
-        public int playerSpawnY = 7;
-
-        //WeakEnemy stats
-        public char weakObjectIcon = 'W';
-        public int weakHealth = 50;
-        public int weakInitStrength = 1;
-        public int weakGold = 1;
-
-        //NormalEnemy stats
-        public char normalObjectIcon = 'E';
-        public int normalHealth = 100;
-        public int normalInitStrength = 5;
-        public int normalGold = 5;
-
-        //StrongEnemy stats
-        public char strongObjectIcon = 'S';
-        public int strongHealth = 150;
-        public int strongInitStrength = 10;
-        public int strongGold = 10;
-
-        //ShopKeeper
-        public char shopObjectIcon = '$';
-        public int shopCount = 3;
-        public int[] shopPosX = new int[3] { 3, 5, 50 };
-        public int[] shopPosY = new int[3] { 21, 5, 3 };
-        public List<Shop.Merch>[] shopMerchs = new List<Shop.Merch>[3] { 
-            new List<Shop.Merch> { Shop.Merch.Potion, Shop.Merch.Attack },
-            new List<Shop.Merch> { Shop.Merch.Potion, Shop.Merch.Attack },
-            new List<Shop.Merch> { Shop.Merch.Key } };
-        public List<int>[] shopCosts = new List<int>[3] {
-            new List<int>{ 10, 25 },
-            new List<int>{ 10, 25 },
-            new List<int>{ 50 } };
-
-        //QuestGiver
-        public char questGiverObjectIcon = '!';
-        public int questGiverCount = 2;
-        public int[] giverPosX = new int[2] { 8, 7 };
-        public int[] giverPosY = new int[2] { 21, 5 };
-        public Quest[] quests = new Quest[2] { 
-            new Quest(Quest.Category.Collection, Quest.Target.Potions, 5, "Side Quest: Collect 5 Potions", 25),
-            new Quest(Quest.Category.Elimination, Quest.Target.NormalEnemies, 5, "Side Quest: Kill 5 Normal Enemies", 50)
-        };
-
-        //Item Stats/Data
-        public int healthBoost = 25;
-        public char hBoostIcon = 'P';
-        public int attackBoost = 5;
-        public char aBoostIcon = 'A';
-        public char keyIcon = 'K';
+        string jsonData = File.ReadAllText(jsonFilePath);
+        return JsonSerializer.Deserialize<GlobalSettings>(jsonData);
 
     }
+
+    //camera
+    public int camHeight { get; set; } = 14;
+    public int camWidth { get; set; } = 28;
+
+    //wall characters
+    public string impassableChars { get; set; } = "#~^";
+
+    //player
+    public char playerObjectIcon { get; set; }
+    public int playerHealth { get; set; } = 100;
+    public int playerInitStrength { get; set; }
+    public int playerSpawnX { get; set; } = 30;
+    public int playerSpawnY { get; set; } = 7;
+
+    //weak enemy
+    public char weakObjectIcon { get; set; }
+    public int weakHealth { get; set; } = 1;
+    public int weakInitStrength { get; set; }
+    public int weakGold { get; set; }
+
+    //normal enemy
+    public char normalObjectIcon { get; set; }
+    public int normalHealth { get; set; }
+    public int normalInitStrength { get; set; }
+    public int normalGold { get; set; }
+
+    //strong enemy
+    public char strongObjectIcon { get; set; }
+    public int strongHealth { get; set; }
+    public int strongInitStrength { get; set; }
+    public int strongGold { get; set; }
+
+    //shops
+    public char shopObjectIcon { get; set; }
+    public int shopCount { get; set; }
+    public int[] shopPosX { get; set; }
+    public int[] shopPosY { get; set; }
+    public List<Shop.Merch>[] shopMerchs { get; set; }
+    public List<int>[] shopCosts { get; set; }
+
+    //quest
+    public char questGiverObjectIcon { get; set; }
+    public int questGiverCount { get; set; }
+    public int[] giverPosX { get; set; }
+    public int[] giverPosY { get; set; }
+    public Quest[] quests { get; set; }
+
+    //items
+    public int healthBoost { get; set; }
+    public char hBoostIcon { get; set; }
+    public int attackBoost { get; set; }
+    public char aBoostIcon { get; set; }
+    public char keyIcon { get; set; }
 }

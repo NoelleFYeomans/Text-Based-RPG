@@ -9,7 +9,7 @@ namespace Text_Based_RPG
     class GameManager
     {
         //declaration & instantiation
-        static GlobalSettings global = new GlobalSettings();
+        static GlobalSettings global = GlobalSettings.LoadFromJson(@"C:\Users\w0423300\Documents\GitHub\Text-Based-RPG\data.json");
         static Map map = new Map(global);
         static Player player = new Player(global);
         static Camera camera = new Camera(player, global);

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Text_Based_RPG
 {
-    internal class Quest
+    //internal class Quest  
+    public class Quest  
     {
         public enum Category
         {
