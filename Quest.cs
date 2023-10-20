@@ -37,6 +37,16 @@ namespace Text_Based_RPG
         public int achieved = 0;
 
 
+        public Quest()
+        {
+            // Initialize default values for properties
+            this.questType = Category.Collection;
+            this.questTarget = Target.Potions;
+            this.amount = 10;
+            this.message = "Default: Potions";
+            this.rewardGold = 1;
+        }
+
         public Quest(Category questType, Target questTarget, int amount, string message, int goldReward)
         {
             this.questType = questType;

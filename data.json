@@ -24,53 +24,49 @@
   "strongHealth": 150,
   "strongInitStrength": 10,
   "strongGold": 10,
-  //fuck you dickhead, reformat these, there are enums, fuck you, eat a dick, logma bugs
-  "ShopKeeper": {
-    "shopObjectIcon": "$",
-    "shopCount": 3,
-    "shopLocations": [
-      {
-        "shopPosX": [ 3, 5, 50 ],
-        "shopPosY": [ 21, 5, 3 ],
-        "shopMerchs": [
-          [ "Potion", "Attack" ],
-          [ "Potion", "Attack" ],
-          [ "Key" ]
-        ],
-        "shopCosts": [
-          [ 10, 25 ],
-          [ 10, 25 ],
-          [ 50 ]
-        ]
-      }
-    ]
-  },
-  "QuestGiver": {
-    "questGiverObjectIcon": "!",
-    "questGiverCount": 2,
-    "questGiverLocations": [
-      {
-        "giverPosX": [ 8, 7 ],
-        "giverPosY": [ 21, 5 ],
-        "quests": [
-          {
-            "category": "Collection",
-            "target": "Potions",
-            "requiredAmount": 5,
-            "description": "Side Quest: Collect 5 Potions",
-            "reward": 25
-          },
-          {
-            "category": "Elimination",
-            "target": "NormalEnemies",
-            "requiredAmount": 5,
-            "description": "Side Quest: Kill 5 Normal Enemies",
-            "reward": 50
-          }
-        ]
-      }
-    ]
-  },
+
+  "shopObjectIcon": "$",
+  "shopCount": 3,
+  "shopPosX": [ 3, 5, 50 ],
+  "shopPosY": [ 21, 5, 3 ],
+  "shopMerchs": [
+    [ "Potion", "Attack" ],
+    [ "Potion", "Attack" ],
+    [ "Key" ]
+  ],
+  "shopCosts": [
+    [ 10, 25 ],
+    [ 10, 25 ],
+    [ 50 ]
+  ],
+
+  "questGiverObjectIcon": "!",
+  "questGiverCount": 3,
+  "giverPosX": [ 8, 7, 9 ],
+  "giverPosY": [ 21, 5, 7 ],
+  "quests": [
+    {
+      "category": "Collection",
+      "target": "Potions",
+      "requiredAmount": 5,
+      "description": "Side Quest: Collect 5 Potions",
+      "reward": 25
+    },
+    {
+      "category": "Elimination",
+      "target": "NormalEnemies",
+      "requiredAmount": 5,
+      "description": "Side Quest: Kill 5 Normal Enemies",
+      "reward": 50
+    },
+    {
+      "category": "Collection",
+      "target": "Potions",
+      "requiredAmount": 20,
+      "description": "Side Quest: Collect 20 Potions",
+      "reward": 100
+    }
+  ],
 
   "healthBoost": 25,
   "hBoostIcon": "P",
